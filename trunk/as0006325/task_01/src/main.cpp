@@ -3,7 +3,7 @@
 
 using namespace std;
 
-// Функция для линейной модели
+// Function for linear model
 void linearModel(double y, double u, double a, double b, int steps) {
     for (int i = 1; i <= steps; i++) {
         double y_next = a * y + b * u;
@@ -13,7 +13,7 @@ void linearModel(double y, double u, double a, double b, int steps) {
     }
 }
 
-// Функция для нелинейной модели
+// Function for nonlinear model
 void nonlinearModel(double y, double u, double a, double b, double c, double d, int steps) {
     double y_prev = 0;
     double u_prev = 0;
@@ -22,18 +22,18 @@ void nonlinearModel(double y, double u, double a, double b, double c, double d, 
         double y_next = a * y - b * y_prev * y_prev + c * u + d * sin(u_prev);
         cout << "Step " << i << ": y = " << y_next << endl;
 
-        y_prev = y;  // Обновляем предыдущее значение температуры
-        u_prev = u;  // Обновляем предыдущее значение управления
+        y_prev = y; // Update the previous temperature value
+        u_prev = u; // Update the previous control value
 
-        y = y_next;  // Обновляем текущее значение температуры
+        y = y_next; // Update the current temperature value
     }
 }
 
 int main() {
-    double a, b, c, d;  // Константы
-    double y;  // Текущая температура
-    double u;  // Текущая теплота
-    int steps;  // Количество шагов моделирования
+    double a, b, c, d; // Constants
+    double y; // Current temperature
+    double u; // Current heat
+    int steps; // Number of modeling steps
 
     cout << "Enter the value for constant a: "; cin >> a;
     cout << "Enter the value for constant b: "; cin >> b;
@@ -45,11 +45,11 @@ int main() {
 
     cout << "Enter the number of iterations, steps: "; cin >> steps;
 
-    // Линейная модель
+    // Linear model
     cout << "\nLinear model simulation:\n";
     linearModel(y, u, a, b, steps);
 
-    // Нелинейная модель
+    // Nonlinear model
     cout << "\nNonlinear model simulation:\n";
     nonlinearModel(y, u, a, b, c, d, steps);
 
