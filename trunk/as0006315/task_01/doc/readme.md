@@ -1,20 +1,20 @@
-<p style="font-size: 120%; text-align: center">Ministry of Education of the Republic of Belarus</p>
-<p style="font-size: 120%; text-align: center">Educational Institution</p>
-<p style="font-size: 120%; text-align: center">“Brest State Technical University”</p>
-<p style="font-size: 120%; text-align: center">Department of Computer Systems and Information Technologies</p>
+<p align="center">Ministry of Education of the Republic of Belarus</p>
+<p align="center">Educational Institution</p>
+<p align="center">“Brest State Technical University”</p>
+<p align="center">Department of Information and Intelligent Technologies</p>
 <br><br><br><br><br><br><br>
-<p style="font-size: 120%; text-align: center">Laboratory work No. 1</p>
-<p style="font-size: 120%; text-align: center">on the discipline “Theory and methods of automatic control”</p>
-<p style="font-size: 120%; text-align: center">Theme: “Temperature modeling of an object”</p>
+<p align="center">Laboratory work №1</p>
+<p align="center">On the discipline “Theory and methods of automatic control”</p>
+<p align="center">Topic: “Temperature modeling of an object”</p>
 <br><br><br><br><br>
-<p style="font-size: 120%; text-align: right">Performed by:</p>
-<p style="font-size: 120%; text-align: right">Student of the 3rd year</p>
-<p style="font-size: 120%; text-align: right">Group AS-63</p>
-<p style="font-size: 120%; text-align: right">Loganov G. A.</p>
-<p style="font-size: 120%; text-align: right">Checked by:</p>
-<p style="font-size: 120%; text-align: right">Sitkovets Yu. S.</p>
+<p align="right">Performed by:</p>
+<p align="right">Student of the 3rd course</p>
+<p align="right">Group AS-63</p>
+<p align="right">Loginov G. O.</p>
+<p align="right">Supervised by:</p>
+<p align="right">Sitkovets J. S.</p>
 <br><br><br><br><br>
-<p style="font-size: 120%; text-align: center">Brest 2024</p>
+<p align="center">Brest 2024</p>
 
 ---
 
