@@ -1,18 +1,18 @@
-<p style="font-size: 120%"><center>Ministry of Education of the Republic of Belarus</center></p>
-<p style="font-size: 120%"><center> Educational Institution</center></p>
-<p style="font-size: 120%"><center>“Brest State Technical University”</center></p>
-<p style="font-size: 120%"><center>Department of Computer Science and Information Technologies</center></p>
+<p style="font-size: 120%; text-align: center">Ministry of Education of the Republic of Belarus</p>
+<p style="font-size: 120%; text-align: center">Educational Institution</p>
+<p style="font-size: 120%; text-align: center">“Brest State Technical University”</p>
+<p style="font-size: 120%; text-align: center">Department of Computer Systems and Information Technologies</p>
 <br><br><br><br><br><br><br>
-<p style="font-size: 120%"><center>Laboratory work №1</center></p>
-<p style="font-size: 120%"><center>On the discipline “Theory and methods of automatic control”</center></p>
-<p style="font-size: 120%"><center>Topic: “Modeling of object temperature”</center></p>
+<p style="font-size: 120%; text-align: center">Laboratory work No. 1</p>
+<p style="font-size: 120%; text-align: center">on the discipline “Theory and methods of automatic control”</p>
+<p style="font-size: 120%; text-align: center">Theme: “Temperature modeling of an object”</p>
 <br><br><br><br><br>
 <p style="font-size: 120%; text-align: right">Performed by:</p>
-<p style="font-size: 120%; text-align: right">Student of the 3rd course</p>
+<p style="font-size: 120%; text-align: right">Student of the 3rd year</p>
 <p style="font-size: 120%; text-align: right">Group AS-63</p>
-<p style="font-size: 120%; text-align: right">Loginov G. O.</p>
+<p style="font-size: 120%; text-align: right">Loganov G. A.</p>
 <p style="font-size: 120%; text-align: right">Checked by:</p>
-<p style="font-size: 120%; text-align: right">Sitkovets Y. S.</p>
+<p style="font-size: 120%; text-align: right">Sitkovets Yu. S.</p>
 <br><br><br><br><br>
 <p style="font-size: 120%; text-align: center">Brest 2024</p>
 
@@ -96,10 +96,10 @@ PS C:\Users\kseni\Documents\Универ\3курс\ТМАУ\TMAU-2024-my\TMAU-20
 
 ## The source code
 
-#### The source code is located in the [src folder](/src/).
+#### The source code is located in the [src folder](/trunk/as0006315/task_01/src).
 
-- [CMakeLists.txt](/src/CMakeLists.txt) - this is a file that contains CMake commands to control the project build process.
-- [models.h](/src/models.h) - header file, contains functions declarations for linear and nonlinear models simulation.
-- [models.cpp](/src/models.cpp) - source file, contains functions definitions for linear and nonlinear models simulation.
-- [main.cpp](/src/main.cpp) - source file, contains the main function that controls the program execution.
+- [CMakeLists.txt](/trunk/as0006315/task_01/src/CMakeLists.txt) - this is a file that contains CMake commands to control the project build process.
+- [models.h](/trunk/as0006315/task_01/src/models.h) - header file, contains functions declarations for linear and nonlinear models simulation.
+- [models.cpp](/trunk/as0006315/task_01/src/models.cpp) - source file, contains functions definitions for linear and nonlinear models simulation.
+- [main.cpp](/trunk/as0006315/task_01/src/main.cpp) - source file, contains the main function that controls the program execution.
 
