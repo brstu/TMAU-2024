@@ -6,7 +6,7 @@ using namespace std;
 
 void get_liner_model();
 void get_nonlinear_model();
-bool choice_input(int &choice);
+bool choice_input(const int &choice);
 
 int main() {
     void (*point[])() = { []() { exit(0); }, get_liner_model, get_nonlinear_model};
@@ -46,7 +46,8 @@ void get_liner_model() {
     input_value(warm, "warm");
     input_value(time, "time");
     LinearModel model(A, B, current_temperature, warm);
-    model.calculate_and_print(time);
+    model.calculate(time);
+    model.print();
 }
 
 void get_nonlinear_model() {
@@ -60,10 +61,11 @@ void get_nonlinear_model() {
     input_value(warm, "warm");
     input_value(time, "time");
     NonLinearModel model(A, B, C, D, current_temperature, warm);
-    model.calculate_and_print(time);
+    model.calculate(time);
+    model.print();
 }
 
-bool choice_input(int &choice) {
+bool choice_input(const int &choice) {
     while (true) {
         if (input_value(choice, "choice")) {
             if (choice >= 0 && choice <= 2) {
