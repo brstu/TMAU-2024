@@ -6,11 +6,11 @@ using namespace std;
 
 void get_liner_model();
 void get_nonlinear_model();
-bool choice_input(const int &choice);
+bool choice_input(int &choice);
 
 int main() {
     void (*point[])() = { []() { exit(0); }, get_liner_model, get_nonlinear_model};
-    int choice;
+    int choice = 0;
     while (true) {
         cout << "\n\tInput choice (0 - exit, 1 - linear model, 2 - nonlinear model)\n";
         if (!choice_input(choice)) {
@@ -65,7 +65,7 @@ void get_nonlinear_model() {
     model.print();
 }
 
-bool choice_input(const int &choice) {
+bool choice_input(int &choice) {
     while (true) {
         if (input_value(choice, "choice")) {
             if (choice >= 0 && choice <= 2) {
