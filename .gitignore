@@ -1,9 +1,6 @@
 # Prerequisites
 *.d
 
-build
-.vscode
-
 # Compiled Object files
 *.slo
 *.lo
@@ -36,6 +33,7 @@ build
 
 # Directories to ignore
 .vs/
+.vscode
 out/
 build/
 
