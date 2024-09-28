@@ -38,13 +38,22 @@
 
 Let's get some object to be controlled. We want to control its temperature, which can be described by this differential equation:
 
-![alt text](image.png)
+
+$$
+\Large\frac{dy(\tau)}{d\tau}=\frac{u(\tau)}{C}+\frac{Y_0-y(\tau)}{RC}(1)
+ $$ 
 
 where τ – time; y ( τ ) – input temperature; u ( τ ) – input warm; Y 0 – room temperature; C , R C – some constants.
 
 After transformation we get these linear (2) and nonlinear (3) models:
 
-![alt text](image-1.png)
+$$
+\Large y_{\tau+1}=ay_{\tau}+bu_{\tau}(2)
+$$ 
+
+$$
+\Large y_{\tau+1}=ay_{\tau}-by_{\tau-1}^2+cu_{\tau}+d\sin(u_{\tau-1})(3)
+$$
 
 where τ – time discrete moments ( 1 , 2 , 3 … n ); a , b , c , d – some constants.
 
