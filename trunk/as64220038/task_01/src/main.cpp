@@ -18,10 +18,8 @@ int main()
 
     for (int t = 1; t <= n; ++t)
     {
-        // Linear
         double y_next_linear = a * y + b * u;
 
-        // Nonlinear
         double y_next_nonlinear = a * y - b * pow(y, 2) + c * u + d * sin(prev_u);
 
         cout << "Step " << t << ": Linear y = " << y_next_linear
