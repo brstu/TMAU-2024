@@ -5,4 +5,7 @@
 build/
 
 # Игнорировать папку out
-out/ 
+out/
+
+# Игнорировать json файл
+CMakePresets.json 
