@@ -4,77 +4,77 @@
 
 using namespace std;
 
-// Функция для моделирования линейной динамики
-vector<double> linearDynamics(double alpha, double beta, double initialTemp, const vector<double>& heatInput, int timeSteps) {
-    vector<double> temp(timeSteps);
-    temp[0] = initialTemp; // Начальная температура
+// Function to model linear dynamics
+vector<double> modelLinearDynamics(double alpha, double beta, double initialValue, const vector<double>& inputSignal, int steps) {
+    vector<double> output(steps);
+    output[0] = initialValue; // Initial temperature
 
-    // Цикл по каждому временному шагу для расчета температуры
-    for (int t = 1; t < timeSteps; ++t) {
-        temp[t] = alpha * temp[t - 1] + beta * heatInput[t - 1]; // Обновление температуры в линейной модели
+    // Loop through each step to calculate the temperature
+    for (int t = 1; t < steps; ++t) {
+        output[t] = alpha * output[t - 1] + beta * inputSignal[t - 1]; // Update based on the linear model
     }
 
-    return temp; // Возвращаем вектор температур
+    return output; // Return the vector of temperatures
 }
 
-// Функция для моделирования нелинейной динамики
-vector<double> nonlinearDynamics(double alpha, double beta, double gamma, double delta, double initialTemp, const vector<double>& heatInput, int timeSteps) {
-    vector<double> temp(timeSteps);
-    temp[0] = initialTemp; // Начальная температура
+// Function to model nonlinear dynamics
+vector<double> modelNonLinearDynamics(double alpha, double beta, double gamma, double delta, double initialValue, const vector<double>& inputSignal, int steps) {
+    vector<double> output(steps);
+    output[0] = initialValue; // Initial temperature
 
-    // Цикл по каждому временному шагу для расчета температуры
-    for (int t = 1; t < timeSteps; ++t) {
-        double prev_temp = temp[t - 1];
-        double prev_heat = heatInput[t - 1];
-        temp[t] = alpha * prev_temp - beta * pow(prev_temp, 2) + gamma * prev_heat + delta * sin(prev_heat); // Обновление для нелинейной модели
+    // Loop through each step to calculate the temperature
+    for (int t = 1; t < steps; ++t) {
+        double prevOutput = output[t - 1];
+        double prevInput = inputSignal[t - 1];
+        output[t] = alpha * prevOutput - beta * pow(prevOutput, 2) + gamma * prevInput + delta * sin(prevInput); // Nonlinear update
     }
 
-    return temp; // Возвращаем вектор температур
+    return output; // Return the vector of temperatures
 }
 
 int main() {
-    // Ввод констант от пользователя
-    double alpha, beta, gamma, delta, initialTemp;
-    cout << "Введите коэффициент alpha: ";
+    // Input constants from user
+    double alpha, beta, gamma, delta, initialValue;
+    cout << "Enter the constant alpha for the model: ";
     cin >> alpha;
-    cout << "Введите коэффициент beta для линейной модели: ";
+    cout << "Enter the constant beta for the linear model: ";
     cin >> beta;
-    cout << "Введите коэффициент gamma для нелинейной модели: ";
+    cout << "Enter the constant gamma for the nonlinear model: ";
     cin >> gamma;
-    cout << "Введите коэффициент delta для нелинейной модели: ";
+    cout << "Enter the constant delta for the nonlinear model: ";
     cin >> delta;
-    cout << "Введите начальную температуру (initialTemp): ";
-    cin >> initialTemp;
+    cout << "Enter the initial value (initial temperature): ";
+    cin >> initialValue;
 
-    // Ввод количества временных шагов
-    int timeSteps;
-    cout << "Введите количество временных шагов: ";
-    cin >> timeSteps;
+    // Input the number of time steps
+    int steps;
+    cout << "Enter the number of time steps: ";
+    cin >> steps;
 
-    // Ввод значений теплового воздействия
-    vector<double> heatInput(timeSteps);
-    cout << "Введите значения теплового воздействия для каждого временного момента:" << endl;
-    for (int i = 0; i < timeSteps; ++i) {
-        cout << "heatInput[" << i + 1 << "]: ";
-        cin >> heatInput[i]; // Чтение входного значения тепла
+    // Input the heat values
+    vector<double> inputSignal(steps);
+    cout << "Enter the input signal (heat) values for each time step:" << endl;
+    for (int i = 0; i < steps; ++i) {
+        cout << "inputSignal[" << i + 1 << "]: ";
+        cin >> inputSignal[i]; // Read input for each heat value
     }
 
-    // Моделирование линейной динамики
-    vector<double> linearTemp = linearDynamics(alpha, beta, initialTemp, heatInput, timeSteps);
+    // Simulate the linear dynamics
+    vector<double> linearOutput = modelLinearDynamics(alpha, beta, initialValue, inputSignal, steps);
 
-    // Моделирование нелинейной динамики
-    vector<double> nonlinearTemp = nonlinearDynamics(alpha, beta, gamma, delta, initialTemp, heatInput, timeSteps);
+    // Simulate the nonlinear dynamics
+    vector<double> nonlinearOutput = modelNonLinearDynamics(alpha, beta, gamma, delta, initialValue, inputSignal, steps);
 
-    // Вывод результатов
-    cout << "\nМоделирование линейной динамики:" << endl;
-    for (int t = 0; t < timeSteps; ++t) {
-        cout << "Время " << t + 1 << ": Температура = " << linearTemp[t] << endl;
+    // Output results
+    cout << "\nLinear Model Simulation:" << endl;
+    for (int t = 0; t < steps; ++t) {
+        cout << "Time " << t + 1 << ": Temperature = " << linearOutput[t] << endl;
     }
 
-    cout << "\nМоделирование нелинейной динамики:" << endl;
-    for (int t = 0; t < timeSteps; ++t) {
-        cout << "Время " << t + 1 << ": Температура = " << nonlinearTemp[t] << endl;
+    cout << "\nNon-linear Model Simulation:" << endl;
+    for (int t = 0; t < steps; ++t) {
+        cout << "Time " << t + 1 << ": Temperature = " << nonlinearOutput[t] << endl;
     }
 
-    return 0; // Завершение программы
+    return 0; // Indicate successful completion
 }
