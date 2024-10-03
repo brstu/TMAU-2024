@@ -11,7 +11,7 @@
 <p align="right">Выполнил:</p>
 <p align="right">Студент 3 курса</p>
 <p align="right">Группы АС-63</p>
-<p align="right">Ващук А. В.</p>
+<p align="right">Ярмолович А. С.</p>
 <p align="right">Проверила:</p>
 <p align="right">Ситковец Я. С.</p>
 <br><br><br><br><br>
