@@ -33,7 +33,9 @@
 
 # Directories to ignore
 .vs/
+.vscode
 out/
+build/
 
 ### macOS ###
 # General
