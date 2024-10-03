@@ -1,21 +1,21 @@
 
-p align=center Министерство образования Республики Беларусьp
-p align=centerУчреждение образованияp
-p align=center“Брестский Государственный технический университет”p
-p align=centerКафедра ИИТp
-brbrbrbrbrbrbr
-p align=centerЛабораторная работа №1p
-p align=centerПо дисциплине “Теория и методы автоматического управления”p
-p align=centerТема “Моделирования температуры объекта”p
-brbrbrbrbr
-p align=rightВыполнилp
-p align=rightСтудент 3 курсаp
-p align=rightГруппы АС-63p
-p align=rightЯрмолович А.С.p
-p align=rightПроверилаp
-p align=rightСитковец Я. С.p
-brbrbrbrbr
-p align=centerБрест 2024p
+<p align="center"> Министерство образования Республики Беларусь</p>
+<p align="center">Учреждение образования</p>
+<p align="center">“Брестский Государственный технический университет”</p>
+<p align="center">Кафедра ИИТ</p>
+<br><br><br><br><br><br><br>
+<p align="center">Лабораторная работа №1</p>
+<p align="center">По дисциплине “Теория и методы автоматического управления”</p>
+<p align="center">Тема: “Моделирования температуры объекта”</p>
+<br><br><br><br><br>
+<p align="right">Выполнил:</p>
+<p align="right">Студент 3 курса</p>
+<p align="right">Группы АС-63</p>
+<p align="right">Ярмолович А. С.</p>
+<p align="right">Проверила:</p>
+<p align="right">Ситковец Я. С.</p>
+<br><br><br><br><br>
+<p align="center">Брест 2024</p>
 
 ---
 
