@@ -21,19 +21,11 @@
 
 **Задание**:
 
-Let's get some object to be controlled. We want to control its temperature, which can be described by this differential equation:
+The rate of change of temperature with respect to time depends on the input heat, the room temperature, and certain constants that characterize the system's behavior. After some transformations, we obtain both linear and nonlinear models:
 
-$$\Large\frac{dy(\tau)}{d\tau}=\frac{u(\tau)}{C}+\frac{Y_0-y(\tau)}{RC} $$ (1)
-
-where $\tau$ – time; $y(\tau)$ – input temperature; $u(\tau)$ – input warm; $Y_0$ – room temperature; $C,RC$ – some constants.
-
-After transformation we get these linear (2) and nonlinear (3) models:
-
-$$\Large y_{\tau+1}=ay_{\tau}+bu_{\tau}$$ (2)
-
-$$\Large y_{\tau+1}=ay_{\tau}-by_{\tau-1}^2+cu_{\tau}+d\sin(u_{\tau-1})$$ (3)
-
-where $\tau$ – time discrete moments ($1,2,3{\dots}n$); $a,b,c,d$ – some constants.
+The linear model expresses the next temperature value as a function of the current temperature and input heat, along with system constants.
+The nonlinear model adds complexity by including terms that account for more intricate dependencies on the previous temperature and input heat, incorporating non-linearities like squared terms and trigonometric functions.
+The goal is to use these models to control the temperature over discrete time intervals.
 
 Пример вывода программы:
 
