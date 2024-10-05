@@ -10,7 +10,7 @@
 <p align="right">Выполнил:</p>
 <p align="right">Студент 3 курса</p>
 <p align="right">Группы АС-63</p>
-<p align="right">Ярмола А. О.</p>
+<p align="right">Крагель А. М.</p>
 <p align="right">Проверила:</p>
 <p align="right">Ситковец Я. С.</p>
 <br><br><br><br><br>
@@ -39,25 +39,30 @@ Task is to write program (**С++**), which simulates this object temperature.
 Пример вывода программы:
 
 ``` bash
-Enter the value for constant a: 1
-Enter the value for constant b: 2
-Enter the value for constant c: 3
-Enter the value for constant d: 4
-Enter the initial value for current temperature, y: 10
-Enter the initial control value, u: 5
-Enter the number of iterations, steps: 5
+Enter the constant alpha for the model: 0.08
+Enter the constant beta for the linear model: 0.06
+Enter the constant gamma for the nonlinear model: 0.02
+Enter the constant delta for the nonlinear model: 0.01
+Enter the initial temperature (initialTemp): 20
+Enter the number of discrete time moments: 5
+Enter the heat values (heatInput) for each time moment:
+heatInput[1]: 10
+heatInput[2]: 15
+heatInput[3]: 20
+heatInput[4]: 25
+heatInput[5]: 30
 
-Linear model simulation:
-Step 1: y = 20
-Step 2: y = 30
-Step 3: y = 40
-Step 4: y = 50
-Step 5: y = 60
+Linear Model Simulation:
+Time 1: Temperature = 20
+Time 2: Temperature = 2.2
+Time 3: Temperature = 1.076
+Time 4: Temperature = 1.28608
+Time 5: Temperature = 1.60289
 
-Nonlinear model simulation:
-Step 1: y = 25
-Step 2: y = -163.836
-Step 3: y = -1402.67
-Step 4: y = -55075.8
-Step 5: y = -3.99004e+06
+Non-linear Model Simulation:
+Time 1: Temperature = 20
+Time 2: Temperature = -22.2054
+Time 3: Temperature = -31.0548
+Time 4: Temperature = -59.9394
+Time 5: Temperature = -219.86
 ```
