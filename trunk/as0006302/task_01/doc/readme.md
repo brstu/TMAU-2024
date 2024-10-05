@@ -1,7 +1,7 @@
 
 <p align="center"> Министерство образования Республики Беларусь</p>
 <p align="center">Учреждение образования</p>
-<p align="center">“Брестский Государственный технический университет”</p>
+<p align="center">“Брестский Государственный Технический университет”</p>
 <p align="center">Кафедра ИИТ</p>
 <br><br><br><br><br><br><br>
 <p align="center">Лабораторная работа №1</p>
@@ -34,8 +34,6 @@ $$\Large y_{\tau+1}=ay_{\tau}+bu_{\tau}$$ (2)
 $$\Large y_{\tau+1}=ay_{\tau}-by_{\tau-1}^2+cu_{\tau}+d\sin(u_{\tau-1})$$ (3)
 
 where $\tau$ – time discrete moments ($1,2,3{\dots}n$); $a,b,c,d$ – some constants.
-
-Task is to write program (**С++**), which simulates this object temperature.
 
 Пример вывода программы:
 
