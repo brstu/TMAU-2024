@@ -7,8 +7,8 @@
 <p align="center"><strong>По дисциплине</strong> “Теория и методы автоматического управления”</p>
 <p align="center"><strong>Тема:</strong> “ПИД-регуляторы”</p>
 <br><br><br><br><br><br>
-<p align="right"><strong>Выполнила</strong>:</p>
-<p align="right">Студентка 3 курса</p>
+<p align="right"><strong>Выполнил</strong>:</p>
+<p align="right">Студент 3 курса</p>
 <p align="right">Группы АС-63</p>
 <p align="right">Ярмола А.О.</p>
 <p align="right"><strong>Проверил:</strong></p>
