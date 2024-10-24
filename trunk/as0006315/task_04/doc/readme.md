@@ -33,20 +33,20 @@ git clone --recurse-submodules https://github.com/savushkin-r-d/ptusa_main
 >В связи с большим размером проекта, перед клонированием репозитория необходимо увеличить буфер для Git командой -> `git config --global http.postBuffer 524288000`
 
 2. Загрузить последнию версию `PLCnext Technology C++ Toolchain` (версии 2023.0 LTS) с веб-сайта [Phoenix Contact](https://www.phoenixcontact.com) -> [phoenixcontact.com](https://www.phoenixcontact.com/ru-lt/produkty/kontroller-axc-f-2152-2404267#downloads-link-target).
-<br><br>
+
 ![](../img/PLCnext.png)
 <br>
-| _Для ОС Windows_
+| _PLCnext для ОС Windows_
 
-3. Теперь необходимо в `Visual Studio Installer` установить рабочую нагрузку **.NET desktop development**. После чего можно устанавливать `PLCnext Technology C++ Toolchain`.
+4. Теперь необходимо в `Visual Studio Installer` установить рабочую нагрузку **.NET desktop development**. После чего можно устанавливать `PLCnext Technology C++ Toolchain`.
 
-4. Загрузить `SDK` -> [phoenixcontact.com](https://www.phoenixcontact.com/ru-lt/produkty/kontroller-axc-f-2152-2404267?type=softw).
-<br><br>
-![](../img/SDK.png)
+5. Загрузить `SDK` -> [phoenixcontact.com](https://www.phoenixcontact.com/ru-lt/produkty/kontroller-axc-f-2152-2404267?type=softw).
+
+![](../img/sdk.png)
 <br>
-| _Для ОС Windows_
+| _SDK для ОС Windows_
 
-5. Далее необходимо установить `SDK`. Для этого применяется команда:
+7. Далее необходимо установить `SDK`. Для этого применяется команда:
 ```sh
 plcncli.exe install sdk –d [путь установки] –p [путь к архивному файлу]
 ```
