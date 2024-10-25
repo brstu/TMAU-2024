@@ -30,6 +30,7 @@ vector<double> simulate_temperature(const ModelParams& params, double initial_te
         }
     }
 
+
     return temps;
 }
 
