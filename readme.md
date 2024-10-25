@@ -43,8 +43,8 @@
 |21|Стельмашук Иван|[as0006321](./trunk/as0006321/)|:white_check_mark:|:white_check_mark:||||||||||
 |22|Тунчик Антон|||||||||||
 |23|Филипчук Дмитрий|||||||||||
-|24|Ярмола Александр|[as0006325](./trunk/as0006325/)|:white_check_mark:|:white_check_mark:|:white_check_mark|||||||
-|25|Ярмолович Александр|||||||||||
+|24|Ярмола Александр|[as0006325](./trunk/as0006325/)|:white_check_mark:|:white_check_mark:|:white_check_mark:|:white_check_mark:|:white_check_mark:|||||
+|25|Ярмолович Александр|[as0006326](./trunk/as0006326/)|:white_check_mark:|:white_check_mark:||||||||
 
 ## Группа АС-64
 
