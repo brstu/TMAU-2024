@@ -33,11 +33,11 @@
 |11|Крагель Алина|[as0006311](./trunk/as0006311/)|:white_check_mark:|:white_check_mark:|:white_check_mark:|||||||
 |12|Куликович Иван|||||||||||
 |13|Кульбеда Кирилл|||||||||||
-|14|Кухарчук Илья|[as0006314](trunk/as0006314)||||||||||
-|15|Логинов Глеб|[as0006315](./trunk/as0006315/)|:white_check_mark:|:white_check_mark:|:white_check_mark:|||||||
+|14|Кухарчук Илья|[as0006314](trunk/as0006314)|:white_check_mark:|:white_check_mark:||||||||
+|15|Логинов Глеб|[as0006315](./trunk/as0006315/)|:white_check_mark:|:white_check_mark:|:white_check_mark:|:white_check_mark:|:white_check_mark:|:white_check_mark:|:white_check_mark:|||
 |16|Мороз Евгений|||||||||||
 |17|Никифоров Александр|||||||||||
-|18|Поплавский Владислав|||||||||||
+|18|Поплавский Владислав|[as000220021](./trunk/as000220021/)|:white_check_mark:|:white_check_mark:||||||||
 |19|Савко Павел|||||||||||
 |20|Соколова Маргарита|||||||||||
 |21|Стельмашук Иван|[as0006321](./trunk/as0006321/)|:white_check_mark:|:white_check_mark:||||||||||
@@ -55,7 +55,7 @@
 |3|Будник Анна Андреевна|||||||||||
 |4|Булавский Андрей Сергеевич|||||||||||
 |5|Бурак Илья Эдуардович|||||||||||
-|6|Горкавчук Никита Михайлович|[as64220038](./trunk/as64220038/)|:white_check_mark:|:white_check_mark:||||||||
+|6|Горкавчук Никита Михайлович|[as64220038](./trunk/as64220038/)|:white_check_mark:|:white_check_mark:|:white_check_mark:|||||||
 |7|Евкович Андрей Викторович|[as0006407](./trunk/as0006407/)|:white_check_mark:|:white_check_mark:|:white_check_mark:|||||||
 |8|Ежгунович Глеб Михайлович|||||||||||
 |9|Иванюк Иван Александрович|[as0006409](./trunk/as0006409/)|:white_check_mark:|:white_check_mark:|||||||||
