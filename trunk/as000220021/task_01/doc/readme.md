@@ -14,11 +14,12 @@
 <p align="right">Проверила:</p>
 <p align="right">Ситковец Я. С.</p>
 <br><br><br><br><br>
-<p align="center">Брест 2024</p>
+<p align="center">Брест-2024</p>
 
 ---
 
 **Задание**:
+Задание на английском языке:
 
 Let's get some object to be controlled. We want to control its temperature, which can be described by this differential equation:
 
