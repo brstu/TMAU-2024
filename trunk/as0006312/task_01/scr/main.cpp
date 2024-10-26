@@ -4,63 +4,63 @@
 
 using namespace std;
 
-struct SimulationResults {
-    vector<double> linearModel;
-    vector<double> nonlinearModel;
+struct SimulationData {
+    vector<double> model1;
+    vector<double> model2;
 };
 
-SimulationResults runSimulation(double param1, double param2, double param3, double param4, double initialTemp, const vector<double>& heatValues, int numSteps) {
-    vector<double> linearResult(numSteps);
-    linearResult[0] = initialTemp; // Initial temperature
+SimulationData executeSimulation(double a, double b, double c, double d, double initialTemp, const vector<double>& heatValues, int steps) {
+    vector<double> result1(steps);
+    result1[0] = initialTemp; // Initial temperature
 
-    vector<double> nonlinearResult(numSteps);
-    nonlinearResult[0] = initialTemp; // Initial temperature
+    vector<double> result2(steps);
+    result2[0] = initialTemp; // Initial temperature
 
-    for (int t = 1; t < numSteps; ++t) {
-        linearResult[t] = param1 * linearResult[t - 1] + param2 * heatValues[t - 1]; // Update temperature based on the linear model
+    for (int t = 1; t < steps; ++t) {
+        result1[t] = a * result1[t - 1] + b * heatValues[t - 1]; // Update based on model 1
 
-        double prev_y = nonlinearResult[t - 1];
+        double prev_y = result2[t - 1];
         double prev_u = heatValues[t - 1];
-        nonlinearResult[t] = param1 * prev_y - param2 * pow(prev_y, 2) + param3 * prev_u + param4 * sin(prev_u); // Nonlinear model update
+        result2[t] = a * prev_y - b * pow(prev_y, 2) + c * prev_u + d * sin(prev_u); // Update based on model 2
     }
 
-    return { linearResult, nonlinearResult };
+    return { result1, result2 };
 }
 
 int main() {
-    double a, b, c, d, y0;
-    cout << "Enter the constant a for the model: ";
-    cin >> a;
-    cout << "Enter the constant b for the linear model: ";
-    cin >> b;
-    cout << "Enter the constant c for the nonlinear model: ";
-    cin >> c;
-    cout << "Enter the constant d for the nonlinear model: ";
-    cin >> d;
-    cout << "Enter the initial temperature (y0): ";
-    cin >> y0;
+    double param_a, param_b, param_c, param_d, temp0;
+    cout << "Please input constant a for the model: ";
+    cin >> param_a;
+    cout << "Please input constant b for the linear model: ";
+    cin >> param_b;
+    cout << "Please input constant c for the nonlinear model: ";
+    cin >> param_c;
+    cout << "Please input constant d for the nonlinear model: ";
+    cin >> param_d;
+    cout << "Please input the initial temperature (y0): ";
+    cin >> temp0;
 
-    int n;
-    cout << "Enter the number of discrete time moments: ";
-    cin >> n;
+    int numSteps;
+    cout << "Please enter the number of discrete time steps: ";
+    cin >> numSteps;
 
-    vector<double> u(n);
-    cout << "Enter the heat values (u) for each time moment:" << endl;
-    for (int i = 0; i < n; ++i) {
+    vector<double> heatValues(numSteps);
+    cout << "Enter the heat values (u) for each time step:" << endl;
+    for (int i = 0; i < numSteps; ++i) {
         cout << "u[" << i + 1 << "]: ";
-        cin >> u[i];
+        cin >> heatValues[i];
     }
 
-    SimulationResults results = runSimulation(a, b, c, d, y0, u, n);
+    SimulationData simulationResults = executeSimulation(param_a, param_b, param_c, param_d, temp0, heatValues, numSteps);
 
     cout << "\nLinear Model Simulation:" << endl;
-    for (int t = 0; t < n; ++t) {
-        cout << "Time " << t + 1 << ": Temperature = " << results.linearModel[t] << endl;
+    for (int t = 0; t < numSteps; ++t) {
+        cout << "Time " << t + 1 << ": Temperature = " << simulationResults.model1[t] << endl;
     }
 
-    cout << "\nNon-linear Model Simulation:" << endl;
-    for (int t = 0; t < n; ++t) {
-        cout << "Time " << t + 1 << ": Temperature = " << results.nonlinearModel[t] << endl;
+    cout << "\nNonlinear Model Simulation:" << endl;
+    for (int t = 0; t < numSteps; ++t) {
+        cout << "Time " << t + 1 << ": Temperature = " << simulationResults.model2[t] << endl;
     }
 
     return 0;
