@@ -36,7 +36,7 @@ where $\tau$ – time discrete moments ($1,2,3{\dots}n$); $a,b,c,d$ – some con
 
 Task is to write program (**С++**), which simulates this object temperature.
 
-Пример вывода программы:
+Вывод программы(для выполнения программы необходимо ввести исходные данные):
 
 ``` bash
 Input a,b,c,d, current y, current u, n
