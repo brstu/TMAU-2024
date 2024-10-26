@@ -10,7 +10,7 @@
 <p align="right">Выполнил:</p>
 <p align="right">Студент 3 курса</p>
 <p align="right">Группы АС-63</p>
-<p align="right">Ярмола А. О.</p>
+<p align="right">Поплавский В. В.</p>
 <p align="right">Проверила:</p>
 <p align="right">Ситковец Я. С.</p>
 <br><br><br><br><br>
@@ -39,25 +39,22 @@ Task is to write program (**С++**), which simulates this object temperature.
 Пример вывода программы:
 
 ``` bash
-Enter the value for constant a: 1
-Enter the value for constant b: 2
-Enter the value for constant c: 3
-Enter the value for constant d: 4
-Enter the initial value for current temperature, y: 10
-Enter the initial control value, u: 5
-Enter the number of iterations, steps: 5
-
-Linear model simulation:
-Step 1: y = 20
-Step 2: y = 30
-Step 3: y = 40
-Step 4: y = 50
-Step 5: y = 60
-
-Nonlinear model simulation:
-Step 1: y = 25
-Step 2: y = -163.836
-Step 3: y = -1402.67
-Step 4: y = -55075.8
-Step 5: y = -3.99004e+06
+Input a,b,c,d, current y, current u, n
+1
+2
+3
+4
+5
+6
+4
+linear
+23
+41
+59
+77
+nonlinear
+231
+693
+2079
+6237
 ```
