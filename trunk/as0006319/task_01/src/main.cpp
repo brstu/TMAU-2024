@@ -3,7 +3,7 @@
 using namespace std;
 
 //линейная модель
-void linear(double a, double b, double uT, double yT, int t) {
+void lineynaya(double a, double b, double uT, double yT, int t) {
     cout << "\tЛинейна модель" << endl;
     for (int i = 1; i <= t; i++) {
         double yT1 = a * yT + b * uT;
@@ -13,7 +13,7 @@ void linear(double a, double b, double uT, double yT, int t) {
 }
 
 //НЕлинейная модель
-void nonLinear(double a, double b, double c, double d, double uT, double yT, int t) {
+void neLineynaya(double a, double b, double c, double d, double uT, double yT, int t) {
     double uT_1 = 0;
     double yT_1 = 0;
 
@@ -45,8 +45,8 @@ int main() {
     cout << "Введите температуру: "; cin >> yT;
     cout << "Введите количество тактов работы модели: "; cin >> t;
 
-    linear(a, b, uT, yT, t);
-    nonLinear(a, b, c, d, uT, yT, t);
+    lineynaya(a, b, uT, yT, t);
+    neLineynaya(a, b, c, d, uT, yT, t);
 
     return 0;
 }
