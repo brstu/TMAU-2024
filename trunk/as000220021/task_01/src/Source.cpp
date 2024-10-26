@@ -14,13 +14,13 @@ int main() {
 	cout << "linear\n";
 	for (int i = 0; i < n; i++) {
 		yNext = temperature1(a, b, c, d, yCurr, uCurr);
-		cout << yNext << '\n';
+		cout <<"takt-"<<i+1<<" "<< yNext << '\n';
 		yCurr = yNext;
 	}
 	cout << "nonlinear\n";
 	for (int i = 0; i < n; i++) {
 		yNext = temperature2(a, b, yCurr, uCurr);
-		cout << yNext<<'\n';
+		cout << "takt-" << i + 1 << " " << yNext<<'\n';
 		yCurr = yNext;
 	}
 }

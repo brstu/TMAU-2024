@@ -49,14 +49,14 @@ Input a,b,c,d, current y, current u, n
 6
 4
 linear
-23
-41
-59
-77
+takt-1 23
+takt-2 41
+takt-3 59
+takt-4 77
 nonlinear
-231
-693
-2079
-6237
+takt-1 231
+takt-2 693
+takt-3 2079
+takt-4 6237
 ```
 .........
