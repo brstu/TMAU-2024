@@ -2,7 +2,7 @@
 #include <cmath>
 using namespace std;
 
-//линейная модель
+//лин модель
 void linear(double a, double b, double uT, double yT, int t) {
     cout << "\tЛинейна модель" << endl;
     for (int i = 1; i <= t; i++) {
@@ -12,7 +12,7 @@ void linear(double a, double b, double uT, double yT, int t) {
     }
 }
 
-//НЕлинейная модель
+//нелин модель
 void nonLinear(double a, double b, double c, double d, double uT, double yT, int t) {
     double uT_1 = 0;
     double yT_1 = 0;
@@ -32,18 +32,18 @@ int main() {
     system("chcp 1251");
     system("cls");
 
-    double a, b, c, d; //константы
+    double a, b, c, d; //константы по условию
     double uT; //теплота
-    double yT; //температура
+    double yT; //температура комнаты
     int t; // такты
 
-    cout << "Введите константу a: "; cin >> a;
-    cout << "Введите константу b: "; cin >> b;
-    cout << "Введите константу c: "; cin >> c;
-    cout << "Введите константу d: "; cin >> d;
+    cout << "Введите a: "; cin >> a;
+    cout << "Введите b: "; cin >> b;
+    cout << "Введите c: "; cin >> c;
+    cout << "Введите d: "; cin >> d;
     cout << "Введите подаваемое тепло: "; cin >> uT;
     cout << "Введите температуру: "; cin >> yT;
-    cout << "Введите количество тактов работы модели: "; cin >> t;
+    cout << "Введите количество тактов модели: "; cin >> t;
 
     linear(a, b, uT, yT, t);
     nonLinear(a, b, c, d, uT, yT, t);
