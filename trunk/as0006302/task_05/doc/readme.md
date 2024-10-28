@@ -51,7 +51,7 @@ Start **EasyServer** and **Monitor**, and then you can launch the project using 
 
 In **Monitor**, you will see all the devices in the test bench project T1_PLCNext_Demo, with the ability to control them.
 
-![](../imgage/monitor_done.png)
+![](../image/monitor_done.png)
 <br>
 | _Monitor_
 
