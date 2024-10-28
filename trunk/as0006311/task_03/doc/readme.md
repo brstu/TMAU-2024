@@ -39,21 +39,19 @@ cmake --build --preset=build-windows-AXCF2152-2021.0.3.35554 --target all
 cmake --build --preset=build-windows-AXCF2152-2021.0.3.35554 --target install
 ```
 
-<p>Дальше делаем подключение к контроллеру и настроим сеть.</p>
+<p>Дальше делаем подключение к контроллеру, настраиваем сеть и проверяем подключение.</p>
 
-![](images/connect.png)  
+![](images/подключение.png)  
 
-<p>Смотрим подключение к контроллеру.</p>
+![](images/Сеть.png)  
 
-![](images/network_configuration.png)  
+<p>Вскрываем программу <em>PuTTY Configuration</em> и подключаемся к контроллеру.</p>
 
-<p>Производим вскрытие программы <em>PuTTY Configuration</em> и оформим подключение к контроллеру.</p>
-
-![](images/PuTTY_connect.png) 
+![](images/пароль_для_входа.png) 
 
 <p>Вводим данные, такие как: логин, пароль. Это нужно чтобы подключиться к контроллеру.</p>
 
-![](images/PuTTY_login_password.png) 
+![](images/пароль_для_входа_в_систему.png) 
 
 <p>Вскрываем программу <em>WinCP</em> и подключаемся к контроллеру.</p>
 
@@ -61,10 +59,10 @@ cmake --build --preset=build-windows-AXCF2152-2021.0.3.35554 --target install
 
 <p>Сохраняем реализованный проект в корень контролера и изменяем разрешения, для входа.</p>
 
-![](images/hello_PLCnext_settings.png) 
+![](images/hello_PLCnext_настройки.png) 
 
 <p>Запускаем проект и видим сдежующий вывод.</p>
 
-![](images/result.png) 
+![](images/результат.png) 
 
 <p> <strong> Вывод:</strong> В данной лабораторной работе был реализован тестовый проект "Hello PLCnext from AS0xxyy!" и  была изученна полезная информация для работы с контроллером <em>AXC F 2152</em></p>
