@@ -35,48 +35,39 @@
 1) cmake --build --preset=build-windows-AXCF2152-2021.9.0.40 --target install .\
 
 У нас получается файл «hello_PLCnext».
-
-![](Aspose.Words.0e358cb3-9e4d-44f5-bffa-8cdb61d98377.001.png)
-
 После выполнения данного пункта, мы идем в лабораторию и подключаемся к контроллеру через  Интернет соединение.
 
-
+<p align="center"><img style='border:2px solid #000000'src="images/Снимок экрана 1.png"/>
 
 Для подключения к контроллеру сначала нужно настроить сеть:
 
-![](Aspose.Words.0e358cb3-9e4d-44f5-bffa-8cdb61d98377.002.png)
+<p align="center"><img style='border:2px solid #000000'src="images/Снимок экрана 2.png"/>
 
 Затем проверяем подключение к контроллеру:
 
-![](Aspose.Words.0e358cb3-9e4d-44f5-bffa-8cdb61d98377.003.png)
-
-
-
-
+<p align="center"><img style='border:2px solid #000000'src="images/Снимок экрана 3.png"/>
 
 
 Открываем программу PuTTY Configuration для подключения к контроллеру:
 
-![](Aspose.Words.0e358cb3-9e4d-44f5-bffa-8cdb61d98377.004.png)
+<p align="center"><img style='border:2px solid #000000'src="images/Снимок экрана 4.png"/>
 
 Вводим логин и пароль (указанный на самом контроллере) для подключения к контроллеру:
 
-![](Aspose.Words.0e358cb3-9e4d-44f5-bffa-8cdb61d98377.005.png)
-
-
+<p align="center"><img style='border:2px solid #000000'src="images/Снимок экрана 5.png"/>
 
 Открываем программу WinCP и подключаемся к контроллеру:
 
-![](Aspose.Words.0e358cb3-9e4d-44f5-bffa-8cdb61d98377.006.png)
+<p align="center"><img style='border:2px solid #000000'src="images/Снимок экрана 6.png"/>
 
 Для запуска контроллера добавляем собранный проект в его корень и меняем разрешение:
 
-![](Aspose.Words.0e358cb3-9e4d-44f5-bffa-8cdb61d98377.007.png)
+<p align="center"><img style='border:2px solid #000000'src="images/Снимок экрана 7.png"/>
 
 Запускаем проект и получаем вывод:
 
-![](Aspose.Words.0e358cb3-9e4d-44f5-bffa-8cdb61d98377.008.png)
+<p align="center"><img style='border:2px solid #000000'src="images/Снимок экрана 8.png"/>
 
-![](Aspose.Words.0e358cb3-9e4d-44f5-bffa-8cdb61d98377.009.png)
+<p align="center"><img style='border:2px solid #000000'src="images/Снимок экрана 9.png"/>
 
 **Вывод:** В ходе выполнения данной лабораторной работы мы создали и собрали тестовый проект, показали его работоспособность на контроллере AXC F 2152.
