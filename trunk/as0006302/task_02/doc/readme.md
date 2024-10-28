@@ -91,5 +91,5 @@ Press any key to continue . . .
 ```
 
 <p align="center" style="font-size:25px;font-weight: bold">Графики</p>
-<p align="center"><img style='border:2px solid #000000'src="imgages/Linear_model.png"/>
-<p align="center"><img style='border:2px solid #000000'src="imgages/Nonlinear_model.png"/> 
+<p align="center"><img style='border:2px solid #000000'src="images/Linear_model.png"/>
+<p align="center"><img style='border:2px solid #000000'src="images/Nonlinear_model.png"/> 
