@@ -1,0 +1,70 @@
+<p align="center">Министерство образования Республики Беларусь</p>
+<p align="center">Учреждение образования</p>
+<p align="center">“Брестский Государственный технический университет”</p>
+<p align="center">Кафедра ИИТ</p>
+<br><br><br><br><br><br>
+<p align="center"><strong>Лабораторная работа №3</strong></p>
+<p align="center"><strong>По дисциплине</strong> “Теория и методы автоматического управления”</p>
+<p align="center"><strong>Тема:</strong> “Работа с контроллером AXC F 2152”</p>
+<br><br><br><br><br><br>
+<p align="right"><strong>Выполнила</strong>:</p>
+<p align="right">Студентка 3 курса</p>
+<p align="right">Группы АС-63</p>
+<p align="right">Крагель А.М.</p>
+<p align="right"><strong>Проверил:</strong></p>
+<p align="right">Ситковец Я. С.</p>
+<br><br><br><br><br>
+<p align="center"><strong>Брест 2024</strong></p>
+
+---
+<p> <strong>Цель:</strong> Реализовать тестовый проект "Hello PLCnext from AS0xxyy!", собрать его и показать работу на тестовом контроллере.</p> 
+
+<p> <strong>Ход работы:</strong> </p>
+<p>Первым делом делаем копию репозиторий.</p>
+<p>Собираем файл <em>hello_PLCnext</em> пользусь командами:</p>
+
+
+ ``` bash
+cmake --preset=build-windows-AXCF2152-2021.0.3.35554 .
+```
+
+
+ ``` bash
+cmake --build --preset=build-windows-AXCF2152-2021.0.3.35554 --target all
+```
+
+
+
+ ``` bash
+cmake --build --preset=build-windows-AXCF2152-2021.0.3.35554 --target install
+```
+
+<p>Дальше делаем подключение к контроллеру и настроим сеть.</p>
+
+![](images/connect.png)  
+
+<p>Смотрим подключение к контроллеру.</p>
+
+![](images/network_configuration.png)  
+
+<p>Производим вскрытие программы <em>PuTTY Configuration</em> и оформим подключение к контроллеру.</p>
+
+![](images/PuTTY_connect.png) 
+
+<p>Вводим данные, такие как: логин, пароль. Это нужно чтобы подключиться к контроллеру.</p>
+
+![](images/PuTTY_login_password.png) 
+
+<p>Вскрываем программу <em>WinCP</em> и подключаемся к контроллеру.</p>
+
+![](images/WinCP_connect.png) 
+
+<p>Сохраняем реализованный проект в корень контролера и изменяем разрешения, для входа.</p>
+
+![](images/hello_PLCnext_settings.png) 
+
+<p>Запускаем проект и видим сдежующий вывод.</p>
+
+![](images/result.png) 
+
+<p> <strong> Вывод:</strong> В данной лабораторной работе был реализован тестовый проект "Hello PLCnext from AS0xxyy!" и  была изученна полезная информация для работы с контроллером <em>AXC F 2152</em></p>
