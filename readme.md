@@ -33,7 +33,7 @@
 |11|Крагель Алина|[as0006311](./trunk/as0006311/)|:white_check_mark:|:white_check_mark:|:white_check_mark:|||||||
 |12|Куликович Иван|||||||||||
 |13|Кульбеда Кирилл|||||||||||
-|14|Кухарчук Илья|[as0006314](trunk/as0006314)|:white_check_mark:|:white_check_mark:||||||||
+|14|Кухарчук Илья|[as0006314](trunk/as0006314)|:white_check_mark:|:white_check_mark:|:white_check_mark:|||||||
 <<<<<<< HEAD
 |15|Логинов Глеб|[as0006315](./trunk/as0006315/)|:white_check_mark:|:white_check_mark:|:white_check_mark:|||||||
 =======
