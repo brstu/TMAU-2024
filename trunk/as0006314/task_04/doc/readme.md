@@ -37,18 +37,10 @@
 2. **Загрузка и установка PLCnext Technology C++ Toolchain**:
    - Загрузить последнюю версию `PLCnext Technology C++ Toolchain` (версии 2023.0 LTS) с веб-сайта [Phoenix Contact](https://www.phoenixcontact.com) -> [phoenixcontact.com](https://www.phoenixcontact.com/ru-lt/produkty/kontroller-axc-f-2152-2404267#downloads-link-target).
 
-   ![](../img/PLCnext.png)
-   <br>
-   | _PLCnext для ОС Windows_
-
    - Установить `PLCnext Technology C++ Toolchain` через `Visual Studio Installer`, предварительно установив рабочую нагрузку **.NET desktop development**.
 
 3. **Загрузка и установка SDK**:
    - Загрузить `SDK` -> [phoenixcontact.com](https://www.phoenixcontact.com/ru-lt/produkty/kontroller-axc-f-2152-2404267?type=softw).
-
-   ![](../img/sdk.png)
-   <br>
-   | _SDK для ОС Windows_
 
    - Установить `SDK` с помощью команды:
      ```sh
