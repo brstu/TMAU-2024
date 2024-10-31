@@ -1,14 +1,14 @@
-# Laboratory work ¹.1              
+# Laboratory work ï¿½.1              
 <p align="center">MINISTRY OF EDUCATION OF THE REPUBLIC OF BELARUS</p>
 <p align="center">EDUCATIONAL INSTITUTION</p>
-<p align="center">«BREST STATE TECHNICAL UNIVERSITY»</p>       
+<p align="center">ï¿½BREST STATE TECHNICAL UNIVERSITYï¿½</p>       
 <p align="center">Department of IIT</p>
 <br><br><br><br>
-<p align="center">Laboratory work ¹.1</p>
+<p align="center">Laboratory work ï¿½.1</p>
 <br><br><br>
 <p align="right">Completed by the 3rd year student of</p> 
 <p align="right">the Faculty of Electronic Information Systems</p>
-<p align="right">the group AC-63 Kukharchuk I.N.</p>
+<p align="right">the group AC-63 Kulikovich I.S.</p>
 <p align="right">Checked by Ivanuk D.S.</p>
 <br><br><br>
 <p align="center">Brest 2024</p>
@@ -32,20 +32,18 @@ RESULTS</p>
 
 ### How to build the project?
 
-1. The first you need to clone this repository to your computer.
+Initially, clone this repository to your local machine.
+Navigate to the directory "trunk\as0006312\task_01\src".
+Launch the command line interface and execute these 6 commands:
+console
 
-2. Go to the folder "trunk\as0006314\task_01\src".
-
-3. Run the command line and type 6 commands :
-
-```console 
-mkdir build
-cd build
-cmake ..
-cmake --build .
-cd trunk\as0006314\task_01\src\Debug\
-.\MainFile.exe
-```
+Copy
+mkdir construction
+cd construction
+configure ..
+make
+cd trunk\as0006312\task_01\src\Debug\
+.\ExecutableFile.exe
 
 
 
