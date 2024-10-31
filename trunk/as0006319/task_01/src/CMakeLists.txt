@@ -1,4 +1,4 @@
-cmake_minimum_required(VERSION 3.5.0)
-project(main VERSION 0.1.0 LANGUAGES C CXX)
+cmake_minimum_required(VERSION 3.10)
+project(Task01)
 
-add_executable(main main.cpp)
+add_executable(Task01_6321 main.cpp)
