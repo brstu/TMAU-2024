@@ -1,4 +1,4 @@
 cmake_minimum_required (VERSION 2.4.0)
-project (pidcontroller)
+project (task02)
 
-add_executable(pidcontroller main.cpp)
+add_executable(task02 task2.cpp)
