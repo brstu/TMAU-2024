@@ -44,7 +44,7 @@ Using the Visual Studio platform, build the ptusa_main project and demonstrate i
 
 ![](images/result.png)
 
-![](images/lab.jpg)
+![](images/lab1.jpg)
 
 
 ### <em> Conclusion about the work: </em>
