@@ -1,52 +1,51 @@
-﻿#include <iostream>
+#include <iostream>
 #include <cmath>
 using namespace std;
 
-//лин модель
-void lineynaya(double a, double b, double uT, double yT, int t) {
-    cout << "\tЛинейна модель" << endl;
-    for (int i = 1; i <= t; i++) {
-        double yT1 = a * yT + b * uT;
-        cout << "y" << i << " = " << yT1 << endl;
-        yT = yT1;
+// Линейная модель
+void linearModel(double coeffA, double coeffB, double heatInput, double currentTemp, int cycles) {
+    cout << "\tЛинейная модель" << endl;
+    for (int i = 1; i <= cycles; i++) {
+        double nextTemp = coeffA * currentTemp + coeffB * heatInput; // Вычисление следующей температуры
+        cout << "y" << i << " = " << nextTemp << endl; // Используем следующую температуру
+        currentTemp = nextTemp; // Обновление текущей температуры для следующей итерации
     }
 }
 
-//нелин модель
-void neLineynaya(double a, double b, double c, double d, double uT, double yT, int t) {
-    double uT_1 = 0;
-    double yT_1 = 0;
+// Нелинейная модель
+void nonlinearModel(double coeffA, double coeffB, double coeffC, double coeffD, double heatInput, double currentTemp, int cycles) {
+    double prevHeat = 0;
+    double prevTemp = 0;
 
     cout << "\tНелинейная модель" << endl;
-    for (int i = 1; i <= t; i++) {
-        double yT1 = a * yT - b * pow(yT_1, 2) + c * uT + d * sin(uT_1);
-        cout << "y" << i << " = " << yT1 << endl;
-        uT_1 = uT;
-        yT_1 = yT;
-        yT = yT1;
+    for (int i = 1; i <= cycles; i++) {
+        double nextTemp = coeffA * currentTemp - coeffB * pow(prevTemp, 2) + coeffC * heatInput + coeffD * sin(prevHeat);
+        cout << "y" << i << " = " << nextTemp << endl;
+        prevHeat = heatInput;
+        prevTemp = currentTemp;
+        currentTemp = nextTemp; // Обновление текущей температуры для следующей итерации
     }
 }
 
 int main() {
-
     system("chcp 1251");
     system("cls");
 
-    double a, b, c, d; //константы по условию
-    double uT; //теплота
-    double yT; //температура комнаты
-    int t; // такты
+    double coeffA, coeffB, coeffC, coeffD; // Константы
+    double heatInput; // Теплота
+    double currentTemp; // Температура
+    int cycles; // Такты
 
-    cout << "Введите a: "; cin >> a;
-    cout << "Введите b: "; cin >> b;
-    cout << "Введите c: "; cin >> c;
-    cout << "Введите d: "; cin >> d;
-    cout << "Введите подаваемое тепло: "; cin >> uT;
-    cout << "Введите температуру: "; cin >> yT;
-    cout << "Введите количество тактов модели: "; cin >> t;
+    cout << "Введите константу a: "; cin >> coeffA;
+    cout << "Введите константу b: "; cin >> coeffB;
+    cout << "Введите константу c: "; cin >> coeffC;
+    cout << "Введите константу d: "; cin >> coeffD;
+    cout << "Введите подаваемое тепло: "; cin >> heatInput;
+    cout << "Введите температуру: "; cin >> currentTemp;
+    cout << "Введите количество тактов работы модели: "; cin >> cycles;
 
-    lineynaya(a, b, uT, yT, t);
-    neLineynaya(a, b, c, d, uT, yT, t);
+    linearModel(coeffA, coeffB, heatInput, currentTemp, cycles);
+    nonlinearModel(coeffA, coeffB, coeffC, coeffD, heatInput, currentTemp, cycles);
 
     return 0;
 }
