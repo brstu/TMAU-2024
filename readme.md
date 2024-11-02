@@ -28,7 +28,7 @@
 |6|Казаренко Павел|||||||||||
 |7|Карпеш Никита|[as0006309](./trunk/as0006309/)|:white_check_mark:|:white_check_mark:|:white_check_mark:|:white_check_mark:||||||
 |8|Козлович Антон|||||||||||
-|9|Козловская Анна|[as0006310](./trunk/as0006310/)|:white_check_mark:||:white_check_mark:|||||||
+|9|Козловская Анна|[as0006310](./trunk/as0006310/)|:white_check_mark:|:white_check_mark:|:white_check_mark:|:white_check_mark:||||||
 |10|Колодич Максим|||||||||||
 |11|Крагель Алина|[as0006311](./trunk/as0006311/)|:white_check_mark:|:white_check_mark:|:white_check_mark:|||||||
 |12|Куликович Иван|||||||||||
@@ -55,14 +55,14 @@
 |3|Будник Анна Андреевна|||||||||||
 |4|Булавский Андрей Сергеевич|||||||||||
 |5|Бурак Илья Эдуардович|||||||||||
-|6|Горкавчук Никита Михайлович|[as64220038](./trunk/as64220038/)|:white_check_mark:|:white_check_mark:|:white_check_mark:|||||||
+|6|Горкавчук Никита Михайлович|[as64220038](./trunk/as64220038/)|:white_check_mark:|:white_check_mark:|:white_check_mark:|:white_check_mark:|:white_check_mark:|||||
 |7|Евкович Андрей Викторович|[as0006407](./trunk/as0006407/)|:white_check_mark:|:white_check_mark:|:white_check_mark:|||||||
 |8|Ежгунович Глеб Михайлович|||||||||||
 |9|Иванюк Иван Александрович|[as0006409](./trunk/as0006409/)|:white_check_mark:|:white_check_mark:|||||||||
 |10|Игнаткевич Кирилл Сергеевич|[as0006442](./trunk/as0006442)|:white_check_mark:|:white_check_mark:||||||||
 |11|Кашпир Дмитрий Русланович|||||||||||
 |12|Котковец Кирилл Викторович|||||||||||
-|13|Кужир Владислав Витальевич|[as0006313](./trunk/as0006413/)|:white_check_mark:|||||||||
+|13|Кужир Владислав Витальевич|[as0006313](./trunk/as0006413/)|:white_check_mark:|:white_check_mark:|:white_check_mark:|:white_check_mark:||||||
 |14|Немирович Дмитрий Александрович|||||||||||
 |15|Попов Алексей Сергеевич|||||||||||
 |16|Рабченя Максим Юрьевич|||||||||||
