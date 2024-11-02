@@ -26,7 +26,7 @@
 |4|Грицук Дмитрий|||||||||||
 |5|Грицук Павел|||||||||||
 |6|Казаренко Павел|||||||||||
-|7|Карпеш Никита|[as0006309](./trunk/as0006309/)|:white_check_mark:|:white_check_mark:|:white_check_mark:|:white_check_mark:|:white_check_mark:|:white_check_mark:||||
+|7|Карпеш Никита|[as0006309](./trunk/as0006309/)|:white_check_mark:|:white_check_mark:|:white_check_mark:|:white_check_mark:|:white_check_mark:|:white_check_mark:|:white_check_mark:|||
 |8|Козлович Антон|||||||||||
 |9|Козловская Анна|[as0006310](./trunk/as0006310/)|:white_check_mark:|:white_check_mark:|:white_check_mark:|:white_check_mark:||||||
 |10|Колодич Максим|||||||||||
