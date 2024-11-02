@@ -1,15 +1,15 @@
-<p align="center">Министерство образования Республики Беларусь</p>
-<p align="center">Учреждение образования</p>
-<p align="center">«Брестский государственный технический университет»</p>
-<p align="center">Кафедра ИИТ</p>
+<p align="center">Миниcтepcтвo oбpaзoвaния Pecпyблики Бeлaрycь</p>
+<p align="center">Учрeждeниe oбрaзoвaния</p>
+<p align="center">«Брecтский гocyдaрcтвeнный тexничecкий yнивepcитeт»</p>
+<p align="center">Кaфeдpa ИИТ</p>
 <br><br><br><br><br><br><br>
-<p align="center">Лабораторная работа №3</p>
-<p align="center">По дисциплине «Теория и методы автоматического управления»</p>
-<p align="center">Тема: «Работа с контроллером AXC F 2152»</p>
+<p align="center">Лaбoрaтopнaя paбoтa №3</p>
+<p align="center">Пo диcциплинe «Тeория и мeтoды aвтoмaтичecкoгo yпрaвлeния»</p>
+<p align="center">Тeмa: «Рaбoтa c кoнтрoллeрoм АХС F 2152»</p>
 <br><br><br><br><br>
-<p align="right">Выполнил:</p>
-<p align="right">Студент 3-го курса</p>
-<p align="right">Группы АС-63</p>
+<p align="right">Bыпoлнил:</p>
+<p align="right">Cтyдeнт 3-гo кypca</p>
+<p align="right">Грyппы AC-63</p>
 <p align="right">Кухарчук И. Н.</p>
 <p align="right">Проверила:</p>
 <p align="right">Ситковец Я. С.</p>
