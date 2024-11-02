@@ -18,25 +18,25 @@
 
 ---
 
-## Задание:
+## Task:
 
-Изучить один из предоставленных открытых проектов:
-Документация работы с управлением PLCnext - PLCnext-howto ;
-Управляющая программа для контроллеров PLCnext Control - ptusa-main ;
-Дополнение для EPLAN Electric P8 - EPLANner ;
-Демо-проект T1-PLCnext-Demo .
-Внести свой вклад в проект (в виде оформления вопросов (`issue`) и запросов на внесение изменений (`pull request`)):
-предлагать исправления в ошибках в документации (синтаксические, орфографические и т.п.);
-предлагать исправления в исходном коде;
-предложите новую функцию.
+Explore one of the provided open source projects:
+Documentation of working with Pic net management - Picnet-howto ;
+Control program for PLCnext Control controllers - ptusa-main ;
+Add-on for EPLAN Electric P8 - EPLANner ;
+The T1 demo project is a Plcnet Demo .
+To contribute to the project (in the form of questions (`issue`) and requests for changes (`pull request`)):
+to offer corrections to errors in documentation (syntactic, spelling, etc.);
+to offer corrections in the source code;
+suggest a new feature.
 
-## Ход работы:
+## Progress of work:
 
-В качестве изучаемого проекта была выбрана управляющая программа для контроллеров [PLCnext Control](https://www.phoenixcontact.com/online/portal/de?1dmy&urile=wcm%3apath%3a/dede/web/main/products/subcategory_pages/PLCnext_Controls_P-21-14/30b12f75-d769-4f0e-a783-4986ae3ae247) - [ptusa-main](https://github.com/savushkin-r-d/ptusa_main).
+The control program for controllers [PLC next Control] was chosen as the project under study(https://www.phoenixcontact.com/online/portal/de?1dmy&urile=wcm%3apath%3a/dede/web/main/products/subcategory_pages/PLCnext_Controls_P-21-14/30b12f75-d769-4f0e-a783-4986ae3ae247) - [ptusa-main](https://github.com/savushkin-r-d/ptusa_main).
 <br>
-Во время изучения русскоязычной версии файла readme.md, представляющего собой описание программы `ptusa_main`, была обнаружена орфографическая ошибка.
+While studying the Russian version of the file readme.md , which is a description of the program `ptusa_main`, a spelling error was detected.
 <br>
-После чего был написан [issue](https://github.com/savushkin-r-d/ptusa_main/issues/786) с описанием данной ошибки, а также было предложено решение в виде [pull request](https://github.com/savushkin-r-d/ptusa_main/pull/787) с исправлением.
+After that, [issue] was written(https://github.com/savushkin-r-d/ptusa_main/issues/786 ) with a description of this error, and a solution was proposed in the form of [pull request](https://github.com/savushkin-r-d/ptusa_main/pull/787 ) with correction.
 
-## Вывод:
-Вклад в открытые проекты, такие как `ptusa_main`, не только помогает улучшить проект, но и способствует развитию профессиональных навыков в области программирования и работы с документацией. Это также создает условия для обмена знаниями и сотрудничества между разработчиками. Данный вклад может существенно повлиять на качество и функциональность проекта.
+## Conclusion:
+Contributing to open source projects such as `ptuza_main` not only helps to improve the project, but also contributes to the development of professional skills in the field of programming and working with documentation. It also creates conditions for knowledge sharing and collaboration between developers. This contribution can significantly affect the quality and functionality of the project.
