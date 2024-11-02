@@ -64,6 +64,7 @@
 <p align="center"><img style='border:2px solid #000000'src="images/Снимок экрана 3.png"/>
 
 
+
 Открываем программу PuTTY Configuration для подключения к контроллеру:
 
 ![](Aspose.Words.0e358cb3-9e4d-44f5-bffa-8cdb61d98377.004.png)

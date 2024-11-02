@@ -10,7 +10,7 @@
 <br><br><br>
 <p align="right"> Выполнила:</p>
 <p align="right"> Студентка 3 курса</p>
-<p align="right"> Группы АС-61</p>
+<p align="right"> Группы АС-63</p>
 <p align="right"> Ващук А.В.</p>
 <p align="right"> Проверил:</p>
 <p align="right">Старший преподаватель</p>
