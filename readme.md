@@ -47,6 +47,7 @@
 |25|Ярмолович Александр|[as0006326](./trunk/as0006326/)|:white_check_mark:|:white_check_mark:|:white_check_mark:|:white_check_mark:|:white_check_mark:|||||
 
 
+
 ## Группа АС-64
 
 | №  | ФИО                            | Directory name               | #0 | #1  | #2 | #3  | #4 | #5 | #6 | Рейтинг | Доклад |
