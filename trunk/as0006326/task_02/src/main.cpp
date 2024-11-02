@@ -4,60 +4,58 @@
 
 using namespace std;
 
-class MathModel {
+class MathematicalModel {
 public:
-    virtual double calcOutput(double currentOutput, double previousOutput, double input) const = 0;
-    virtual ~MathModel() = default;
+    virtual double calculateOutput(double currentOutput, double previousOutput, double inputSignal) const = 0;
+    virtual ~MathematicalModel() = default;
 };
 
-class LinModel : public MathModel {
+class LinearModel : public MathematicalModel {
 private:
-    double coefficientA;
-    double coefficientB;
+    double linearCoefficientA;
+    double linearCoefficientB;
 
 public:
-    explicit LinModel(double coefficientA, double coefficientB) : coefficientA(coefficientA), coefficientB(coefficientB) {}
+    explicit LinearModel(double coefficientA, double coefficientB) : linearCoefficientA(coefficientA), linearCoefficientB(coefficientB) {}
 
-    double calcOutput(double currentOutput, double previousOutput, double input) const override {
-        return coefficientA * currentOutput + coefficientB * input;
+    double calculateOutput(double currentOutput, double previousOutput, double inputSignal) const override {
+        return linearCoefficientA * currentOutput + linearCoefficientB * inputSignal;
     }
 };
 
-class NonlinModel : public MathModel {
+class NonlinearModel : public MathematicalModel {
 private:
-    double coefficientA;
-    double coefficientB;
-    double coefficientC;
-    double coefficientD;
+    double nonlinearCoefficientA;
+    double nonlinearCoefficientB;
+    double nonlinearCoefficientC;
+    double nonlinearCoefficientD;
 
 public:
-    NonlinModel(double coefficientA, double coefficientB, double coefficientC, double coefficientD)
-        : coefficientA(coefficientA), coefficientB(coefficientB), coefficientC(coefficientC), coefficientD(coefficientD) {}
+    NonlinearModel(double coefficientA, double coefficientB, double coefficientC, double coefficientD)
+        : nonlinearCoefficientA(coefficientA), nonlinearCoefficientB(coefficientB), nonlinearCoefficientC(coefficientC), nonlinearCoefficientD(coefficientD) {}
 
-    double calcOutput(double currentOutput, double previousOutput, double input) const override {
-        return coefficientA * currentOutput - coefficientB * pow(previousOutput, 2) + coefficientC * input + coefficientD * sin(input);
+    double calculateOutput(double currentOutput, double previousOutput, double inputSignal) const override {
+        return nonlinearCoefficientA * currentOutput - nonlinearCoefficientB * pow(previousOutput, 2) + nonlinearCoefficientC * inputSignal + nonlinearCoefficientD * sin(inputSignal);
     }
 };
 
-class PIDRegulator {
+class PIDController {
 private:
-    double gainP;
-    double gainI;
-    double gainD;
+    double proportionalGain;
+    double integralGain;
+    double derivativeGain;
     double previousError = 0.0;
-    double integralError = 0.0;
-    double previousControlSignal = 0.0;
+    double accumulatedError = 0.0;
 
 public:
-    explicit PIDRegulator(double gainP, double gainI, double gainD)
-        : gainP(gainP), gainI(gainI), gainD(gainD) {}
+    explicit PIDController(double gainP, double gainI, double gainD)
+        : proportionalGain(gainP), integralGain(gainI), derivativeGain(gainD) {}
 
-    double calcOutput(double currentError) {
-        integralError += currentError;
-        double derivativeError = currentError - previousError;
-        double controlSignal = gainP * currentError + gainI * integralError + gainD * derivativeError;
+    double computeControlSignal(double currentError) {
+        accumulatedError += currentError;
+        double errorChange = currentError - previousError;
+        double controlSignal = proportionalGain * currentError + integralGain * accumulatedError + derivativeGain * errorChange;
         previousError = currentError;
-        previousControlSignal = controlSignal;
         return controlSignal;
     }
 };
@@ -65,50 +63,49 @@ public:
 int main() {
     setlocale(LC_ALL, "Russian");
 
-    double coefficientA_linear = 0.8;
-    double coefficientB_linear = 0.5;
+    double linearCoefficientA = 0.8;
+    double linearCoefficientB = 0.5;
 
-    double coefficientA_nonlinear = 0.8;
-    double coefficientB_nonlinear = 0.5;
-    double coefficientC_nonlinear = 0.2;
-    double coefficientD_nonlinear = 0.1;
+    double nonlinearCoefficientA = 0.8;
+    double nonlinearCoefficientB = 0.5;
+    double nonlinearCoefficientC = 0.2;
+    double nonlinearCoefficientD = 0.1;
 
-    double currentOutput_linear = 0.0;
-    double currentOutput_nonlinear = 0.0;
-    double previousOutput_nonlinear = 0.0;
+    double linearModelOutput = 0.0;
+    double nonlinearModelOutput = 0.0;
+    double previousNonlinearOutput = 0.0;
 
-    double input = 1.0;
+    double inputSignal = 1.0;
 
-    LinModel linModel(coefficientA_linear, coefficientB_linear);
-    NonlinModel nonlinModel(coefficientA_nonlinear, coefficientB_nonlinear, coefficientC_nonlinear, coefficientD_nonlinear);
-    PIDRegulator pidRegulator(1.0, 0.5, 0.2);
+    LinearModel linearModel(linearCoefficientA, linearCoefficientB);
+    NonlinearModel nonlinearModel(nonlinearCoefficientA, nonlinearCoefficientB, nonlinearCoefficientC, nonlinearCoefficientD);
+    PIDController pidController(1.0, 0.5, 0.2);
 
-    vector<double> currentOutput_linear_values;
-    vector<double> currentOutput_nonlinear_values;
-    vector<double> error_values;
-    vector<double> controlSignal_values;
+    vector<double> linearOutputs;
+    vector<double> nonlinearOutputs;
+    vector<double> errorValues;
+    vector<double> controlSignals;
 
-    for (int t = 1; t <= 10; t++) {
-        currentOutput_linear = linModel.calcOutput(currentOutput_linear, 0, input);
-        currentOutput_nonlinear = nonlinModel.calcOutput(currentOutput_nonlinear, previousOutput_nonlinear, input);
-        previousOutput_nonlinear = currentOutput_nonlinear;
+    for (int iteration = 1; iteration <= 10; iteration++) {
+        linearModelOutput = linearModel.calculateOutput(linearModelOutput, 0, inputSignal);
+        nonlinearModelOutput = nonlinearModel.calculateOutput(nonlinearModelOutput, previousNonlinearOutput, inputSignal);
+        previousNonlinearOutput = nonlinearModelOutput;
 
-        double error = currentOutput_linear - currentOutput_nonlinear;
-        double controlSignal = pidRegulator.calcOutput(error);
+        double outputError = linearModelOutput - nonlinearModelOutput;
+        double controlSignal = pidController.computeControlSignal(outputError);
 
-        currentOutput_linear_values.push_back(currentOutput_linear);
-        currentOutput_nonlinear_values.push_back(currentOutput_nonlinear);
-        error_values.push_back(error);
-        controlSignal_values.push_back(controlSignal);
+        linearOutputs.push_back(linearModelOutput);
+        nonlinearOutputs.push_back(nonlinearModelOutput);
+        errorValues.push_back(outputError);
+        controlSignals.push_back(controlSignal);
     }
 
-    // output for every itteration
-    for (int t = 0; t < 10; t++) {
-        cout << "Итерация " << t + 1 << ":\n";
-        cout << "Выход линейной модели: " << currentOutput_linear_values[t] << '\n';
-        cout << "Выход нелинейной модели: " << currentOutput_nonlinear_values[t] << '\n';
-        cout << "Ошибка: " << error_values[t] << '\n';
-        cout << "Управляющий сигнал: " << controlSignal_values[t] << '\n';
+for (int iteration = 0; iteration < 10; iteration++) {
+        cout << "Итерация " << iteration + 1 << ":\n";
+        cout << "Выход линейной модели: " << linearOutputs[iteration] << '\n';
+        cout << "Выход нелинейной модели: " << nonlinearOutputs[iteration] << '\n';
+        cout << "Ошибка: " << errorValues[iteration] << '\n';
+        cout << "Управляющий сигнал: " << controlSignals[iteration] << '\n';
         cout << '\n';
     }
 
