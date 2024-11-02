@@ -99,6 +99,7 @@ int main() {
         errorValues.push_back(outputError);
         controlSignals.push_back(controlSignal);
     }
+
 for (int iteration = 0; iteration < 10; iteration++) {
         cout << "Итерация " << iteration + 1 << ":\n";
         cout << "Выход линейной модели: " << linearOutputs[iteration] << '\n';
