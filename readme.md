@@ -31,7 +31,7 @@
 |9|Козловская Анна|[as0006310](./trunk/as0006310/)|:white_check_mark:|:white_check_mark:|:white_check_mark:|:white_check_mark:||||||
 |10|Колодич Максим|||||||||||
 |11|Крагель Алина|[as0006311](./trunk/as0006311/)|:white_check_mark:|:white_check_mark:|:white_check_mark:|||||||
-|12|Куликович Иван|||||||||||
+|12|Куликович Иван|[as0006312](./trunk/as0006312/)||:white_check_mark:|:white_check_mark:|||||||
 |13|Кульбеда Кирилл|||||||||||
 |14|Кухарчук Илья|[as0006314](trunk/as0006314)|:white_check_mark:|:white_check_mark:||||||||
 |15|Логинов Глеб|[as0006315](./trunk/as0006315/)|:white_check_mark:|:white_check_mark:|:white_check_mark:|:white_check_mark:|:white_check_mark:|:white_check_mark:|:white_check_mark:|||
