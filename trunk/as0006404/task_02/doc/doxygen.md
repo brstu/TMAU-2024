@@ -1,126 +1,126 @@
-# Summary
+# Резюме
 
- Members                        | Descriptions                                
+Члены                        | Описание                                
 --------------------------------|---------------------------------------------
-`class `[`TempModel`](#class_temp_model) | Abstract base class for temperature models.
-`class `[`LinearTempModel`](#class_linear_temp_model) | Linear model for temperature calculation.
-`class `[`NonlinearTempModel`](#class_nonlinear_temp_model) | Nonlinear model for temperature calculation.
-`class `[`ControlSystem`](#class_control_system) | Proportional–integral–derivative control system.
+`class `[`TempModel`](#class_temp_model) | Абстрактный базовый класс для моделей температуры.
+`class `[`LinearTempModel`](#class_linear_temp_model) | Линейная модель для расчета температуры.
+`class `[`NonlinearTempModel`](#class_nonlinear_temp_model) | Нелинейная модель для расчета температуры.
+`class `[`ControlSystem`](#class_control_system) | Пропорционально-интегрально-дифференциальная система управления.
 
-# class `TempModel` 
+## class `TempModel`
 
-An abstract class representing a temperature model.
+Абстрактный класс, представляющий модель температуры.
 
-## Summary
+### Резюме
 
- Members                        | Descriptions                                
+Члены                        | Описание                                
 --------------------------------|---------------------------------------------
-`public virtual double `[`computeTemperature`](#class_temp_model_1a09f70a5d58f9a836b682c4ad9d75ddc4)`(double currentTemp,double heatInput) = 0` | Computes temperature based on current temperature and heat input.
-`public virtual  `[`~TempModel`](#class_temp_model_1a4e7d514b4b9a840b746a686048ab1f18)`() = default` | Default destructor.
+`public virtual double `[`computeTemperature`](#class_temp_model_1a09f70a5d58f9a836b682c4ad9d75ddc4)`(double currentTemp,double heatInput) = 0` | Вычисляет температуру на основе текущей температуры и теплового потока.
+`public virtual  `[`~TempModel`](#class_temp_model_1a4e7d514b4b9a840b746a686048ab1f18)`() = default` | Дефолтный деструктор.
 
-## Members
+### Члены
 
 #### `public virtual double `[`computeTemperature`](#class_temp_model_1a09f70a5d58f9a836b682c4ad9d75ddc4)`(double currentTemp,double heatInput) = 0`
 
-Computes the temperature output based on the input temperature and heat input.
+Вычисляет выходную температуру на основе входной температуры и теплового потока.
 
-#### Parameters
-* `currentTemp` - Current temperature.
-* `heatInput` - Heat input value.
+**Параметры**
+* `currentTemp` - Текущая температура.
+* `heatInput` - Значение теплового потока.
 
 #### `public virtual  `[`~TempModel`](#class_temp_model_1a4e7d514b4b9a840b746a686048ab1f18)`() = default`
 
-Destroy the `TempModel` object.
+Уничтожает объект `TempModel`.
 
-# class `LinearTempModel`
+## class `LinearTempModel`
 
-A linear model for temperature calculation.
+Линейная модель для расчета температуры.
 
-## Summary
+### Резюме
 
- Members                        | Descriptions                                
+Члены                        | Описание                                
 --------------------------------|---------------------------------------------
-`public inline  `[`LinearTempModel`](#class_linear_temp_model_1a29c36f0f2d6a1ecb27dfe676fe4a6b6a)`(double param1,double param2)` | Constructs a linear model with specified parameters.
-`public inline virtual double `[`computeTemperature`](#class_linear_temp_model_1ac0c3db10c3b3be2ae5dc1e227bbfb09c)`(double currentTemp,double heatInput)` | Computes the temperature for the linear model.
-`public virtual  `[`~LinearTempModel`](#class_linear_temp_model_1ad78eae7d3bfb0a40147e39d3060f3629)`() = default` | Default destructor.
+`public inline  `[`LinearTempModel`](#class_linear_temp_model_1a29c36f0f2d6a1ecb27dfe676fe4a6b6a)`(double param1,double param2)` | Конструирует линейную модель с заданными параметрами.
+`public inline virtual double `[`computeTemperature`](#class_linear_temp_model_1ac0c3db10c3b3be2ae5dc1e227bbfb09c)`(double currentTemp,double heatInput)` | Вычисляет температуру для линейной модели.
+`public virtual  `[`~LinearTempModel`](#class_linear_temp_model_1ad78eae7d3bfb0a40147e39d3060f3629)`() = default` | Дефолтный деструктор.
 
-## Members
+### Члены
 
 #### `public inline  `[`LinearTempModel`](#class_linear_temp_model_1a29c36f0f2d6a1ecb27dfe676fe4a6b6a)`(double param1,double param2)`
 
-Constructs a new `LinearTempModel` object with specified parameters.
+Конструирует новый объект `LinearTempModel` с заданными параметрами.
 
-#### Parameters
-* `param1` - Linear coefficient for current temperature.
-* `param2` - Coefficient for heat input.
+**Параметры**
+* `param1` - Линейный коэффициент для текущей температуры.
+* `param2` - Коэффициент для теплового потока.
 
 #### `public inline virtual double `[`computeTemperature`](#class_linear_temp_model_1ac0c3db10c3b3be2ae5dc1e227bbfb09c)`(double currentTemp,double heatInput)`
 
-Computes the temperature output based on the linear model.
+Вычисляет выходную температуру на основе линейной модели.
 
 #### `public virtual  `[`~LinearTempModel`](#class_linear_temp_model_1ad78eae7d3bfb0a40147e39d3060f3629)`() = default`
 
-Destroy the `LinearTempModel` object.
+Уничтожает объект `LinearTempModel`.
 
-# class `NonlinearTempModel`
+## class `NonlinearTempModel`
 
-A nonlinear model for temperature calculation.
+Нелинейная модель для расчета температуры.
 
-## Summary
+### Резюме
 
- Members                        | Descriptions                                
+Члены                        | Описание                                
 --------------------------------|---------------------------------------------
-`public inline  `[`NonlinearTempModel`](#class_nonlinear_temp_model_1abf94db879e6a11a3b8d4c5d6e2a8c8a2)`(double param1,double param2,double param3,double param4)` | Constructs a nonlinear model with specified parameters.
-`public inline virtual double `[`computeTemperature`](#class_nonlinear_temp_model_1a25dc6765a041b63ec20976f80ad23fa4)`(double currentTemp,double heatInput)` | Computes the temperature for the nonlinear model.
-`public virtual  `[`~NonlinearTempModel`](#class_nonlinear_temp_model_1ae7cf4cb5096b5fbd3bff78c3bfb63b2f)`() = default` | Default destructor.
+`public inline  `[`NonlinearTempModel`](#class_nonlinear_temp_model_1abf94db879e6a11a3b8d4c5d6e2a8c8a2)`(double param1,double param2,double param3,double param4)` | Конструирует нелинейную модель с заданными параметрами.
+`public inline virtual double `[`computeTemperature`](#class_nonlinear_temp_model_1a25dc6765a041b63ec20976f80ad23fa4)`(double currentTemp,double heatInput)` | Вычисляет температуру для нелинейной модели.
+`public virtual  `[`~NonlinearTempModel`](#class_nonlinear_temp_model_1ae7cf4cb5096b5fbd3bff78c3bfb63b2f)`() = default` | Дефолтный деструктор.
 
-## Members
+### Члены
 
 #### `public inline  `[`NonlinearTempModel`](#class_nonlinear_temp_model_1abf94db879e6a11a3b8d4c5d6e2a8c8a2)`(double param1,double param2,double param3,double param4)`
 
-Constructs a new `NonlinearTempModel` object with specified parameters.
+Конструирует новый объект `NonlinearTempModel` с заданными параметрами.
 
-#### Parameters
-* `param1` - Coefficient for current temperature.
-* `param2` - Coefficient for square of previous temperature.
-* `param3` - Coefficient for heat input.
-* `param4` - Coefficient for sine of previous heat input.
+**Параметры**
+* `param1` - Коэффициент для текущей температуры.
+* `param2` - Коэффициент для квадрата предыдущей температуры.
+* `param3` - Коэффициент для теплового потока.
+* `param4` - Коэффициент для синуса предыдущего теплового потока.
 
 #### `public inline virtual double `[`computeTemperature`](#class_nonlinear_temp_model_1a25dc6765a041b63ec20976f80ad23fa4)`(double currentTemp,double heatInput)`
 
-Computes the temperature output based on the nonlinear model.
+Вычисляет выходную температуру на основе нелинейной модели.
 
 #### `public virtual  `[`~NonlinearTempModel`](#class_nonlinear_temp_model_1ae7cf4cb5096b5fbd3bff78c3bfb63b2f)`() = default`
 
-Destroy the `NonlinearTempModel` object.
+Уничтожает объект `NonlinearTempModel`.
 
-# class `ControlSystem`
+## class `ControlSystem`
 
-Proportional–integral–derivative control system to simulate temperature control.
+Пропорционально-интегрально-дифференциальная система управления для моделирования контроля температуры.
 
-## Summary
+### Резюме
 
- Members                        | Descriptions                                
+Члены                        | Описание                                
 --------------------------------|---------------------------------------------
-`public void `[`simulate`](#class_control_system_1acb8cf7932d39a2bcd053dc22bca24672)`(double targetTemp,double initialTemp,`[`TempModel`](#class_temp_model)` & model)` | Simulates the control system for a temperature model.
-`private double `[`computeControlSignal`](#class_control_system_1a7dcb55c416527f9644de795b6ff16f3b)`(double error,double prevError1,double prevError2)` | Computes the control signal for a given error.
+`public void `[`simulate`](#class_control_system_1acb8cf7932d39a2bcd053dc22bca24672)`(double targetTemp,double initialTemp,`[`TempModel`](#class_temp_model)` & model)` | Моделирует систему управления для модели температуры.
+`private double `[`computeControlSignal`](#class_control_system_1a7dcb55c416527f9644de795b6ff16f3b)`(double error,double prevError1,double prevError2)` | Вычисляет управляющий сигнал для данной ошибки.
 
-## Members
+### Члены
 
 #### `public void `[`simulate`](#class_control_system_1acb8cf7932d39a2bcd053dc22bca24672)`(double targetTemp,double initialTemp,`[`TempModel`](#class_temp_model)` & model)`
 
-Simulates the temperature control system for a given target temperature and model.
+Моделирует систему управления температурой для заданной целевой температуры и модели.
 
-#### Parameters
-* `targetTemp` - Desired temperature.
-* `initialTemp` - Initial temperature.
-* `model` - Temperature model to be used in the simulation.
+**Параметры**
+* `targetTemp` - Желаемая температура.
+* `initialTemp` - Начальная температура.
+* `model` - Модель температуры, используемая в симуляции.
 
 #### `private double `[`computeControlSignal`](#class_control_system_1a7dcb55c416527f9644de795b6ff16f3b)`(double error,double prevError1,double prevError2)`
 
-Computes the control signal based on the error and previous errors.
+Вычисляет управляющий сигнал на основе ошибки и предыдущих ошибок.
 
-#### Parameters
-* `error` - Current error.
-* `prevError1` - Previous error.
-* `prevError2` - Error two steps ago.
+**Параметры**
+* `error` - Текущая ошибка.
+* `prevError1` - Предыдущая ошибка.
+* `prevError2` - Ошибка два шага назад.
