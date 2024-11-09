@@ -1,112 +1,115 @@
 #include <iostream>
 #include <cmath>
 
-class TempModel {
+class TemperatureModel {
 public:
-    virtual double computeTemperature(double currentTemp, double heatInput) = 0;
-    virtual ~TempModel() = default;
+    virtual double calculateTemperature(double currentTemperature, double heatInput) = 0;
+    virtual ~TemperatureModel() = default;
 };
 
-class LinearTempModel : public TempModel {
+class LinearTemperatureModel : public TemperatureModel {
 private:
-    double param1;
-    double param2;
+    double coefficientA;
+    double coefficientB;
 public:
-    LinearTempModel(double param1, double param2) : param1(param1), param2(param2) {}
+    LinearTemperatureModel(double a, double b) : coefficientA(a), coefficientB(b) {}
 
-    double computeTemperature(double currentTemp, double heatInput) override {
-        return param1 * currentTemp + param2 * heatInput;
+    double calculateTemperature(double currentTemperature, double heatInput) override {
+        return coefficientA * currentTemperature + coefficientB * heatInput;
     }
 
-    ~LinearTempModel() override = default;
+    ~LinearTemperatureModel() override = default;
 };
 
-class NonlinearTempModel : public TempModel {
+class NonlinearTemperatureModel : public TemperatureModel {
 private:
-    double param1, param2, param3, param4;
-    double prevTemp = 0;
-    double prevHeatInput = 0;
+    double coeff1, coeff2, coeff3, coeff4;
+    double previousTemperature = 0;
+    double previousHeatInput = 0;
 public:
-    NonlinearTempModel(double param1, double param2, double param3, double param4)
-        : param1(param1), param2(param2), param3(param3), param4(param4) {}
+    NonlinearTemperatureModel(double c1, double c2, double c3, double c4)
+        : coeff1(c1), coeff2(c2), coeff3(c3), coeff4(c4) {}
 
-    double computeTemperature(double currentTemp, double heatInput) override {
-        double result = param1 * currentTemp - param2 * pow(prevTemp, 2) + param3 * heatInput + param4 * sin(prevHeatInput);
-        prevTemp = currentTemp;
-        prevHeatInput = heatInput;
+    double calculateTemperature(double currentTemperature, double heatInput) override {
+        double result = coeff1 * currentTemperature - coeff2 * pow(previousTemperature, 2) 
+                        + coeff3 * heatInput + coeff4 * sin(previousHeatInput);
+        previousTemperature = currentTemperature;
+        previousHeatInput = heatInput;
         return result;
     }
 
-    ~NonlinearTempModel() override = default;
+    ~NonlinearTemperatureModel() override = default;
 };
 
-class ControlSystem {
+class TemperatureControlSystem {
 private:
-    const double gain = 0.1;
-    const double integrationTime = 10;
+    const double controlGain = 0.1;
+    const double integralTime = 10;
     const double derivativeTime = 80;
-    const double samplingTime = 50;
-    const double totalSimulationTime = 30;
-    double controlSignal = 0;
+    const double sampleTime = 50;
+    const double totalSimulationDuration = 30;
+    double controlOutput = 0;
 
-    double computeControlSignal(double error, double prevError1, double prevError2) {
-        double q0 = gain * (1 + derivativeTime / samplingTime);
-        double q1 = -gain * (1 + 2 * derivativeTime / samplingTime - samplingTime / integrationTime);
-        double q2 = gain * derivativeTime / samplingTime;
-        controlSignal += q0 * error + q1 * prevError1 + q2 * prevError2;
-        return controlSignal;
+    double calculateControlSignal(double error, double previousError1, double previousError2) {
+        double term1 = controlGain * (1 + derivativeTime / sampleTime);
+        double term2 = -controlGain * (1 + 2 * derivativeTime / sampleTime - sampleTime / integralTime);
+        double term3 = controlGain * derivativeTime / sampleTime;
+        controlOutput += term1 * error + term2 * previousError1 + term3 * previousError2;
+        return controlOutput;
     }
 
 public:
-    void simulate(double targetTemp, double initialTemp, TempModel& model) {
-        double prevError1 = 0;
-        double prevError2 = 0;
-        double temp = initialTemp;
+    void runSimulation(double targetTemperature, double initialTemperature, TemperatureModel& model) {
+        double previousError1 = 0;
+        double previousError2 = 0;
+        double currentTemperature = initialTemperature;
 
-        for (int i = 1; i <= totalSimulationTime; i++) {
-            double error = targetTemp - temp;
-            controlSignal = computeControlSignal(error, prevError1, prevError2);
-            temp = model.computeTemperature(initialTemp, controlSignal);
+        for (int step = 1; step <= totalSimulationDuration; step++) {
+            double error = targetTemperature - currentTemperature;
+            controlOutput = calculateControlSignal(error, previousError1, previousError2);
+            currentTemperature = model.calculateTemperature(currentTemperature, controlOutput);
 
-            std::cout << "Step " << i << " -> Error: " << error << ", Temp: " << temp << ", Control Signal: " << controlSignal << std::endl;
+            std::cout << "Step " << step << " -> Error: " << error 
+                      << ", Temperature: " << currentTemperature 
+                      << ", Control Output: " << controlOutput << std::endl;
 
-            prevError2 = prevError1;
-            prevError1 = error;
+            previousError2 = previousError1;
+            previousError1 = error;
         }
-        controlSignal = 0;
+        controlOutput = 0;
     }
 };
 
-void readParams(double& p1, double& p2, double& p3, double& p4, bool isNonlinear) {
-    std::cout << "Enter parameter 1: "; std::cin >> p1;
-    std::cout << "Enter parameter 2: "; std::cin >> p2;
+void getInputParameters(double& a, double& b, double& c, double& d, bool isNonlinear) {
+    std::cout << "Enter parameter 1: "; std::cin >> a;
+    std::cout << "Enter parameter 2: "; std::cin >> b;
 
     if (isNonlinear) {
-        std::cout << "Enter parameter 3: "; std::cin >> p3;
-        std::cout << "Enter parameter 4: "; std::cin >> p4;
+        std::cout << "Enter parameter 3: "; std::cin >> c;
+        std::cout << "Enter parameter 4: "; std::cin >> d;
     }
 }
 
 int main() {
-    const double targetTemp = 8;
-    const double initialTemp = 3;
-    double p1, p2, p3, p4;
+    const double desiredTemperature = 8;
+    const double startingTemperature = 3;
+    double param1, param2, param3, param4;
 
     std::cout << "--- Parameters for Linear Model ---" << std::endl;
-    readParams(p1, p2, p3, p4, false);
-    LinearTempModel linearModel(p1, p2);
+    getInputParameters(param1, param2, param3, param4, false);
+    LinearTemperatureModel linearModel(param1, param2);
 
     std::cout << "--- Parameters for Nonlinear Model ---" << std::endl;
-    readParams(p1, p2, p3, p4, true);
-    NonlinearTempModel nonlinearModel(p1, p2, p3, p4);
+    getInputParameters(param1, param2, param3, param4, true);
+    NonlinearTemperatureModel nonlinearModel(param1, param2, param3, param4);
 
-    ControlSystem controller;
+    TemperatureControlSystem controller;
 
     std::cout << "\n--- Linear Model Simulation ---" << std::endl;
-    controller.simulate(targetTemp, initialTemp, linearModel);
+    controller.runSimulation(desiredTemperature, startingTemperature, linearModel);
 
     std::cout << "\n--- Nonlinear Model Simulation ---" << std::endl;
-    controller.simulate(targetTemp, initialTemp, nonlinearModel);
+    controller.runSimulation(desiredTemperature, startingTemperature, nonlinearModel);
 
     return 0;
 }
