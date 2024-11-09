@@ -5,12 +5,12 @@ using namespace std;
 
 //НЕлинейная модель
 void nonLinearModel(float a, float b, float c, float d, float uT, float yT, int t) {
-    float uT_1 = 0;
     float yT_1 = 0;
+    float uT_1 = 0;
 
     cout << "Нелинейная температурная модель:" << endl;
     for (int k = 1; k <= t; k++) {
-        double yT1 = a * yT - b * pow(yT_1, 2) + c * uT + d * sin(uT_1);
+        double yT1 = a * yT - b * pow(yT_1, 2) + d * sin(uT_1) + c * uT;
         cout << "y" << k << " = " << yT1 << endl;
         uT_1 = uT;
         yT_1 = yT;
@@ -21,8 +21,9 @@ void nonLinearModel(float a, float b, float c, float d, float uT, float yT, int 
 //линейная модель
 void linearModel(float a, float b, float uT, float yT, int t) {
     cout << "Линейная температурная модель:" << endl;
+    
     for (int k = 1; k <= t; k++) {
-        float yT1 = a * yT + b * uT;
+        float yT1 = b * uT + a * yT;
         cout << "y" << k << " = " << yT1 << endl;
         yT = yT1;
     }
@@ -38,23 +39,27 @@ int main()
     float a, b, c, d;
     
     //теплота
-    float uT;
+    float uT = 0;
     
     //температура
-    float yT;
+    float yT = 0;
     
     // такты
-    int t;
+    int t = 0;
 
     cout << "Введите константы" << endl;
     
-    cout << "a: "; cin >> a;
+    cout << "a: ";
+    cin >> a;
     
-    cout << "b: "; cin >> b;
+    cout << "b: ";
+    cin >> b;
     
-    cout << "c: "; cin >> c;
+    cout << "c: ";
+    cin >> c;
     
-    cout << "d: "; cin >> d;
+    cout << "d: ";
+    cin >> d;
     
     cout << "Подаваемое тепло: "; cin >> uT;
     cout << "Температура: "; cin >> yT;
