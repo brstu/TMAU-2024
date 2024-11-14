@@ -1,35 +1,4 @@
-                        Ministry of Education of the Republic of Belarus
-
-                                        Educational Institution
-
-                                 “Brest State Technical University”
-
-                        Department of Information and Intelligent Technologies
-
-
-
-                                          Laboratory work №1
-
-                        On the discipline “Theory and methods of automatic control”
-
-                                Topic: “Temperature modeling of an object”
-
-
-
-                                                                Performed by:
-
-                                                                Student of the 3rd course
-
-                                                                Group AS-64
-
-                                                                YARMALIUK A. S.
-
-                                                                Supervised by:
-
-                                                                Sitkovets J. S.
-
-
-                                             Brest 2024
+# Лабораторная работа №1
 
 ## Task:
 
