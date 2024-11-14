@@ -5,88 +5,88 @@
 
 using namespace std;
 
-void run_linear_model();
-void run_nonlinear_model();
-bool get_choice(int &choice);
+void execute_linear_simulation();
+void execute_nonlinear_simulation();
+bool retrieve_choice(int &selection);
 
-void get_input(double &value, const string &prompt) {
-    cout << prompt << ": ";
+void obtain_input(double &value, const string &message) {
+    cout << message << ": ";
     while (!(cin >> value)) {
         cin.clear();
         cin.ignore(numeric_limits<streamsize>::max(), '\n');
-        cout << "Invalid input! Try again.\n" << prompt << ": ";
+        cout << "Invalid input! Please try again.\n" << message << ": ";
     }
 }
 
-void get_input(int &value, const string &prompt) {
-    cout << prompt << ": ";
+void obtain_input(int &value, const string &message) {
+    cout << message << ": ";
     while (!(cin >> value)) {
         cin.clear();
         cin.ignore(numeric_limits<streamsize>::max(), '\n');
-        cout << "Invalid input! Try again.\n" << prompt << ": ";
+        cout << "Invalid input! Please try again.\n" << message << ": ";
     }
 }
 
-void display_results(const map<int, double> &temps, const string &model_type) {
-    cout << "\n--- " << model_type << " Results ---\n";
-    for (const auto &entry : temps) {
+void show_results(const map<int, double> &temperatures, const string &model_name) {
+    cout << "\n--- Results for " << model_name << " ---\n";
+    for (const auto &entry : temperatures) {
         cout << "Step " << entry.first << ": Temperature = " << entry.second << endl;
     }
 }
 
-void run_linear_model() {
-    double A, B, temp, heat;
-    int steps;
-    get_input(A, "Enter coefficient A");
-    get_input(B, "Enter coefficient B");
-    get_input(temp, "Enter initial temperature");
-    get_input(heat, "Enter heat input");
-    get_input(steps, "Enter number of steps");
+void execute_linear_simulation() {
+    double coefA, coefB, initial_temp, heat_input;
+    int total_steps;
+    obtain_input(coefA, "Enter coefficient A");
+    obtain_input(coefB, "Enter coefficient B");
+    obtain_input(initial_temp, "Enter initial temperature");
+    obtain_input(heat_input, "Enter heat input");
+    obtain_input(total_steps, "Enter number of steps");
 
-    map<int, double> temps;
-    for (int i = 1; i <= steps; ++i) {
-        temp = A * temp + B * heat;
-        temps[i] = temp;
+    map<int, double> results;
+    for (int step = 1; step <= total_steps; ++step) {
+        initial_temp = coefA * initial_temp + coefB * heat_input;
+        results[step] = initial_temp;
     }
-    display_results(temps, "Linear Model");
+    show_results(results, "Linear Model");
 }
 
-void run_nonlinear_model() {
-    double A, B, C, D, temp, heat;
-    int steps;
-    get_input(A, "Enter coefficient A");
-    get_input(B, "Enter coefficient B");
-    get_input(C, "Enter coefficient C");
-    get_input(D, "Enter coefficient D");
-    get_input(temp, "Enter initial temperature");
-    get_input(heat, "Enter heat input");
-    get_input(steps, "Enter number of steps");
+void execute_nonlinear_simulation() {
+    double coefA, coefB, coefC, coefD, initial_temp, heat_input;
+    int total_steps;
+    obtain_input(coefA, "Enter coefficient A");
+    obtain_input(coefB, "Enter coefficient B");
+    obtain_input(coefC, "Enter coefficient C");
+    obtain_input(coefD, "Enter coefficient D");
+    obtain_input(initial_temp, "Enter initial temperature");
+    obtain_input(heat_input, "Enter heat input");
+    obtain_input(total_steps, "Enter number of steps");
 
-    map<int, double> temps;
-    double prev_temp = 0;
-    for (int i = 1; i <= steps; ++i) {
-        double new_temp = A * temp - B * pow(prev_temp, 2) + C * heat + D * sin(heat);
-        prev_temp = temp;
-        temp = new_temp;
-        temps[i] = temp;
+    map<int, double> results;
+    double previous_temp = 0;
+    for (int step = 1; step <= total_steps; ++step) {
+        double new_temp = coefA * initial_temp - coefB * pow(previous_temp, 2) + coefC * heat_input + coefD * sin(heat_input);
+        previous_temp = initial_temp;
+        initial_temp = new_temp;
+        results[step] = initial_temp;
     }
-    display_results(temps, "Nonlinear Model");
+    show_results(results, "Nonlinear Model");
 }
 
-bool get_choice(int &choice) {
-    get_input(choice, "Choose option (0 - Exit, 1 - Linear, 2 - Nonlinear)");
-    return choice >= 0 && choice <= 2;
+bool retrieve_choice(int &selection) {
+    obtain_input(selection, "Select an option (0 - Exit, 1 - Linear Model, 2 - Nonlinear Model)");
+    return selection >= 0 && selection <= 2;
 }
 
 int main() {
-    void (*models[])() = { []() { exit(0); }, run_linear_model, run_nonlinear_model };
-    int choice;
+    void (*simulation_methods[])() = { []() { exit(0); }, execute_linear_simulation, execute_nonlinear_simulation };
+    int selection;
 
     while (true) {
-        if (!get_choice(choice)) {
-            cout << "Invalid choice! Try again.\n";
+        if (!retrieve_choice(selection)) {
+            cout << "Invalid selection! Please try again.\n";
         } else {
-            models[choice]();
+            simulation_methods[selection]();
         }
     }
 }

@@ -57,19 +57,18 @@ Task is to write program (С++), which simulates this object temperature.
 Example of program output:
 
 ```
-
 Choose an option (0 - exit, 1 - linear model, 2 - nonlinear model): Input choice: 1
-Input A: 12
-Input B: 2
-Input current temperature: 36
-Input heat input: 2
+Input A: 10
+Input B: 3
+Input current temperature: 35
+Input heat input: 5
 Input simulation time: 10
 TIME      Linear Model
 =========================
-1         436
-2         5236
-3         62836
-4         754036
+1         438
+2         5238
+3         62838
+4         754038
 5         9.04844e+06
 6         1.08581e+08
 7         1.30297e+09
@@ -78,52 +77,54 @@ TIME      Linear Model
 10        2.25154e+12
 
 Choose an option (0 - exit, 1 - linear model, 2 - nonlinear model): Input choice: 2
-Input A: 3
-Input B: 15
-Input C: 20
-Input D: 25
-Input current temperature: 27
-Input heat input: 37
+Input A: 4
+Input B: 10
+Input C: 25
+Input D: 30
+Input current temperature: 28
+Input heat input: 40
 Input simulation time: 20
 TIME      Nonlinear Model
-1         804.912
-2         -7796.35
+=========================
+1         812.912
+2         -7896.35
 3         -9.7409e+06
 4         -9.40969e+08
 5         -1.42328e+15
 6         -1.32856e+19
 7         -3.03859e+31
 8         -2.64761e+39
-PS C:\Users\user\Desktop\TMAU-2024\build\trunk\as006417\task_01\src> ./lab_01.exe
+
+artyomyarmoluk@Artyoms-MacBook-Air uni/TMAU-2024/as006426/task_01/src> ./lab_01.exe
 
 Choose an option (0 - exit, 1 - linear model, 2 - nonlinear model): Input choice: 1
-Input A: 1.1
-Input B: 0.5
-Input current temperature: 25
-Input heat input: 10
+Input A: 1.0
+Input B: 0.6
+Input current temperature: 26
+Input heat input: 12
 Input simulation time: 5
 TIME      Linear Model
 =========================
-1         32.5
-2         40.75
-3         49.825
-4         59.8075
-5         70.7883
+1         32.8
+2         41.68
+3         51.344
+4         61.1175
+5         71.8385
 
 Choose an option (0 - exit, 1 - linear model, 2 - nonlinear model): Input choice: 2
-Input A: 1.2
-Input B: 0.1
-Input C: 0.3
-Input D: 0.05
-Input current temperature: 30
-Input heat input: 15
+Input A: 1.3
+Input B: 0.2
+Input C: 0.4
+Input D: 0.1
+Input current temperature: 32
+Input heat input: 18
 Input simulation time: 5
 TIME      Nonlinear Model
 =========================
-1         40.5325
-2         -36.8285
-3         -203.95
-4         -375.841
+1         42.5325
+2         -37.9285
+3         -210.95
+4         -380.841
 ```
 
 ## Input erroe handling
@@ -140,7 +141,7 @@ Input choice: 5
 
 ```
 Choose an option (0 - exit, 1 - linear model, 2 - nonlinear model): Input choice: 0
-PS C:\Users\user\Desktop\TMAU-2024\build\trunk\as006417\task_01\src> ^C
+artyomyarmoluk@Artyoms-MacBook-Air uni/TMAU-2024trunk/as006426/task_01/src> ^C
 ```
 
 The source code
