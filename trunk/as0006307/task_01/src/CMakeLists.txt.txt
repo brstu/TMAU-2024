@@ -1,4 +1,4 @@
-cmake_minimum_required(VERSION 3.10.0)
-project(Lab1)
+cmake_minimum_required (VERSION 3.10) 
+project (Project1) 
 
-add_executable(Lab1 Source.cpp)
+add_executable(Project1 Source.cpp)
