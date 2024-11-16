@@ -9,7 +9,7 @@
 <br><br><br><br><br>
 <p align="right">Выполнил:</p>
 <p align="right">Студент 3 курса</p>
-<p align="right">Группы АС-61</p>
+<p align="right">Группы АС-64</p>
 <p align="right">Ярмолюк А.С.</p>
 <p align="right">Проверил:</p>
 <p align="right">Ситковец Я. С.</p>
