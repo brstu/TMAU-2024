@@ -1,234 +1,130 @@
 # Summary
 
-
-
-
-
-
  Members                        | Descriptions                                
 --------------------------------|---------------------------------------------
-`class `[`AbstMod`](#class_Abst_Mod) |__Класс, который необходим классам, рассчитывающим линейную и нелинейную модель__
-`class `[`LinearMod`](#class_linear_Mod) | __Класс, который служит для реализации линейной модели__
-`class `[`NonLinearMod`](#class_non_linear_Mod) | __Класс, который служит для реализации нелинейной модели__
-`class `[`Regulator`](#class_regulator) | __Класс регулятора__
+`class `[`AbstractModelPID`](#class_abstract_model) | Данный класс, необходим классам, рассчитывающим линейную пид регулятора и нелинейную модель пид регулятора
+`class `[`LinearModelPID`](#class_linear_model) | Данный класс, служит для реализации линейной модели пид регулятора
+`class `[`NonlinearModelPID`](#class_non_linear_model) | Данный класс, служит для реализации нелинейной модели пид регулятора
+`class `[`Regulator`](#class_regulator) | Класс регулятора
 
+# class `AbstractModelPID` 
 
-______________________________________________________________________________
+Класс, который необходим классам, рассчитывающим линейную пид регулятора и нелинейную модель пид регулятора
 
-# class `AbstMod` 
-
-
----------------------------------------------------------
-
-_Класс, который необходим классам, рассчитывающим линейную и нелинейную модель_
-
-
-
-
----------------------------------------------------------
-
-
-
-Абстрактный класс, который предоставляет виртуальную функцию уравнения calculMod и от которого наследуются классы [LinearMod](#class_linear_Mod) и [NonLinearMod](#class_non_linear_Mod)
-
-
-______________________________________________________________________________
+Абстрактный класс предоставляет интерфейс, который содержит виртуальную функцию calculate_pid_model. Этот класс является базовым классом, от которого будут наследоваться другие классы. [LinearModelPID](#class_linear_model) и [NonlinearModelPID](#class_non_linear_model)
 
 ## Summary
 
  Members                        | Descriptions                                
 --------------------------------|---------------------------------------------
-`public virtual  `[`~AbstMod`](#class_Abst_Mod_1a70c0c5f53c7edb56bf68838d46de366b)`() = default` | 
+`public virtual  `[`~AbstractModelPID`](#class_abstract_model_1a70c0c5f53c7edb56bf68838d46de366b)`() = default` | 
+`public double `[`calculate_pid_model`](#class_abstract_model_1acfab24a843dd017565c12aa96fd12f64)`(double curr_temp,double warm_input)` | Виртуальная функция, переопределенная в дочерних классах [LinearModelPID](#class_linear_model) и [NonlinearModelPID](#class_non_linear_model).
 
+## Members
 
+#### `public virtual  `[`~AbstractModelPID`](#class_abstract_model_1a70c0c5f53c7edb56bf68838d46de366b)`() = default` 
 
-             
-`public double `[`calculMod`](#class_Abst_Mod_1acfab24a843dd017565c12aa96fd12f64)`(double yCurrent,double inputWarm)` | 
+#### `public double `[`calculate_pid_model`](#class_abstract_model_1acfab24a843dd017565c12aa96fd12f64)`(double curr_temp,double warm_input)` 
 
+Виртуальная функция, которая переопределена в дочерних классах, позволяет каждому дочернему классу предоставить свою собственную реализацию этой функции.  [LinearModelPID](#class_linear_model) и [NonlinearModelPID](#class_non_linear_model).
 
----------------------------------------------------------
-
-
- ---------------------------------------------------------
- 
-  __Виртуальная функция, переопределенная в дочерних классах [LinearMod](#class_linear_Mod) и [NonLinearMod](#class_non_linear_Mod).__
-
-
-
-______________________________________________________________________________
-
-
-                                
-Функция переопределяется в дочерних классах и служит для рассчета линейной/нелинейной модели. 
+Функция, переопределенная в дочерних классах, выполняет рассчет линейной или нелинейной модели.
 #### Parameters
-* `yCurrent` Температура помещения 
+* `curr_temp` Температура помещения задданая на вход программы
 
+* `warm_input` Входящее тепло задданая на вход программы 
 
----------------------------------------------------------
-
-* `inputWarm` Входящее тепло
-
-
-
-______________________________________________________________________________
-
-# class `LinearMod` 
+# class `LinearModelPID` 
 
 ```
-class LinearMod
-  : public AbstMod
+class LinearModelPID
+  : public AbstractModelPID
 ```  
----------------------------------------------------------
 
-_Класс, который служит для реализации линейной модели_
+Данный класс предназначен для реализации линейной модели. Он содержит методы и атрибуты, которые позволяют задать и вычислить параметры линейной модели, а также провести соответствующие операции и расчеты, связанные с линейной моделью.
 
-
-
-
-
-_Дочерний класс от [AbstMod](#class_Abst_Mod), который реализует линейную модель_
-
-
-
-
-______________________________________________________________________________
+Дочерний класс от [AbstractModelPID](#class_abstract_model), который реализует линейную модель через переопределённую функцию calculate_pid_model
 
 ## Summary
 
+
  Members                        | Descriptions                                
 --------------------------------|---------------------------------------------
-`public inline  `[`LinearMod`](#class_linear_Mod_1aa21922a3dd7e060f69855043075d1db5)`(double a,double b,double yNext)` | 
-
-
----------------------------------------------------------
-
-`public inline virtual double `[`calculMod`](#class_linear_Mod_1a12095f9b671e6165eafc72f86bc7b8f5)`(double yCurrent,double inputWarm)` | Переопределённый метод для рассчёта линейной модели
-
+`public inline  `[`LinearModelPID`](#class_linear_model_1aa21922a3dd7e060f69855043075d1db5)`(double a,double b,double yNext)` 
+| 
+`public inline virtual double `[`calculate_pid_model`](#class_linear_model_1a12095f9b671e6165eafc72f86bc7b8f5)`(double curr_temp,double warm_input)` | Переопределённый метод для рассчёта линейной модели пид регулятора
 
 
 ## Members
 
-#### `public inline  `[`LinearMod`](#class_linear_Mod_1aa21922a3dd7e060f69855043075d1db5)`(double a,double b,double yNext)` 
+#### `public inline  `[`LinearModelPID`](#class_linear_model_1aa21922a3dd7e060f69855043075d1db5)`(double a,double b,double yNext)` 
+
+#### `public inline virtual double `[`calculate_pid_model`](#class_linear_model_1a12095f9b671e6165eafc72f86bc7b8f5)`(double curr_temp,double warm_input)` 
 
 
-______________________________________________________________________________
-
-
-#### `public inline virtual double `[`calculMod`](#class_linear_Mod_1a12095f9b671e6165eafc72f86bc7b8f5)`(double yCurrent,double inputWarm)` 
-
----------------------------------------------------------
-
-
-_Переопределённый метод для рассчёта линейной модели_
-
-
-
-______________________________________________________________________________
-
+Переопределённый  метод для рассчёта линейной модели пид регулятора
 
 
 Код: 
 ```cpp
-yNext_ = a___ * yCurrent + b___ * inputWarm;
-return yNext_;
+nextY__ = a_ * curr_temp + b_ * warm_input;
+return nextY__;
 ```
-                      
-
-______________________________________________________________________________
 
 
-# class `NonLinearMod` 
+# class `NonlinearModelPID` 
+
 
 ```
-class NonLinearMod
-  : public AbstMod
+class NonlinearModelPID
+  : public AbstractModelPID
 ```  
 
+Данный класс предназначен для реализации нелинейной модели ПИД-регулятора
 
----------------------------------------------------------
+Дочерний  класс  от [AbstractModelPID](#class_abstract_model), который  реализует  нелинейную модель  пид регулятора через переопределённую  функцию calculate_pid_model
 
-
-Класс, который служит для реализации нелинейной модели
-
-Дочерний класс от [AbstMod](#class_Abst_Mod)
-
-
-
-______________________________________________________________________________
-                           
 ## Summary
 
  Members                        | Descriptions                                
 --------------------------------|---------------------------------------------
-`public inline  `[`NonLinearMod`](#class_non_linear_Mod_1aa33bbbe3024131505d356c0df9dcd518)`(double a,double b,double c,double d,double yNext)` | 
+`public inline  `[`NonlinearModelPID`](#class_non_linear_model_1aa33bbbe3024131505d356c0df9dcd518)`(double a,double b,double c,double d,double yNext)` | 
 
+`public inline virtual double `[`calculate_pid_model`](#class_non_linear_model_1a9bad4ace82cde16f0631b9590e928d14)`(double curr_temp,double warm_input)` | Переопределённый метод для рассчёта  нелинейной модели пид регулятора
 
+## Members
 
-`public inline virtual double `[`calculMod`](#class_non_linear_Mod_1a9bad4ace82cde16f0631b9590e928d14)`(double yCurrent,double inputWarm)` | 
+#### `public inline  `[`NonlinearModelPID`](#class_non_linear_model_1aa33bbbe3024131505d356c0df9dcd518)`(double a,double b,double c,double d,double yNext)` 
 
+#### `public inline virtual double `[`calculate_pid_model`](#class_non_linear_model_1a9bad4ace82cde16f0631b9590e928d14)`(double curr_temp,double warm_input)` 
 
+В данном классе имеется переопределенный метод, который используется для расчета нелинейной модели ПИД-регулятора.
 
-Переопределённый метод для рассчёта нелинейной модели
-
-                               
-
-______________________________________________________________________________
-
-
-
-                           
 Код: 
 ```cpp
-yNext_ = a___ * yCurrent - b___ * pow(yPrev_, 2) + c___ * inputWarm + d___ * sin(wPrev_);
-yPrev_ = yNext_;
-wPrev_ = inputWarm;
-return yNext_;
+nextY__ = a_ * curr_temp - b_ * pow(prevY__, 2) + c_ * warm_input + d_ * sin(prevW__);
+prevY__ = nextY__;
+prevW__ = warm_input;
+return nextY__;
 ```
-                      
-
-______________________________________________________________________________
-
 
 # class `Regulator` 
 
 Класс регулятора
 
-
----------------------------------------------------------
-
-
-
-Отдельный класс, в котором мы моделируем регулятор
-
-______________________________________________________________________________
+Этот класс представляет собой отдельный компонент, в котором реализовано моделирование регулятора. 
 
 ## Summary
 
  Members                        | Descriptions                                
 --------------------------------|---------------------------------------------
 `public inline  `[`Regulator`](#class_regulator_1a2f9dccd70ab29b72793e37803ef0f0f0)`(double T,double T0,double TD,double K)` | 
+`public inline void `[`pid_calculate_write`](#class_regulator_1a4b9d368fc11c81701f7ac70d3035227b)`(double need,double start)` | 
 
----------------------------------------------------------
-
-
-`public inline void `[`PIDRegulatorcalculAndWrite`](#class_regulator_1a4b9d368fc11c81701f7ac70d3035227b)`(double need,double start)` | 
-
-
-______________________________________________________________________________
 
 ## Members
 
 #### `public inline  `[`Regulator`](#class_regulator_1a2f9dccd70ab29b72793e37803ef0f0f0)`(double T,double T0,double TD,double K)` 
 
+#### `public inline void `[`pid_calculate_write`](#class_regulator_1a4b9d368fc11c81701f7ac70d3035227b)`(double need,double start)` 
 
-
----------------------------------------------------------
-
-#### `public inline void `[`PIDRegulatorcalculAndWrite`](#class_regulator_1a4b9d368fc11c81701f7ac70d3035227b)`(double need,double start)`
-
-
-
-Generated by [Moxygen](https://sourcey.com/moxygen)
-
-
-______________________________________________________________________________
