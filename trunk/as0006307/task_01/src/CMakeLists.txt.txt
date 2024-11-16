@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 3.10)
-project(MyProject_kolodih)
+project(Sources_Maks)
 
 # Добавляем исходные файлы
 add_executable(${PROJECT_NAME} Source.cpp)
