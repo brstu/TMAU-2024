@@ -40,7 +40,7 @@
 |18|Поплавский Владислав|[as000220021](./trunk/as000220021/)|:white_check_mark:|:white_check_mark:||||||||
 |19|Савко Павел|[as0006319](./trunk/as0006319/)|:white_check_mark:|:white_check_mark:||||||||||
 |20|Соколова Маргарита|[as0006320](./trunk/as0006320/)|:white_check_mark:|:white_check_mark:||||||||||
-|21|Стельмашук Иван|[as0006321](./trunk/as0006321/)|:white_check_mark:|:white_check_mark:||||||||||
+|21|Стельмашук Иван|[as0006321](./trunk/as0006321/)|:white_check_mark:|:white_check_mark:|:white_check_mark:|:white_check_mark:|:white_check_mark:|:white_check_mark:||||||
 |22|Тунчик Антон|[as0006322](./trunk/as0006322/)|:white_check_mark:|:white_check_mark:|:white_check_mark:|:white_check_mark:|:white_check_mark:|||||
 |23|Филипчук Дмитрий|[as0006323](./trunk/as0006323/)|:white_check_mark:|:white_check_mark:||||||||
 |24|Ярмола Александр|[as0006325](./trunk/as0006325/)|:white_check_mark:|:white_check_mark:|:white_check_mark:|:white_check_mark:|:white_check_mark:|:white_check_mark:|:white_check_mark:|||
