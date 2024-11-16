@@ -34,7 +34,7 @@
 |12|Куликович Иван|[as0006312](./trunk/as0006312/)|:white_check_mark:|:white_check_mark:|:white_check_mark:|||||||
 |13|Кульбеда Кирилл|||||||||||
 |14|Кухарчук Илья|[as0006314](trunk/as0006314)|:white_check_mark:|:white_check_mark:|:white_check_mark:|:white_check_mark:|:white_check_mark:|:white_check_mark:|:white_check_mark:|||
-|15|Логинов Глеб|[as0006415](./trunk/as0006315/)|:white_check_mark:|:white_check_mark:|:white_check_mark:|:white_check_mark:|:white_check_mark:|:white_check_mark:|:white_check_mark:|||
+|15|Логинов Глеб|[as0006315](./trunk/as0006315/)|:white_check_mark:|:white_check_mark:|:white_check_mark:|:white_check_mark:|:white_check_mark:|:white_check_mark:|:white_check_mark:|||
 |16|Мороз Евгений|||||||||||
 |17|Никифоров Александр|||||||||||
 |18|Поплавский Владислав|[as000220021](./trunk/as000220021/)|:white_check_mark:|:white_check_mark:||||||||
@@ -66,7 +66,7 @@
 |12|Котковец Кирилл Викторович|[as0006444](./trunk/as0006444/)|:white_check_mark:|:white_check_mark:|:white_check_mark:|||||||
 |13|Кужир Владислав Витальевич|[as0006313](./trunk/as0006413/)|:white_check_mark:|:white_check_mark:|:white_check_mark:|:white_check_mark:|:white_check_mark:|||||
 |14|Немирович Дмитрий Александрович|||||||||||
-|15|Попов Алексей Сергеевич|[as0006315](./trunk/as0006415/)|:white_check_mark:|:white_check_mark:||||||||
+|15|Попов Алексей Сергеевич|[as0006415](./trunk/as0006415/)|:white_check_mark:|:white_check_mark:||||||||
 |16|Рабченя Максим Юрьевич|[as0006416](./trunk/as0006416/)|:white_check_mark:|:white_check_mark:|:white_check_mark:|||||||
 |17|Ровнейко Захар Сергеевич|||||||||||
 |18|Смердина Анастасия Валентиновна|[as0006424](./trunk/as0006424/)|:white_check_mark:|:white_check_mark:|:white_check_mark:|:white_check_mark:|:white_check_mark:|||||
