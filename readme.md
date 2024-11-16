@@ -32,7 +32,7 @@
 |10|Колодич Максим|||||||||||
 |11|Крагель Алина|[as0006311](./trunk/as0006311/)|:white_check_mark:|:white_check_mark:|:white_check_mark:|:white_check_mark:|:white_check_mark:|:white_check_mark:|:white_check_mark:|||
 |12|Куликович Иван|[as0006312](./trunk/as0006312/)|:white_check_mark:|:white_check_mark:|:white_check_mark:|||||||
-|13|Кульбеда Кирилл|||||||||||
+|13|Кульбеда Кирилл|[as0006313](trunk/as0006313)|:white_check_mark:|:white_check_mark:||||||||
 |14|Кухарчук Илья|[as0006314](trunk/as0006314)|:white_check_mark:|:white_check_mark:|:white_check_mark:|:white_check_mark:|:white_check_mark:|:white_check_mark:|:white_check_mark:|||
 |15|Логинов Глеб|[as0006315](./trunk/as0006315/)|:white_check_mark:|:white_check_mark:|:white_check_mark:|:white_check_mark:|:white_check_mark:|:white_check_mark:|:white_check_mark:|||
 |16|Мороз Евгений|||||||||||
@@ -42,7 +42,7 @@
 |20|Соколова Маргарита|[as0006320](./trunk/as0006320/)|:white_check_mark:|:white_check_mark:|:white_check_mark:|||||||||
 |21|Стельмашук Иван|[as0006321](./trunk/as0006321/)|:white_check_mark:|:white_check_mark:||||||||||
 |22|Тунчик Антон|[as0006322](./trunk/as0006322/)|:white_check_mark:|:white_check_mark:|:white_check_mark:|:white_check_mark:|:white_check_mark:|||||
-|23|Филипчук Дмитрий|||||||||||
+|23|Филипчук Дмитрий|[as0006323](./trunk/as0006323/)|:white_check_mark:|:white_check_mark:||||||||
 |24|Ярмола Александр|[as0006325](./trunk/as0006325/)|:white_check_mark:|:white_check_mark:|:white_check_mark:|:white_check_mark:|:white_check_mark:|:white_check_mark:|:white_check_mark:|||
 |25|Ярмолович Александр|[as0006326](./trunk/as0006326/)|:white_check_mark:|:white_check_mark:|:white_check_mark:|:white_check_mark:|:white_check_mark:|||||
 
