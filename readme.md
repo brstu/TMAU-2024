@@ -24,7 +24,7 @@
 |2|Ващук Анатолий|[as0006302](./trunk/as0006302/)|:white_check_mark:|:white_check_mark:|:white_check_mark:|:white_check_mark:|:white_check_mark:|:white_check_mark:||||
 |3|Выржемковский Даниил|||||||||||
 |4|Грицук Дмитрий|||||||||||
-|5|Грицук Павел|||||||||||
+|5|Грицук Павел|[as0006304](./trunk/as0006304/)|:white_check_mark:|:white_check_mark:||||||||
 |6|Казаренко Павел|[as0006305](./trunk/as0006305/)|:white_check_mark:|:white_check_mark:||||||||
 |7|Карпеш Никита|[as0006309](./trunk/as0006309/)|:white_check_mark:|:white_check_mark:|:white_check_mark:|:white_check_mark:|:white_check_mark:|:white_check_mark:|:white_check_mark:|||
 |8|Козлович Антон|[as0006308](./trunk/as0006308/)|:white_check_mark:|:white_check_mark:||||||||

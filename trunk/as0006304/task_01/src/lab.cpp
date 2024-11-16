@@ -1,4 +1,5 @@
 #include <iostream>
+#include <cmath>
 
 // Constants
 constexpr double C = 1.0;
