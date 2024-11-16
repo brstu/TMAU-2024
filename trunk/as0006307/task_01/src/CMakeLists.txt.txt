@@ -1,5 +1,4 @@
-cmake_minimum_required(VERSION 3.10)
-project(Sources_Maks)
+cmake_minimum_required(VERSION 3.0.0)
+project(Lab1)
 
-# Добавляем исходные файлы
-add_executable(Sources_Maks Source.cpp)
+add_executable(Lab1 Source.cpp)
