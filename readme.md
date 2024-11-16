@@ -46,8 +46,6 @@
 |24|Ярмола Александр|[as0006325](./trunk/as0006325/)|:white_check_mark:|:white_check_mark:|:white_check_mark:|:white_check_mark:|:white_check_mark:|:white_check_mark:|:white_check_mark:|||
 |25|Ярмолович Александр|[as0006326](./trunk/as0006326/)|:white_check_mark:|:white_check_mark:|:white_check_mark:|:white_check_mark:|:white_check_mark:|||||
 
-
-
 ## Группа АС-64
 
 | №  | ФИО                            | Directory name               | #0 | #1  | #2 | #3  | #4 | #5 | #6 | Рейтинг | Доклад |
@@ -62,8 +60,8 @@
 |8|Ежгунович Глеб Михайлович|||||||||||
 |9|Иванюк Иван Александрович|[as0006409](./trunk/as0006409/)|:white_check_mark:|:white_check_mark:|||||||||
 |10|Игнаткевич Кирилл Сергеевич|[as0006442](./trunk/as0006442)|:white_check_mark:|:white_check_mark:||||||||
-|11|Кашпир Дмитрий Русланович|||||||||||
-|12|Котковец Кирилл Викторович|[as0006444](./trunk/as0006444/)|:white_check_mark:|:white_check_mark:|:white_check_mark:|||||||
+|11|Кашпир Дмитрий Русланович|[as0006443](./trunk/as0006443/)|:white_check_mark:|:white_check_mark:|:white_check_mark:|||||||
+|12|Котковец Кирилл Викторович|[as0006444](./trunk/as0006444/)|:white_check_mark:|:white_check_mark:||||||||
 |13|Кужир Владислав Витальевич|[as0006313](./trunk/as0006413/)|:white_check_mark:|:white_check_mark:|:white_check_mark:|:white_check_mark:|:white_check_mark:|||||
 |14|Немирович Дмитрий Александрович|||||||||||
 |15|Попов Алексей Сергеевич|||||||||||
