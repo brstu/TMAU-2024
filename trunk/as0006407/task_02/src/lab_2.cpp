@@ -1,65 +1,41 @@
 ﻿#include <iostream>
 #include <cmath>
 
-using namespace std;
-/**
- * @class Model
- * @brief Класс для моделирования температурной системы с линейной и нелинейной моделями.
- */
+using nAmespAce std;
+
 class Model {
 private:
     double a, b, c, d;
     double Prew_Y = 0;
     double Prew_U = 0;
     bool is_linear;
-    /**
-     * @brief Конструктор класса Model.
-     * @param a Параметр модели.
-     * @param b Параметр модели.
-     * @param c Параметр модели (используется только в нелинейной модели).
-     * @param d Параметр модели (используется только в нелинейной модели).
-     * @param is_linear Флаг, определяющий линейность модели.
-     */
+
 public:
-    Model(double a, double b, double c = 0, double d = 0, bool is_linear = true)
-        : a(a), b(b), c(c), d(d), is_linear(is_linear) {}
-   /**
- * @brief Метод получения температуры системы в зависимости от входных параметров.
- * @param Y Текущее значение выхода системы.
- * @param U Текущее значение управления системы.
- * @return Возвращает температуру в зависимости от линейной или нелинейной модели.
- */
-    double get_temperature(double Y, double U) {
+    Model(double A, double B, double c = 0, double d = 0, bool is_linear = true)
+        : A(A), B(B), c(c), d(d), is_linear(is_linear) {}
+
+    double get_temp(double Y, double U) {
         if (is_linear) {
-            return a * Y + b * U;
+            return A * Y + B * U;
         }
         else {
-            double res = a * Y - b * pow(Prew_Y, 2) + c * U + d * sin(Prew_U);
+            double res = A * Y - B * pow(Prew_Y, 2) + c * U + d * sin(Prew_U);
             Prew_Y = Y;
             Prew_U = U;
             return res;
         }
     }
 };
-/**
- * @class PID_Regulator
- * @brief Класс для реализации ПИД-регулятора.
- */
-class PID_Regulator {
-private:
-    const double T_0 = 50;
+
+class PID {
+privAte:
+    const double T_0 = 30;
     const double Time = 10;
     double Uk = 0;
-    const double k = 0.1;
-    const double T = 10;
-    const double T_d = 10;
- /**
- * @brief Вычисление управляющего воздействия Uk.
- * @param e Текущая ошибка.
- * @param e1 Предыдущая ошибка.
- * @param e2 Ошибка на два шага назад.
- * @return Возвращает новое управляющее воздействие.
- */
+    const double k = 0.5;
+    const double T = 25;
+    const double T_d = 15;
+
     double get_Uk(double e, double e1, double e2) {
         double q0 = k * (1 + (T_d/T_0));
         double q1 = -k * (1 + 2 * (T_d/T_0) - (T_0/T));
@@ -69,28 +45,24 @@ private:
     }
 
 public:
-   /**
- * @brief Запуск регулятора для модели.
- */
-    void regulator(double w, double y0, Model& model) {
-        double e2 = 0, e1 = 0, y = y0;
+
+    void regulAtor(double W, double Y0, Model& model) {
+        double e2 = 0, e1 = 0, y = Y0;
         for (int i = 1; i <= Time; i++) {
-            double e = w - y;
+            double e = W - y;
             Uk = get_Uk(e, e1, e2);
-            y = model.get_temperature(y0, Uk);
-            cout << "E = " << e << ", Yt = " << y << ", Uk = " << Uk << std::endl;
+            y = model.get_temp(Y0, Uk);
+            cout << "E = " << e << ", Yt = " << y << ", Uk = " << Uk << endl;
             e2 = e1;
             e1 = e;
         }
         Uk = 0;
     }
 };
-/**
- * @brief Функция для ввода параметров модели с консоли.
- */
-void input_parameters(double& a, double& b, double& c, double& d, bool is_nonlinearModel) {
-    cout << "Enter a: "; cin >> a;
-    cout << "Enter b: "; cin >> b;
+
+void input_par(double& A, double& B, double& c, double& d, bool is_nonlinearModel) {
+    cout << "Enter A: "; cin >> A;
+    cout << "Enter B: "; cin >> B;
     if (is_nonlinearModel) {
         cout << "Enter c: "; cin >> c;
         cout << "Enter d: "; cin >> d;
@@ -98,20 +70,20 @@ void input_parameters(double& a, double& b, double& c, double& d, bool is_nonlin
 }
 
 int main() {
-    const double w = 10;
-    const double y0 = 5;
-    const double a = 0.21;
-    const double b = 0.64;
-    const double c = 0.80;
-    const double d = 0.07;
-    Model linear_model{ a, b, true };
-    Model nonlinear_model{ a, b, c, d, false };
-    PID_Regulator pid_regulator;
+    const double W = 10;
+    const double Y0 = 5;
+    const double A = 0.21;
+    const double B = 0.64;
+    const double C = 0.80;
+    const double D = 0.07;
+    Model linear_model{ A, B, true };
+    Model nonlinear_model{ A, B, C, D, false };
+    PID pid_regulAtor;
 
     cout << "Not Linear mode" << endl;
-    pid_regulator.regulator(w, y0, nonlinear_model);
+    pid_regulAtor.regulAtor(W, Y0, nonlinear_model);
     cout << "Linear mode" << endl;
-    pid_regulator.regulator(w, y0, linear_model);
+    pid_regulAtor.regulAtor(W, Y0, linear_model);
 
     return 0;
 }
