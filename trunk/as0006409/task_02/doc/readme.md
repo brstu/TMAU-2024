@@ -9,8 +9,8 @@
 <div style="margin-bottom: 10em;"></div>
 <p style="text-align: right;">Выполнил:</p>
 <p style="text-align: right;">Студент 3 курса</p>
-<p style="text-align: right;">Группы АС-64</p>
-<p style="text-align: right;">Евкович А. В.</p>
+<p style="text-align: right;">Группы АС-63</p>
+<p style="text-align: right;">Куликович И. С.</p>
 <p style="text-align: right;">Проверила:</p>
 <p style="text-align: right;">Ситковец Я. С.</p>
 <div style="margin-bottom: 10em;"></div>
