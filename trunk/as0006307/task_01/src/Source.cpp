@@ -3,10 +3,18 @@
 
 using namespace std;
 
+<<<<<<< Updated upstream
+=======
+
+>>>>>>> Stashed changes
 double calculateLinear(double y, double u, double a, double b) {
     return a * y + b * u;
 }
 
+<<<<<<< Updated upstream
+=======
+
+>>>>>>> Stashed changes
 double calculateNonlinear(double y, double u, double a, double b, double c, double d, double prev_u) {
     return a * y - b * pow(y, 2) + c * u + d * sin(prev_u);
 }
@@ -43,3 +51,7 @@ int main()
     cout << "-------------------------------------\n";
     return 0;
 }
+<<<<<<< Updated upstream
+=======
+    
+>>>>>>> Stashed changes
