@@ -1,7 +1,7 @@
 ﻿#include <iostream>
 #include <cmath>
 
-using nAmespAce std;
+using namespace std;
 
 class Model {
 private:
@@ -12,14 +12,14 @@ private:
 
 public:
     Model(double A, double B, double c = 0, double d = 0, bool is_linear = true)
-        : A(A), B(B), c(c), d(d), is_linear(is_linear) {}
+        : a(A), b(B), c(c), d(d), is_linear(is_linear) {}
 
     double get_temp(double Y, double U) {
         if (is_linear) {
-            return A * Y + B * U;
+            return a * Y + b * U;
         }
         else {
-            double res = A * Y - B * pow(Prew_Y, 2) + c * U + d * sin(Prew_U);
+            double res = a * Y - b * pow(Prew_Y, 2) + c * U + d * sin(Prew_U);
             Prew_Y = Y;
             Prew_U = U;
             return res;
@@ -28,7 +28,7 @@ public:
 };
 
 class PID {
-privAte:
+private:
     const double T_0 = 30;
     const double Time = 10;
     double Uk = 0;
@@ -37,9 +37,9 @@ privAte:
     const double T_d = 15;
 
     double get_Uk(double e, double e1, double e2) {
-        double q0 = k * (1 + (T_d/T_0));
-        double q1 = -k * (1 + 2 * (T_d/T_0) - (T_0/T));
-        double q2 = k * (T_d/T_0);
+        double q0 = k * (1 + (T_d / T_0));
+        double q1 = -k * (1 + 2 * (T_d / T_0) - (T_0 / T));
+        double q2 = k * (T_d / T_0);
         Uk += q0 * e + q1 * e1 + q2 * e2;
         return Uk;
     }
@@ -79,11 +79,9 @@ int main() {
     Model linear_model{ A, B, true };
     Model nonlinear_model{ A, B, C, D, false };
     PID pid_regulAtor;
-
     cout << "Not Linear mode" << endl;
     pid_regulAtor.regulAtor(W, Y0, nonlinear_model);
     cout << "Linear mode" << endl;
     pid_regulAtor.regulAtor(W, Y0, linear_model);
-
     return 0;
 }
