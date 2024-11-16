@@ -3,12 +3,10 @@
 
 using namespace std;
 
-// Function to calculate the next linear value
 double calculateLinear(double y, double u, double a, double b) {
     return a * y + b * u;
 }
 
-// Function to calculate the next nonlinear value
 double calculateNonlinear(double y, double u, double a, double b, double c, double d, double prev_u) {
     return a * y - b * pow(y, 2) + c * u + d * sin(prev_u);
 }
@@ -32,14 +30,11 @@ int main()
 
     for (int t = 1; t <= n; ++t)
     {
-        // Calculate next values
         double y_next_linear = calculateLinear(y, u, a, b);
         double y_next_nonlinear = calculateNonlinear(y, u, a, b, c, d, prev_u);
 
-        // Output results
         cout << t << "\t" << y_next_linear << "\t\t" << y_next_nonlinear << endl;
 
-        // Update for next iteration
         y = y_next_linear;
         prev_u = u;
         u += 0.1;
