@@ -1,140 +1,183 @@
 #include <iostream>
-#include <cmath>
+#include <math.h>
+#include <iomanip>
+#include <fstream>
 
-// Базовый класс математической модели
-class MathModel {
+/**
+* \mainpage
+* \brief ПИД-регулятор
+* \author Дмитаница Влад
+*/
+using namespace std;
+
+/**
+* \class model
+* \brief Абстрактный класс, который будет использоваться для построения линейных и нелинейных моделей
+*/
+class model
+{
 public:
     /**
-     * @brief Расчет выходного значения модели
-     * @param Yt Текущее значение
-     * @param Yt_1 Предыдущее значение
-     * @param U Входное значение
-     * @return Выходное значение модели
-     */
-    virtual double calculateOutput(double Yt, double Yt_1, double U) const = 0;
-     virtual ~MathModel() = default;
+    * \details абстрактная функция для переопределения в дочерних классах
+    */
+    virtual float equation(float y_t, float u_t) = 0;
+    virtual ~model() = default;
 };
 
-// Линейная модель
-class LinearModel : public MathModel {
+/**
+* \class LinearMod
+* \brief Класс, представляющий линейную модель контролируемого объекта
+* \details Дочерний класс, который расширяет класс model
+*/
+class LinearMod : public model
+{
 private:
-    double a;
-    double b;
+    float a;
+    float b;
+    float y_t1;
 
 public:
     /**
-     * @brief Конструктор линейной модели
-     * @param a Параметр a
-     * @param b Параметр b
-     */
-    explicit LinearModel(double a, double b) : a(a), b(b) {}
+    * \details конструктор для LinearMod
+    * \param a, b - просто коэффициенты
+    * \param y_t1 - температура на выходе
+    */
+    LinearMod(float a, float b, float y_t1)
+        : a(a), b(b), y_t1(y_t1)
+    {
+    }
 
-    double calculateOutput(double Yt, double Yt_1, double U) const override {
-        return a * Yt + b * U;
+    /**
+    * \details функция для вычисления температуры по линейной модели
+    */
+    float equation(float y_t, float u_t) override
+    {
+        y_t1 = a * y_t + b * u_t;
+        return y_t1;
+    }
+
+    ~LinearMod() override = default;
+};
+
+/**
+* \class NonLinearMod
+* \brief Класс, представляющий нелинейную модель контролируемого объекта
+* \details Дочерний класс, который расширяет класс model
+*/
+class NonLinearMod : public model
+{
+private:
+    float a; ///< a, b, c, d - просто коэффициенты
+    float b;
+    float c;
+    float d;
+    float y_t0 = 0; ///< y_t0 - предыдущее(начальное) значение температуры
+    float y_t1; ///< текущее значение температуры на выходе
+    float u_t0 = 0; ///< u_t0 - переменная для предыдущего значения тепла
+public:
+    /**
+   * \details конструктор для NonLinearMod
+   * \param a, b, c, d просто коэффициенты
+   */
+    NonLinearMod(float a, float b, float c, float d, float y_t1)
+    : a(a), b(b), c(c), d(d), y_t1(y_t1)
+    {
+    }
+    /**
+    * \details функция для вычисления температуры по нелинейной модели
+    */
+    float equation(float y_t, float u_t) override
+    {
+        y_t1 = a * y_t - b * static_cast<float>(pow(y_t0, 2)) + c * u_t + d * sin(u_t0);
+        u_t0 = u_t;
+        y_t0 = y_t;
+        return y_t1;
+    }
+    
+    ~NonLinearMod() override = default;
+};
+
+/**
+* \class regulator
+* \brief Класс для реализации регулятора
+*/
+class regulator
+{
+private:
+    float T;
+    float T0;
+    float TD;
+    float K;
+    float u = 0;
+
+public:
+    /**
+    * \details конструктор для regulator
+    * \param K,T0,TD,T слева-направо: коэффициент передачи, шаг, постоянная диференцирования, постоянная интегрирования
+    */
+    regulator(float T, float T0, float TD, float K)
+    : T(T), T0(T0), TD(TD), K(K)
+    {
+    }
+    /**
+    * \details функция для подсчёта управляющей переменной
+    * \param e, em1, em2 значения текущей, прошлой и позапрошлой ошибок
+    */
+    float temperature(float e, float em1, float em2) {
+        float q0 = K * (1 + TD / T0);
+        float q1 = -K * (1 + 2 * TD / T0 - T0 / T);
+        float q2 = K * TD / T0;
+        u += q0 * e + q1 * em1 + q2 * em2;
+        return u;
     }
 };
 
-// Нелинейная модель
-class NonlinearModel : public MathModel {
-private:
-    double a;
-    double b;
-    double c;
-    double d;
-
-public:
-    /**
-     * @brief Конструктор нелинейной модели
-     * @param a Параметр a
-     * @param b Параметр b
-     * @param c Параметр c
-     * @param d Параметр d
-     */
-    NonlinearModel(double a, double b, double c, double d) : a(a), b(b), c(c), d(d) {}
-
-    double calculateOutput(double Yt, double Yt_1, double U) const override {
-        return a * Yt - b * std::pow(Yt_1, 2) + c * U + d * std::sin(U);
+/**
+* \brief Функция, которая моделирует ПИД-регулятор
+* \details функция имитирует работу ПИД-регулятора
+* \param w желаемое значение
+* \param *reg указатель на экземпляр regulator
+* \param *md указатель на экземпляр model
+* \param y0 начальное значение y
+*/
+void PIDregulator(float w, float y0, regulator& reg, model& md) {
+    ofstream fout;
+    fout.open("E:\\PID.txt", ios_base::out | ios_base::app);
+    if (fout.is_open()) {
+        float em1 = 0;
+        float em2 = 0;
+        float y = y0;
+        for (int i = 0; i < 100; i++) {
+            float e;
+            float u;
+            e = w - y;
+            u = reg.temperature(e, em1, em2);
+            y = md.equation(y0, u);
+            fout << "E=" << e << " Y=" << y << " U=" << u << endl;
+            em2 = em1;
+            em1 = e;
+        }
     }
-};
+    fout.close();
+}
 
-// ПИД-регулятор
-class PIDController {
-private:
-    double q0;
-    double q1;
-    double q2;
-    double e_k_1 = 0.0;
-    double e_k_2 = 0.0;
-    double u_k_1 = 0.0;
-
-public:
-    /**
-     * @brief Конструктор ПИД-регулятора
-     * @param k Параметр k
-     * @param TD Параметр TD
-     * @param T0 Параметр T0
-     */
-    explicit PIDController(double k, double TD, double T0) : q0(k * (1 + (TD / T0))), q1(-k * (1 + 2 * (TD / T0) - (T0 / TD))),
-                                                            q2(k * (TD / T0)) {}
-
-    /**
-     * @brief Расчет выходного значения ПИД-регулятора
-     * @param e_k Ошибка
-     * @return Выходное значение ПИД-регулятора
-     */
-    double calculateOutput(double e_k) {
-        double u_k = u_k_1 + q0 * e_k + q1 * e_k_1 + q2 * e_k_2;
-        u_k_1 = u_k;
-        e_k_2 = e_k_1;
-        e_k_1 = e_k;
-        return u_k;
-    }
-};
-
+/**
+* \brief Функция main, создаём экземпляры всех классов и вызываем функцию PIDregulator
+*/
 int main() {
-    double a_linear = 0.8;
-    double b_linear = 0.5;
-    double a_nonlinear = 0.8;
-    double b_nonlinear = 0.5;
-    double c_nonlinear = 0.2;
-    double d_nonlinear = 0.1;
-
-    double Y_linear = 0.0;
-    double Y_nonlinear = 0.0;
-    double Y_prev_nonlinear = 0.0;
-
-    // Входные значения
-    double U = 1.0;
-
-    // Создание объектов моделей
-    LinearModel linearModel(a_linear, b_linear);
-    NonlinearModel nonlinearModel(a_nonlinear, b_nonlinear, c_nonlinear, d_nonlinear);
-
-    // ПИД-регулятор
-    PIDController pidController(1.0, 0.5, 0.2);
-
-    // Симуляция на 10 временных шагов
-    for (int t = 1; t <= 10; t++) {
-        // Линейная модель
-         double Yt_linear = linearModel.calculateOutput(Y_linear, 0, U);
-
-        // Нелинейная модель
-        double Yt_nonlinear = nonlinearModel.calculateOutput(Y_nonlinear, Y_prev_nonlinear, U);
-        Y_prev_nonlinear = Y_nonlinear;
-        Y_nonlinear = Yt_nonlinear;
-
-        // ПИД-регулятор
-        double error = Yt_linear - Yt_nonlinear;
-        double controlSignal = pidController.calculateOutput(error);
-
-        // Вывод результатов
-        std::cout << "Time step: " << t << std::endl;
-        std::cout << "Linear model output: " << Yt_linear << std::endl;
-        std::cout << "Nonlinear model output: " << Yt_nonlinear << std::endl;
-        std::cout << "Error: " << error << std::endl;
-        std::cout << "Control signal: " << controlSignal << std::endl;
-        std::cout << std::endl;
+    setlocale(0, "");
+    ofstream fout;
+    fout.open("E:\\PID.txt", ios_base::out | ios_base::app);
+    if (fout.is_open()) {
+        fout << "Linear Model:" << endl;
+        LinearMod l(0.333f, 0.667f, 1);
+        regulator regl(10, 10, 50, 0.1f);
+        PIDregulator(5, 2, regl, l);
+        fout << "NonLinear Model:" << endl;
+        NonLinearMod nl(1.0f, 0.0033f, 0.525f, 0.525f, 1.0f);
+        regulator regnl(10, 10, 50, 0.1f);
+        PIDregulator(5, 2, regnl, nl);
     }
-
+    cout << "Данные были сохранены в файл PID.txt" << endl;
     return 0;
 }
