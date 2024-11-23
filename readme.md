@@ -69,4 +69,5 @@
 |17|Ровнейко Захар Сергеевич|[as0006417](./trunk/as0006417/)|:white_check_mark:|:white_check_mark:|:white_check_mark:|||||||
 |18|Смердина Анастасия Валентиновна|[as0006424](./trunk/as0006424/)|:white_check_mark:|:white_check_mark:|:white_check_mark:|:white_check_mark:|:white_check_mark:|||||
 |19|Хомич Виталий Геннадьевич|[as0006454](./trunk/as0006454/)|:white_check_mark:|:white_check_mark:|:white_check_mark:|:white_check_mark:|:white_check_mark:|||||
-|20|Ярмолюк Артём Сергеевич|[as0006426](./trunk/as0006426/)|:white_check_mark:|:white_check_mark:|:white_check_mark:|:white_check_mark:||||||
+|20|Ярмолюк Артём Сергеевич|[as0006426](./trunk/as0006426/)|:white_check_mark:|:white_check_mark:|:white_check_mark:|:white_check_mark:|:white_check_mark:|||||
+
