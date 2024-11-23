@@ -42,7 +42,7 @@
 |20|Соколова Маргарита|[as0006320](./trunk/as0006320/)|:white_check_mark:|:white_check_mark:||||||||||
 |21|Стельмашук Иван|[as0006321](./trunk/as0006321/)|:white_check_mark:|:white_check_mark:|:white_check_mark:|:white_check_mark:|:white_check_mark:|:white_check_mark:||||||
 |22|Тунчик Антон|[as0006322](./trunk/as0006322/)|:white_check_mark:|:white_check_mark:|:white_check_mark:|:white_check_mark:|:white_check_mark:|||||
-|23|Филипчук Дмитрий|[as0006323](./trunk/as0006323/)|:white_check_mark:|:white_check_mark:||||||||
+|23|Филипчук Дмитрий|[as0006323](./trunk/as0006323/)|:white_check_mark:|:white_check_mark:|:white_check_mark:|:white_check_mark:||||||
 |24|Ярмола Александр|[as0006325](./trunk/as0006325/)|:white_check_mark:|:white_check_mark:|:white_check_mark:|:white_check_mark:|:white_check_mark:|:white_check_mark:|:white_check_mark:|||
 |25|Ярмолович Александр|[as0006326](./trunk/as0006326/)|:white_check_mark:|:white_check_mark:|:white_check_mark:|:white_check_mark:|:white_check_mark:|||||
 
@@ -66,7 +66,7 @@
 |14|Немирович Дмитрий Александрович|||||||||||
 |15|Попов Алексей Сергеевич|||||||||||
 |16|Рабченя Максим Юрьевич|[as0006416](./trunk/as0006416/)|:white_check_mark:|:white_check_mark:|:white_check_mark:|||||||
-|17|Ровнейко Захар Сергеевич|||||||||||
+|17|Ровнейко Захар Сергеевич|[as0006417](./trunk/as0006417)|:white_check_mark:|:white_check_mark:||||||||
 |18|Смердина Анастасия Валентиновна|[as0006424](./trunk/as0006424/)|:white_check_mark:|:white_check_mark:|:white_check_mark:|:white_check_mark:|:white_check_mark:|||||
 |19|Хомич Виталий Геннадьевич|[as0006454](./trunk/as0006454/)|:white_check_mark:|:white_check_mark:|:white_check_mark:|:white_check_mark:|:white_check_mark:|||||
 |20|Ярмолюк Артём Сергеевич|[as0006426](./trunk/as0006426/)|:white_check_mark:|:white_check_mark:|:white_check_mark:|:white_check_mark:|:white_check_mark:|||||
