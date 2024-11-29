@@ -76,9 +76,9 @@ end
 
 The main points:
 - `local DELTA = 200` - sets an interval of 200 milliseconds between the start times of objects.
-- `A5HL8_info.start_time = get_millisec()` - sets the start time for A5HL8_info as the current time in milliseconds.
-- `A5HL6_info.start_time = A5HL8_info.start_time - DELTA` - sets the start time for A5HL6_info 200 milliseconds less than A5HL8_info.
-- `A5HL4_info.start_time = A5HL6_info.start_time - DELTA` - sets the start time for A5HL4_info 200 milliseconds less than A5HL6_info.
+- `A5HL1_info.start_time = get_millisec()` - sets the start time for A5HL1_info as the current time in milliseconds.
+- `A5HL3_info.start_time = A5HL1_info.start_time - DELTA` - sets the start time for A5HL3_info 200 milliseconds less than A5HL1_info.
+- `A5HL5_info.start_time = A5HL3_info.start_time - DELTA` - sets the start time for A5HL5_info 200 milliseconds less than A5HL3_info.
 <br>And so on for the remaining objects.
 
 Thus, the presented code changes the order of the lights turning on.
