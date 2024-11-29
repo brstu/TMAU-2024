@@ -38,9 +38,9 @@ Task: [#4](../../../tasks/task_04/readme.md).
 
 </ul>
 
-![](/img/console.png)
+![](./img/console.png)
 
-![](/img/console-full-screen.png)
+![](./img/console-full-screen.png)
 
 <p> <strong>Conclusion:</strong> During the course of this laboratory work, we gained valuable experience working with <em>Visual Studio</em> and the <em>AXC F 2152</em> controller, which is an important step in mastering programming skills and working with automated systems. Additionally, it can be noted that such practical sessions allow us not only to consolidate theoretical knowledge, but also to develop the ability to solve real technical problems, which is a key aspect of engineering activity.
 <p>Working with the <em>AXC F 2152</em> opens up opportunities for creating scalable and flexible automation systems. This device, thanks to its power and multifunctionality, allows us to implement complex projects in the field of industrial automation. Our new skills working with this controller can be applied in various projects, ranging from simple monitoring and control tasks to complex systems requiring integration with other devices and services.</p>
