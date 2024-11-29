@@ -20,13 +20,13 @@
 ---
 <p> <strong>Purpose: </strong>using <em>Visual Studio</em> to build this project and demonstrate its functionality on a test controller.</p>
 
-Task: [#4](../../../../tasks/task_04/readme.md).
+Task: [#4](../../../tasks/task_04/readme.md).
 <p> <strong>Solution:</strong> </p>
 <ul>
 <li>According to the task of laboratory work #4, clone the repository <a href="https://github.com/savushkin-r-d/ptusa_main">ptusa_main</a>.</li>
 <li><p>Open this repository (in <em>Visual Studio</em>). Thus, we obtain a project based on <em>CMake</em>.</p></li>
 <li><p>Using <em>Visual Studio</em>, build this project.</p></li>
-<li><p>Then connect to the test controller <em>AXC F 2152</em> in laboratory work #3 -> <a href="../../task_03/doc/readme.md">task_03</a>.</p></li>
+<li><p>Then connect to the test controller <em>AXC F 2152</em> in laboratory work #3 -> <a href="../task_03/doc/readme.md">task_03</a>.</p></li>
 
 <li><p>Navigate to the project folder, after transferring it to the controller, and run our program:</p></li>
 
