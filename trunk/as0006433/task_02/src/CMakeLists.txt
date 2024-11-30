@@ -1,4 +1,4 @@
-cmake_minimum_required (VERSION 3.0.0)
+cmake_minimum_required (VERSION 3.10)
 project (task02)
 
-add_executable(task02 main.cpp)
+add_executable(task02_as0006433 main.cpp)
