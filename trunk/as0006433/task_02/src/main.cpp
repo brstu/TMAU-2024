@@ -1,140 +1,156 @@
 #include <iostream>
 #include <cmath>
+#include <string>
 
-// Базовый класс математической модели
-class MathModel {
+using std::cin;
+using std::cout;
+using std::endl;
+using std::string;
+
+class BaseModel {
 public:
-    /**
-     * @brief Расчет выходного значения модели
-     * @param Yt Текущее значение
-     * @param Yt_1 Предыдущее значение
-     * @param U Входное значение
-     * @return Выходное значение модели
-     */
-    virtual double calculateOutput(double Yt, double Yt_1, double U) const = 0;
-     virtual ~MathModel() = default;
+    virtual ~BaseModel() = default;
+    virtual double calculate(double Yt, double Ut) = 0;
+    virtual void simulate(double initialY, double initialU, int iterations) = 0;
 };
 
-// Линейная модель
-class LinearModel : public MathModel {
+class NonLinearModel : public BaseModel {
 private:
-    double a;
-    double b;
+    double a, b, c, d;
+    double prevY = 0, prevU = 0;
 
 public:
-    /**
-     * @brief Конструктор линейной модели
-     * @param a Параметр a
-     * @param b Параметр b
-     */
-    explicit LinearModel(double a, double b) : a(a), b(b) {}
+    NonLinearModel(double a_, double b_, double c_, double d_)
+        : a(a_), b(b_), c(c_), d(d_) {}
 
-    double calculateOutput(double Yt, double Yt_1, double U) const override {
-        return a * Yt + b * U;
+    double calculate(double yt, double ut) override {
+        return a * yt - b * prevY * prevY + c * ut + d * sin(prevU);
+    }
+
+    void simulate(double initialY, double initialU, int iterations) override {
+        double currentY = initialY, currentU = initialU;
+
+        cout << "\n\nNon-Linear Model Simulation\n";
+        cout << "Iteration\tYt\n";
+
+        for (int i = 0; i < iterations; ++i) {
+            if (i > 0) {
+                prevU = currentU;
+                prevY = currentY;
+            }
+            cout << "Enter Ut: ";
+            cin >> currentU;
+
+            currentY = calculate(currentY, currentU);
+            cout << i + 1 << "\t\t" << currentY << endl;
+        }
     }
 };
 
-// Нелинейная модель
-class NonlinearModel : public MathModel {
+class LinearModel : public BaseModel {
 private:
-    double a;
-    double b;
-    double c;
-    double d;
+    double a, b;
 
 public:
-    /**
-     * @brief Конструктор нелинейной модели
-     * @param a Параметр a
-     * @param b Параметр b
-     * @param c Параметр c
-     * @param d Параметр d
-     */
-    NonlinearModel(double a, double b, double c, double d) : a(a), b(b), c(c), d(d) {}
+    LinearModel(double a_, double b_) : a(a_), b(b_) {}
 
-    double calculateOutput(double Yt, double Yt_1, double U) const override {
-        return a * Yt - b * std::pow(Yt_1, 2) + c * U + d * std::sin(U);
+    double calculate(double yt, double ut) override {
+        return a * yt + b * ut;
+    }
+
+    void simulate(double initialY, double initialU, int iterations) override {
+        double currentY = initialY, currentU = initialU;
+
+        cout << "\n\nLinear Model Simulation\n";
+        cout << "Iteration\tYt\n";
+
+        for (int i = 0; i < iterations; ++i) {
+            cout << "Enter Ut: ";
+            cin >> currentU;
+
+            currentY = calculate(currentY, currentU);
+            cout << i + 1 << "\t\t" << currentY << endl;
+        }
     }
 };
 
-// ПИД-регулятор
 class PIDController {
 private:
-    double q0;
-    double q1;
-    double q2;
-    double e_k_1 = 0.0;
-    double e_k_2 = 0.0;
-    double u_k_1 = 0.0;
+    const double Td = 40;
+    const double T0 = 10;
+    const double K = 0.1;
+    const double simulationTime = 30;
+    double Uk = 0;
+
+    double computeControlSignal(double eK, double eK1, double eK2) {
+        double q0 = K * (1 + Td / T0);
+        double q1 = -K * (1 + 2 * Td);
+        double q2 = K * Td / T0;
+        Uk += q0 * eK + q1 * eK1 + q2 * eK2;
+        return Uk;
+    }
 
 public:
-    /**
-     * @brief Конструктор ПИД-регулятора
-     * @param k Параметр k
-     * @param TD Параметр TD
-     * @param T0 Параметр T0
-     */
-    explicit PIDController(double k, double TD, double T0) : q0(k * (1 + (TD / T0))), q1(-k * (1 + 2 * (TD / T0) - (T0 / TD))),
-                                                            q2(k * (TD / T0)) {}
+    void regulate(double setPoint, double initialY, BaseModel& model) {
+        double e1 = 0, e2 = 0, currentY = initialY;
 
-    /**
-     * @brief Расчет выходного значения ПИД-регулятора
-     * @param e_k Ошибка
-     * @return Выходное значение ПИД-регулятора
-     */
-    double calculateOutput(double e_k) {
-        double u_k = u_k_1 + q0 * e_k + q1 * e_k_1 + q2 * e_k_2;
-        u_k_1 = u_k;
-        e_k_2 = e_k_1;
-        e_k_1 = e_k;
-        return u_k;
+        for (int i = 1; i <= simulationTime; ++i) {
+            double error = setPoint - currentY;
+            Uk = computeControlSignal(error, e1, e2);
+            currentY = model.calculate(initialY, Uk);
+
+            cout << "Error = " << error << ", Yt = " << currentY << ", Uk = " << Uk << endl;
+
+            e2 = e1;
+            e1 = error;
+        }
+        Uk = 0;
     }
 };
 
+template <typename T>
+T getInput(const string& prompt) {
+    T value;
+    cout << prompt;
+    cin >> value;
+    return value;
+}
+
 int main() {
-    double a_linear = 0.8;
-    double b_linear = 0.5;
-    double a_nonlinear = 0.8;
-    double b_nonlinear = 0.5;
-    double c_nonlinear = 0.2;
-    double d_nonlinear = 0.1;
+    double initialY = 0, initialU = 0;
+    double linearA = 0, linearB = 0;
+    double nonLinearA = 0, nonLinearB = 0, nonLinearC = 0, nonLinearD = 0;
+    int linearIterations = 0, nonLinearIterations = 0;
+    const double targetValue = 8, initialValue = 3;
 
-    double Y_linear = 0.0;
-    double Y_nonlinear = 0.0;
-    double Y_prev_nonlinear = 0.0;
+    cout << "Simulation Setup\n";
+    linearIterations = getInput<int>("Linear Model Iterations: ");
+    nonLinearIterations = getInput<int>("Non-Linear Model Iterations: ");
+    initialY = getInput<double>("Initial Y: ");
+    initialU = getInput<double>("Initial U: ");
 
-    // Входные значения
-    double U = 1.0;
+    cout << "\nLinear Model Parameters\n";
+    linearA = getInput<double>("A: ");
+    linearB = getInput<double>("B: ");
 
-    // Создание объектов моделей
-    LinearModel linearModel(a_linear, b_linear);
-    NonlinearModel nonlinearModel(a_nonlinear, b_nonlinear, c_nonlinear, d_nonlinear);
+    cout << "\nNon-Linear Model Parameters\n";
+    nonLinearA = getInput<double>("A: ");
+    nonLinearB = getInput<double>("B: ");
+    nonLinearC = getInput<double>("C: ");
+    nonLinearD = getInput<double>("D: ");
 
-    // ПИД-регулятор
-    PIDController pidController(1.0, 0.5, 0.2);
+    LinearModel linearModel(linearA, linearB);
+    linearModel.simulate(initialY, initialU, linearIterations);
 
-    // Симуляция на 10 временных шагов
-    for (int t = 1; t <= 10; t++) {
-        // Линейная модель
-         double Yt_linear = linearModel.calculateOutput(Y_linear, 0, U);
+    NonLinearModel nonLinearModel(nonLinearA, nonLinearB, nonLinearC, nonLinearD);
+    nonLinearModel.simulate(initialY, initialU, nonLinearIterations);
 
-        // Нелинейная модель
-        double Yt_nonlinear = nonlinearModel.calculateOutput(Y_nonlinear, Y_prev_nonlinear, U);
-        Y_prev_nonlinear = Y_nonlinear;
-        Y_nonlinear = Yt_nonlinear;
+    PIDController pid;
+    cout << "\nRegulating Linear Model:\n";
+    pid.regulate(targetValue, initialValue, linearModel);
 
-        // ПИД-регулятор
-        double error = Yt_linear - Yt_nonlinear;
-        double controlSignal = pidController.calculateOutput(error);
-
-        // Вывод результатов
-        std::cout << "Time step: " << t << std::endl;
-        std::cout << "Linear model output: " << Yt_linear << std::endl;
-        std::cout << "Nonlinear model output: " << Yt_nonlinear << std::endl;
-        std::cout << "Error: " << error << std::endl;
-        std::cout << "Control signal: " << controlSignal << std::endl;
-        std::cout << std::endl;
-    }
+    cout << "\nRegulating Non-Linear Model:\n";
+    pid.regulate(targetValue, initialValue, nonLinearModel);
 
     return 0;
 }
