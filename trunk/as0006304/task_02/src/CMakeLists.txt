@@ -1,5 +1,5 @@
-cmake_minimum_required(VERSION 3.0)
+cmake_minimum_required(VERSION 3.10)
 
-project(lab)
+project(lab2)
 
-add_executable(lab lab.cpp)
+add_executable(lab_as0006304 lab.cpp)
