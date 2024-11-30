@@ -1,132 +1,155 @@
 #include <iostream>
-#include <math.h>
+#include <cmath>
 #include <iomanip>
 #include <fstream>
 #include <vector>
 
 using namespace std;
 
-class LinearModel
+// Class representing a Linear Model for temperature calculations
+class LinearTemperatureModel
 {
 private:
-    double A;
-    double B;
-    double currentTemp;
+    double coefficientA; // Linear coefficient A
+    double coefficientB; // Linear coefficient B
+    double currentTemperature; // Current computed temperature
 
 public:
-
-    LinearModel(double A, double B, double temp)
-        : A(A), B(B), currentTemp(temp)
+    // Constructor initializing the coefficients and initial temperature
+    LinearTemperatureModel(double a, double b, double initialTemperature)
+        : coefficientA(a), coefficientB(b), currentTemperature(initialTemperature)
     {
     }
 
-    double equation(double temp, double warm)
-    {
-        currentTemp = A * temp + B * warm;
-        return currentTemp;
-    }
-
-};
-
-class NonLinearModel
-{
-private:
-    double A;
-    double B;
-    double C;
-    double D;
-    double prevTemp = 0;
-    double currentTemp;
-    double warm = 0;
-public:
-
-    NonLinearModel(double A, double B, double C, double D, double temp)
-        : A(A), B(B), C(C), D(D), currentTemp(temp)
-    {
-    }
-
-    double equation(double temp, double warm1)
-    {
-        currentTemp = A * temp - B * pow(prevTemp, 2) + C * warm1 + D * sin(this->warm);
-        this->warm = warm1;
-        prevTemp = temp;
-        return currentTemp;
+    // Function to calculate the new temperature based on the linear equation
+    double calculateTemperature(double inputTemperature, double inputHeat) {
+        currentTemperature = coefficientA * inputTemperature + coefficientB * inputHeat;
+        return currentTemperature;
     }
 };
 
-
-class Regulator
+// Class representing a Non-Linear Model for temperature calculations
+class NonLinearTemperatureModel
 {
 private:
-    double T;
-    double TP;
-    double TM;
-    double K;
-    double u = 0;
+    double paramA; // Non-linear coefficient A
+    double paramB; // Non-linear coefficient B
+    double paramC; // Non-linear coefficient C
+    double paramD; // Non-linear coefficient D
+    double previousTemperature = 0; // Temperature from the previous step
+    double currentTemperature; // Current computed temperature
+    double inputHeat = 0; // Input heat value for calculations
 
 public:
-
-    Regulator(double T, double TP, double TM, double K)
-        : T(T), TP(TP), TM(TM), K(K)
+    // Constructor initializing the coefficients and initial temperature
+    NonLinearTemperatureModel(double a, double b, double c, double d, double initialTemperature)
+        : paramA(a), paramB(b), paramC(c), paramD(d), currentTemperature(initialTemperature)
     {
     }
 
-    double temperature(double e, double em1, double em2) {
-        double q0;
-        double q1;
-        double q2;
-
-        q0 = K * (1 + TM / TP);
-        q1 = -K * (1 + 2 * TM / TP - TP / T);
-        q2 = K * TM / TP;
-        u += q0 * e + q1 * em1 + q2 * em2;
-        return u;
+    // Function to calculate the new temperature based on the non-linear equation
+    double calculateTemperature(double inputTemperature, double inputHeatValue) {
+        currentTemperature = paramA * inputTemperature
+            - paramB * pow(previousTemperature, 2)
+            + paramC * inputHeatValue
+            + paramD * sin(this->inputHeat);
+        this->inputHeat = inputHeatValue; // Update input heat for the next calculation
+        previousTemperature = inputTemperature; // Store the current temperature for the next iteration
+        return currentTemperature;
     }
 };
 
-void PID(double w, double y0, Regulator& reg, LinearModel& md1, NonLinearModel& md2, bool mode) {
-    ofstream fout;
-    fout.open("D:\\result.txt", ios_base::out | ios_base::app);
-    if (fout.is_open()) {
-        double em1 = 0;
-        double em2 = 0;
-        double y = y0;
-        for (int i = 0; i < 100; i++) {
-            double e;
-            double u;
-            e = w - y;
-            u = reg.temperature(e, em1, em2);
+// Class for the PID Controller
+class PIDController
+{
+private:
+    double samplingPeriod; // Sampling period T
+    double proportionalPeriod; // Proportional period TP
+    double integrationPeriod; // Integration period TM
+    double gain; // Gain factor K
+    double controlOutput = 0; // Control output value
 
-            if (mode == true) {
-                y = md1.equation(y0, u);
+public:
+    // Constructor initializing the PID parameters
+    PIDController(double t, double tp, double tm, double k)
+        : samplingPeriod(t), proportionalPeriod(tp), integrationPeriod(tm), gain(k)
+    {
+    }
+
+    // Function to calculate the control output based on errors
+    double computeControlOutput(double currentError, double previousError1, double previousError2) {
+        double q0, q1, q2;
+
+        // Calculate the PID coefficients based on the sampling period and gains
+        q0 = gain * (1 + integrationPeriod / proportionalPeriod);
+        q1 = -gain * (1 + 2 * integrationPeriod / proportionalPeriod - proportionalPeriod / samplingPeriod);
+        q2 = gain * integrationPeriod / proportionalPeriod;
+
+        // Update control output based on the current and previous errors
+        controlOutput += q0 * currentError + q1 * previousError1 + q2 * previousError2;
+        return controlOutput;
+    }
+};
+
+// Function implementing the PID control logic
+void executePIDControl(double targetTemperature, double initialTemperature, PIDController& controller,
+    LinearTemperatureModel& linearModel, NonLinearTemperatureModel& nonLinearModel, bool isLinear) {
+    ofstream outputFile;
+    outputFile.open("D:\\result.txt", ios_base::out | ios_base::app); // Open file for logging results
+
+    if (outputFile.is_open()) {
+        double previousError1 = 0;
+        double previousError2 = 0;
+        double currentTemperature = initialTemperature;
+
+        // Run the PID control loop for a fixed number of iterations
+        for (int iteration = 0; iteration < 100; iteration++) {
+            double currentError;
+            double controlOutput;
+
+            // Calculate the current error as the difference from the target temperature
+            currentError = targetTemperature - currentTemperature;
+            controlOutput = controller.computeControlOutput(currentError, previousError1, previousError2); // Calculate control output
+
+            // Depending on the selected model, calculate the new temperature
+            if (isLinear) {
+                currentTemperature = linearModel.calculateTemperature(initialTemperature, controlOutput);
             }
-            else
-            {
-                y = md2.equation(y0, u);
+            else {
+                currentTemperature = nonLinearModel.calculateTemperature(initialTemperature, controlOutput);
             }
 
-            fout << "E=" << e << " Y=" << y << " U=" << u << endl;
-            em2 = em1;
-            em1 = e;
+            // Log the results to the output file
+            outputFile << "Error=" << currentError << " CurrentTemp=" << currentTemperature << " ControlOutput=" << controlOutput << endl;
+
+            // Update previous errors for the next iteration
+            previousError2 = previousError1;
+            previousError1 = currentError;
         }
     }
-    fout.close();
+    outputFile.close(); // Close the output file after writing results
 }
 
+// Main function to drive the program
 int main() {
-    setlocale(0, "");
-    ofstream fout;
-    fout.open("D:\\result.txt", ios_base::out | ios_base::app);
-    if (fout.is_open()) {
-        fout << "LinearModel:" << endl;
-        LinearModel l(0.333f, 0.667f, 1);
-        NonLinearModel nl(1.0f, 0.0033f, 0.525f, 0.525f, 1.0f);
-        Regulator regl(10, 10, 50, 0.1f);
-        PID(5, 2, regl, l, nl, true);
-        fout << "NonLinearModel:" << endl;
-        Regulator regnl(10, 10, 50, 0.1f);
-        PID(5, 2, regnl, l, nl, false);
+    setlocale(0, ""); // Set locale for Russian language support
+    ofstream outputFile;
+    outputFile.open("D:\\result.txt", ios_base::out | ios_base::app); // Open file for logging results
+
+    if (outputFile.is_open()) {
+        outputFile << "Linear Temperature Model Results:" << endl;
+        LinearTemperatureModel linearModel(0.333f, 0.667f, 1); // Initialize linear model
+        NonLinearTemperatureModel nonLinearModel(1.0f, 0.0033f, 0.525f, 0.525f, 1.0f); // Initialize non-linear model
+        PIDController pidController(10, 10, 50, 0.1f); // Initialize PID controller
+
+        // Execute PID control for linear model
+        executePIDControl(5, 2, pidController, linearModel, nonLinearModel, true);
+
+        outputFile << "Non-Linear Temperature Model Results:" << endl;
+        PIDController nonLinearPIDController(10, 10, 50, 0.1f); // Initialize PID controller for non-linear model
+        executePIDControl(5, 2, nonLinearPIDController, linearModel, nonLinearModel, false); // Execute PID control for non-linear model
     }
-    cout << "Сохранено в result.txt" << endl;
-    return 0;
+
+    cout << "Results saved to result.txt" << endl; // Notify user that results have been saved
+    return 0; // End of the program
 }
