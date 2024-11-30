@@ -52,7 +52,7 @@
 |----|--------------------------------|----------------------------- |----|-----|----|-----|----|----|----|---------|--------|
 |1|Белаш Александр Олегович|||||||||||
 |2|Брызгалов Юрий Николаевич|||||||||||
-|3|Будник Анна Андреевна|[as0006433](./trunk/as0006433/)|:white_check_mark:|:white_check_mark:||||||||
+|3|Будник Анна Андреевна|[as0006433](./trunk/as0006433/)|:white_check_mark:|:white_check_mark:|:white_check_mark:|||||||
 |4|Булавский Андрей Сергеевич|[as0006404](./trunk/as0006404/)|:white_check_mark:|:white_check_mark:|:white_check_mark:|:white_check_mark:||||||
 |5|Бурак Илья Эдуардович|[as0006405](./trunk/as0006405/)|:white_check_mark:|:white_check_mark:|:white_check_mark:|||||||
 |6|Горкавчук Никита Михайлович|[as64220038](./trunk/as64220038/)|:white_check_mark:|:white_check_mark:|:white_check_mark:|:white_check_mark:|:white_check_mark:|||||
