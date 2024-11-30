@@ -23,8 +23,8 @@
 |1| Абдулвали Сундус|||||||||||
 |2|Ващук Анатолий|[as0006302](./trunk/as0006302/)|:white_check_mark:|:white_check_mark:|:white_check_mark:|:white_check_mark:|:white_check_mark:|:white_check_mark:||||
 |3|Выржемковский Даниил|[as0006303](./trunk/as0006303/)|:white_check_mark:|:white_check_mark:||||||||
-|4|Грицук Дмитрий|[as0006306](./trunk/as0006306/)|:white_check_mark:|:white_check_mark:|:white_check_mark:|||||||
-|5|Грицук Павел|||||||||||
+|4|Грицук Дмитрий|[as0006306](./trunk/as0006306/)|:white_check_mark:|:white_check_mark:|:white_check_mark:|:white_check_mark:||||||
+|5|Грицук Павел|[as0006304](./trunk/as0006304/)|:white_check_mark:|:white_check_mark:||||||||
 |6|Казаренко Павел|[as0006305](./trunk/as0006305/)|:white_check_mark:|:white_check_mark:|:white_check_mark:|||||||
 |7|Карпеш Никита|[as0006309](./trunk/as0006309/)|:white_check_mark:|:white_check_mark:|:white_check_mark:|:white_check_mark:|:white_check_mark:|:white_check_mark:|:white_check_mark:|||
 |8|Козлович Антон|[as0006308](./trunk/as0006308/)|:white_check_mark:|:white_check_mark:|:white_check_mark:|||||||
@@ -60,7 +60,7 @@
 |8|Ежгунович Глеб Михайлович|||||||||||
 |9|Иванюк Иван Александрович|[as0006409](./trunk/as0006409/)|:white_check_mark:|:white_check_mark:|:white_check_mark:||||||||
 |10|Игнаткевич Кирилл Сергеевич|[as0006442](./trunk/as0006442)|:white_check_mark:|:white_check_mark:||||||||
-|11|Кашпир Дмитрий Русланович|[as0006443](./trunk/as0006443/)|:white_check_mark:|:white_check_mark:|:white_check_mark:|:white_check_mark:||||||
+|11|Кашпир Дмитрий Русланович|[as0006443](./trunk/as0006443/)|:white_check_mark:|:white_check_mark:|:white_check_mark:|:white_check_mark:|:white_check_mark:|||||
 |12|Котковец Кирилл Викторович|[as0006444](./trunk/as0006444/)|:white_check_mark:|:white_check_mark:||||||||
 |13|Кужир Владислав Витальевич|[as0006313](./trunk/as0006413/)|:white_check_mark:|:white_check_mark:|:white_check_mark:|:white_check_mark:|:white_check_mark:|||||
 |14|Немирович Дмитрий Александрович|[as0006414](./trunk/as0006414/)|:white_check_mark:|:white_check_mark:||||||||
