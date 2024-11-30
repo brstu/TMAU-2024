@@ -1,186 +1,140 @@
 #include <iostream>
 #include <cmath>
 
-/**
- * \brief An abstract model's class
- *
- * Model is used to represent other models.
- */
-class Model {
+// Базовый класс математической модели
+class MathModel {
 public:
     /**
-     * @brief Virtual function for temperature determination
-     * 
-     * @param Yt: input temperature
-     * @param Uw: input warm
-     * @return double output temperature
-     * 
+     * @brief Расчет выходного значения модели
+     * @param Yt Текущее значение
+     * @param Yt_1 Предыдущее значение
+     * @param U Входное значение
+     * @return Выходное значение модели
      */
-    virtual double simulate_temperature(double Yt, double Uw) = 0;
-
-    /**
-     * @brief Destroy the model object
-     * 
-     */
-    virtual ~Model() = default;
+    virtual double calculateOutput(double Yt, double Yt_1, double U) const = 0;
+     virtual ~MathModel() = default;
 };
 
-/**
- * @brief Linear model of temperature control
- * 
- */
-class LinearModel : public Model {
+// Линейная модель
+class LinearModel : public MathModel {
 private:
-    double a; ///< Parametr a
-    double b; ///< Parametr b
+    double a;
+    double b;
+
 public:
     /**
-     * @brief Construct a new LinearModel object
-     * 
-     * @param a,b: some constants 
-     * 
+     * @brief Конструктор линейной модели
+     * @param a Параметр a
+     * @param b Параметр b
      */
-    LinearModel(double a, double b) : a(a), b(b) {}
-    
-    /**
-     * @brief This is a redefined method for calculating the output temperature of a linear model object
-     */
-    double simulate_temperature(double Yt, double Uw) final {
-        return a * Yt + b * Uw;
-    }
+    explicit LinearModel(double a, double b) : a(a), b(b) {}
 
-    /**
-     * @brief Destroy the LinearModel object
-     */
-    ~LinearModel() override = default;
+    double calculateOutput(double Yt, double Yt_1, double U) const override {
+        return a * Yt + b * U;
+    }
 };
 
-/**
- * @brief Nonlinear model of temperature control
- * 
- */
-class NonlinearModel : public Model {
+// Нелинейная модель
+class NonlinearModel : public MathModel {
 private:
-    double a; ///< Parametr a
-    double b; ///< Parametr b
-    double c; ///< Parametr c
-    double d; ///< Parametr d
-    //! Previous temperature value
-    double PreYt = 0;
-    //! Previous warm value
-    double PreUw = 0;
+    double a;
+    double b;
+    double c;
+    double d;
+
 public:
+    /**
+     * @brief Конструктор нелинейной модели
+     * @param a Параметр a
+     * @param b Параметр b
+     * @param c Параметр c
+     * @param d Параметр d
+     */
+    NonlinearModel(double a, double b, double c, double d) : a(a), b(b), c(c), d(d) {}
 
-    /**
-     * @brief Construct a new NonlinearModel object
-     * @param a,b,c,d: some constants
-     */
-    NonlinearModel(double a, double b, double c, double d)
-        : a(a), b(b), c(c), d(d) {}
-    
-    /**
-     * @brief This is a redefined method for calculating the output temperature of a nonlinear model object 
-     */
-    double simulate_temperature(double Yt, double Uw) final {
-        double calc = a * Yt - b * pow(PreYt, 2) + c * Uw + d * sin(PreUw);
-        PreYt = Yt;
-        PreUw = Uw;
-        return calc;
+    double calculateOutput(double Yt, double Yt_1, double U) const override {
+        return a * Yt - b * std::pow(Yt_1, 2) + c * U + d * std::sin(U);
     }
-
-    /**
-     * @brief Destroy the NonlinearModel object
-     * 
-     */
-    ~NonlinearModel() override = default;
 };
 
-/**
- * @brief Proportional–integral–derivative regulator
- */
-class PIDregulator {
+// ПИД-регулятор
+class PIDController {
 private:
-    //! Transfer coefficient
-    const double K = 0.1;
-    //! Integration constant
-    const double T = 10;
-    //! Differentiation constant
-    const double TD = 80;
-    //! Quantization step
-    const double T0 = 50;
-    //! Simulation time
-    const double numOfTimeModeling = 30;
-    //! Control variable value
-    double Uk = 0;
-    
-    /**
-     * @brief Calculate current control value
-     * 
-     * @param e deviation from the desired value
-     * @param e1 previous deviation from the desired value
-     * @param e2 previous deviation from e1
-     * @return double updated control variable value
-     */
-    double calculate_Uk(double e, double e1, double e2) {
-        double q0 = K * (1 + TD / T0);
-        double q1 = -K * (1 + 2 * TD / T0 - T0 / T);
-        double q2 = K * TD / T0;
-        Uk += q0 * e + q1 * e1 + q2 * e2;
-        return Uk;
-    }
+    double q0;
+    double q1;
+    double q2;
+    double e_k_1 = 0.0;
+    double e_k_2 = 0.0;
+    double u_k_1 = 0.0;
 
 public:
+    /**
+     * @brief Конструктор ПИД-регулятора
+     * @param k Параметр k
+     * @param TD Параметр TD
+     * @param T0 Параметр T0
+     */
+    explicit PIDController(double k, double TD, double T0) : q0(k * (1 + (TD / T0))), q1(-k * (1 + 2 * (TD / T0) - (T0 / TD))),
+                                                            q2(k * (TD / T0)) {}
 
     /**
-     * @brief Modeling regulator
-     * 
-     * @param w desired value
-     * @param y0 initial temperature
-     * @param model linear or nonlinear model
+     * @brief Расчет выходного значения ПИД-регулятора
+     * @param e_k Ошибка
+     * @return Выходное значение ПИД-регулятора
      */
-    void Regulate(double w, double y0, Model& model) {
-        double e1 = 0;
-        double e2 = 0;
-        double y = y0;
-        for (int i = 1; i <= numOfTimeModeling; i++) {
-            double e;
-            e = w - y;
-            Uk = calculate_Uk(e, e1, e2);
-            y = model.simulate_temperature(y0, Uk);
-            printf("E = %f, Yt = %f, Uk = %f\n", e, y, Uk);
-            e2 = e1;
-            e1 = e;
-        }
-        Uk = 0;
+    double calculateOutput(double e_k) {
+        double u_k = u_k_1 + q0 * e_k + q1 * e_k_1 + q2 * e_k_2;
+        u_k_1 = u_k;
+        e_k_2 = e_k_1;
+        e_k_1 = e_k;
+        return u_k;
     }
 };
 
 int main() {
-    const double w = 8;  // desired temperature
-    const double y0 = 3; // initial temperature
-
-    // Constants for LinearModel
-    double a_linear = 1.0;
+    double a_linear = 0.8;
     double b_linear = 0.5;
-
-    // Constants for NonlinearModel
-    double a_nonlinear = 1.5;
-    double b_nonlinear = 0.3;
+    double a_nonlinear = 0.8;
+    double b_nonlinear = 0.5;
     double c_nonlinear = 0.2;
     double d_nonlinear = 0.1;
 
-    // Create models
-    LinearModel linear_model(a_linear, b_linear);
-    NonlinearModel nonlinear_model(a_nonlinear, b_nonlinear, c_nonlinear, d_nonlinear);
+    double Y_linear = 0.0;
+    double Y_nonlinear = 0.0;
+    double Y_prev_nonlinear = 0.0;
 
-    PIDregulator pid_regulator;
+    // Входные значения
+    double U = 1.0;
 
-    printf("\t---LinearModel---\n");
-    pid_regulator.Regulate(w, y0, linear_model);
-    printf("\n");
+    // Создание объектов моделей
+    LinearModel linearModel(a_linear, b_linear);
+    NonlinearModel nonlinearModel(a_nonlinear, b_nonlinear, c_nonlinear, d_nonlinear);
 
-    printf("\t---NonlinearModel---\n");
-    pid_regulator.Regulate(w, y0, nonlinear_model);
+    // ПИД-регулятор
+    PIDController pidController(1.0, 0.5, 0.2);
+
+    // Симуляция на 10 временных шагов
+    for (int t = 1; t <= 10; t++) {
+        // Линейная модель
+         double Yt_linear = linearModel.calculateOutput(Y_linear, 0, U);
+
+        // Нелинейная модель
+        double Yt_nonlinear = nonlinearModel.calculateOutput(Y_nonlinear, Y_prev_nonlinear, U);
+        Y_prev_nonlinear = Y_nonlinear;
+        Y_nonlinear = Yt_nonlinear;
+
+        // ПИД-регулятор
+        double error = Yt_linear - Yt_nonlinear;
+        double controlSignal = pidController.calculateOutput(error);
+
+        // Вывод результатов
+        std::cout << "Time step: " << t << std::endl;
+        std::cout << "Linear model output: " << Yt_linear << std::endl;
+        std::cout << "Nonlinear model output: " << Yt_nonlinear << std::endl;
+        std::cout << "Error: " << error << std::endl;
+        std::cout << "Control signal: " << controlSignal << std::endl;
+        std::cout << std::endl;
+    }
 
     return 0;
 }
