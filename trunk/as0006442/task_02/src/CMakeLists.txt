@@ -1,4 +1,6 @@
-cmake_minimum_required (VERSION 3.10)
-project (task02)
+cmake_minimum_required(VERSION 3.25)
+project(tasks_02)
 
-add_executable(task02_as0006442 lab2.cpp)
+set(CMAKE_CXX_STANDARD 17)
+
+add_executable(tasks_02 lab2.cpp)
