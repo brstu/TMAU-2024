@@ -1,158 +1,87 @@
 #include <iostream>
 #include <cmath>
-#include <locale>
 
-/**
- * \mainpage
- * \brief Lab work 2. PID controller modeling.
- * \author Chugarin Daniil Alexandrovich, AS-61.
- */
+using namespace std;
 
-/**
- * \class PIDModelBase
- * \brief Abstract base class for PID models.
- *
- * This class describes the interface for different PID controller models.
- * It defines a pure virtual method `calculate_model` which must be implemented in derived classes.
- */
-class PIDModelBase {
-public:
-    virtual ~PIDModelBase() = default;
-
-    /**
-     * \brief Pure virtual method to calculate the PID model.
-     * \param current_value The current value of the parameter to be adjusted.
-     * \param input_flow The incoming energy or other control parameter.
-     * \return The calculated new value.
-     */
-    virtual double calculate_model(double current_value, double input_flow) = 0;
-};
-
-/**
- * \class NonlinearPIDModel
- * \brief Class to implement the nonlinear PID model.
- *
- * This class implements a nonlinear PID controller model, using methods to account for past values.
- */
-class NonlinearPIDModel : public PIDModelBase {
+class Model {
 private:
     double a, b, c, d;
-    double prev_temperature_value = 0;
-    double new_value;
-    double prev_input_heat = 0;
+    double Prew_Y = 0;
+    double Prew_U = 0;
+    bool is_linear;
 
 public:
-    NonlinearPIDModel(double a, double b, double c, double d) :
-        a(a), b(b), c(c), d(d) { }
+    Model(double A, double B, double c = 0, double d = 0, bool is_linear = true)
+        : a(A), b(B), c(c), d(d), is_linear(is_linear) {}
 
-    /**
-     * \brief Calculates the PID model using the nonlinear formula.
-     * \param current_value Current parameter value.
-     * \param input_flow Incoming energy flow.
-     * \return The calculated value using the nonlinear model.
-     */
-    double calculate_model(double current_value, double input_flow) override {
-        new_value = a * current_value - b * std::pow(prev_temperature_value, 2) +
-                    c * input_flow + d * std::sin(prev_input_heat);
-        prev_temperature_value = current_value;
-        prev_input_heat = input_flow;
-        return new_value;
-    }
-};
-
-/**
- * \class LinearPIDModel
- * \brief Class to implement the linear PID model.
- *
- * This class implements a linear PID controller model.
- */
-class LinearPIDModel : public PIDModelBase {
-private:
-    double a, b;
-    double new_value;
-
-public:
-    LinearPIDModel(double a, double b) :
-        a(a), b(b) { }
-
-    /**
-     * \brief Calculates the PID model using the linear formula.
-     * \param current_value Current parameter value.
-     * \param input_flow Incoming energy flow.
-     * \return The calculated value using the linear model.
-     */
-    double calculate_model(double current_value, double input_flow) override {
-        new_value = a * current_value + b * input_flow;
-        return new_value;
-    }
-};
-
-/**
- * \class Controller
- * \brief Class for simulating the PID controller.
- *
- * This class implements the PID controller operation and outputs results to the console.
- */
-class Controller {
-private:
-    double integration_constant, quantization_step, differentiation_constant, transfer_coefficient;
-    double current_control_action = 0;
-
-    double calculate_control_action(double error1, double error2, double error3) {
-        double param1 = transfer_coefficient * (1 + differentiation_constant / quantization_step);
-        double param2 = -transfer_coefficient * (1 + 2 * differentiation_constant / quantization_step - quantization_step / integration_constant);
-        double param3 = transfer_coefficient * differentiation_constant / quantization_step;
-        current_control_action += (param1 * error1 + param2 * error2 + param3 * error3);
-        return current_control_action;
-    }
-
-public:
-    Controller(double T, double T0, double TD, double K) :
-        integration_constant(T), quantization_step(T0), differentiation_constant(TD), transfer_coefficient(K) { }
-
-    void calculate_and_output_results(double required, double initial) {
-        double error1 = 0, error2 = 0, error3 = 0;
-        double temperature = initial;
-        double control_action = 0;
-
-        LinearPIDModel linear(0.333, 0.667);
-
-        std::cout << "Linear model: " << std::endl;
-
-        for (int i = 0; i < 50; ++i) {
-            error1 = required - temperature;
-            control_action = calculate_control_action(error1, error2, error3);
-            temperature = linear.calculate_model(initial, control_action);
-            std::cout << "E=" << error1 << " Y=" << temperature << " U=" << control_action << std::endl;
-            error3 = error2;
-            error2 = error1;
+    double get_temp(double Y, double U) {
+        if (is_linear) {
+            return a * Y + b * U;
         }
-
-        error2 = 0;
-        error3 = 0;
-        temperature = initial;
-
-        std::cout << "Nonlinear model: " << std::endl;
-
-        NonlinearPIDModel nonlinear(1, 0.0033, 0.525, 0.525);
-
-        for (int i = 0; i < 50; ++i) {
-            error1 = required - temperature;
-            control_action = calculate_control_action(error1, error2, error3);
-            temperature = nonlinear.calculate_model(initial, control_action);
-            std::cout << "E=" << error1 << " Y=" << temperature << " U=" << control_action << std::endl;
-            error3 = error2;
-            error2 = error1;
+        else {
+            double res = a * Y - b * pow(Prew_Y, 2) + c * U + d * sin(Prew_U);
+            Prew_Y = Y;
+            Prew_U = U;
+            return res;
         }
     }
 };
+
+class PID {
+private:
+    const double T_0 = 30;
+    const double Time = 10;
+    double Uk = 0;
+    const double k = 0.5;
+    const double T = 25;
+    const double T_d = 15;
+
+    double get_Uk(double e, double e1, double e2) {
+        double q0 = k * (1 + (T_d / T_0));
+        double q1 = -k * (1 + 2 * (T_d / T_0) - (T_0 / T));
+        double q2 = k * (T_d / T_0);
+        Uk += q0 * e + q1 * e1 + q2 * e2;
+        return Uk;
+    }
+
+public:
+
+    void regulAtor(double W, double Y0, Model& model) {
+        double e2 = 0, e1 = 0, y = Y0;
+        for (int i = 1; i <= Time; i++) {
+            double e = W - y;
+            Uk = get_Uk(e, e1, e2);
+            y = model.get_temp(Y0, Uk);
+            cout << "E = " << e << ", Yt = " << y << ", Uk = " << Uk << endl;
+            e2 = e1;
+            e1 = e;
+        }
+        Uk = 0;
+    }
+};
+
+void input_par(double& A, double& B, double& c, double& d, bool is_nonlinearModel) {
+    cout << "Enter A: "; cin >> A;
+    cout << "Enter B: "; cin >> B;
+    if (is_nonlinearModel) {
+        cout << "Enter c: "; cin >> c;
+        cout << "Enter d: "; cin >> d;
+    }
+}
 
 int main() {
-    setlocale(LC_ALL, "ru_RU.UTF-8");
-
-    Controller controller(10, 10, 40, 0.1);
-
-    controller.calculate_and_output_results(5, 2);
-
+    const double W = 10;
+    const double Y0 = 5;
+    const double A = 0.21;
+    const double B = 0.64;
+    const double C = 0.80;
+    const double D = 0.07;
+    Model linear_model{ A, B, true };
+    Model nonlinear_model{ A, B, C, D, false };
+    PID pid_regulAtor;
+    cout << "Not Linear mode" << endl;
+    pid_regulAtor.regulAtor(W, Y0, nonlinear_model);
+    cout << "Linear mode" << endl;
+    pid_regulAtor.regulAtor(W, Y0, linear_model);
     return 0;
 }

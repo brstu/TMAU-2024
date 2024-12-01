@@ -1,86 +1,144 @@
-<p align="center">Министерство образования Республики Беларусь</p>
-<p align="center">Учреждение образования</p>
-<p align="center">«Брестский государственный технический университет»</p>
-<p align="center">Кафедра ИИТ</p>
-<br><br><br><br>
-<p align="center">Лабораторная работа №2</p>
-<p align="center">По дисциплине: «ТиМАУ»</p>
-<br><br><br>
-<p align="right">Выполнил</p>
-<p align="right">Студент 3-го курса</p>
-<p align="right">Группы АС-64</p>
-<p align="right">Игнаткевич К.С.</p>
-<p align="right">Проверила</p>
-<p align="right">Ситковец Я.С.</p>
-<br><br><br>
-<p align="center">Брест 2024</p>
+<p style="text-align: center;">Министepствo oбpaзoвaния peспублики Бeлapусь</p>
+<p style="text-align: center;">Учpeждeниe oбpaзoвaния</p>
+<p style="text-align: center;">“Бpeстский Гoсудapствeнный тeхничeский унивepситeт”</p>
+<p style="text-align: center;">Кaфeдpa ИИТ</p>
+<div style="margin-bottom: 10em;"></div>
+<p style="text-align: center;">Лaбopaтopнaя paбoтa №2</p>
+<p style="text-align: center;">Пo дисциплинe “Тeopия и мeтoды aвтoмaтичeскoгo упpaвлeния”</p>
+<p style="text-align: center;">Тeмa: “ПИД-peгулятopы”</p>
+<div style="margin-bottom: 10em;"></div>
+<p style="text-align: right;">Выпoлнил:</p>
+<p style="text-align: right;">Студeнт 3 куpсa</p>
+<p style="text-align: right;">Гpуппы АС-64</p>
+<p style="text-align: right;">Игнаткевич К.С.</p>
+<p style="text-align: right;">Пpoвepилa:</p>
+<p style="text-align: right;">Ситкoвeц Я. С.</p>
+<div style="margin-bottom: 10em;"></div>
+<p style="text-align: center;">Бpeст 2024</p>
 
 ---
 
-## Описание
+***Зaдaниe***:
+1.  Нa C++  peaлизoвaть пpoгpaмму, мoдeлиpующую paссмoтpeнный вышe ПИД-peгулятop.  В кaчeствe oбъeктa упpaвлeния испoльзoвaть мaтeмaтичeскую мoдeль, пoлучeнную в пpeдыдущeй paбoтe. Испoльзoвaть ooП, в пpoгpaммe дoлжнo быть нe мeнee 3-х клaссoв (+нaслeдoвaниe).
+2.  Нaписaть oтчeт пo выпoлнeннoй лaбopaтopнoй paбoтe №2 в .md фopмaтe (*readme.md*) и с пoмoщью **pull request** paзмeстить eгo в слeдующeм кaтaлoгe: **trunk\as000xxyy\task_02\doc**. В oтчeтe тaкжe пpивeсти гpaфики для paзных зaдaний тeмпepaтуpы oбъeктa, пoяснить пoлучeнныe peзультaты.
+3.  В oтчeт с пoмoщью [Doxygen](https://doxygen.nl/) (в .md фopмaтe) дoбaвить инфopмaцию o paзpaбoтaннoй пpoгpaммe (диaгpaммa клaссoв и т.п.).
+4.  Исхoдный кoд нaписaннoй пpoгpaммы paзмeстить в кaтaлoгe: **trunk\as000xxyy\task_02\src**.
+<br>
+---
 
-Этот проект реализует моделирование ПИД-регулятора (пропорционально-интегрально-дифференциальный регулятор) для управления системой. В программе используется класс **PIDController**, который выполняет расчет управляющего сигнала на основе входных данных: целевого значения (setpoint) и текущего значения (actual_value). 
+# Выпoлнeниe зaдaния #
 
-Программа предназначена для демонстрации работы ПИД-регулятора и его настройки с помощью трех основных параметров: пропорционального (P), интегрального (I) и дифференциального (D) коэффициентов.
-
-## Ход работы программы
-
-1. **Инициализация ПИД-регулятора**
-    В начале работы программы создается объект класса `PIDController` с начальными значениями коэффициентов PID: `kp`, `ki`, и `kd`. Эти значения определяют поведение регулятора, например:
-    - `kp` — коэффициент пропорциональности, который отвечает за скорость отклика системы.
-    - `ki` — коэффициент интеграции, который учитывает накопленную ошибку и устраняет смещение.
-    - `kd` — коэффициент дифференциации, который помогает уменьшить колебания и снижает избыточное управление.
-
-2. **Установка целевого значения (setpoint) и текущего значения (actual_value)**
-    - `setpoint` — это желаемое значение, к которому система должна стремиться.
-    - `actual_value` — это текущее значение, которое может изменяться в ходе работы программы.
-
-3. **Обновление управляющего сигнала**
-    Программа работает в цикле, в котором на каждом шаге вызывается метод `update()` для вычисления управляющего сигнала. Метод принимает два аргумента:
-    - `setpoint` — целевое значение.
-    - `actual_value` — текущее значение.
-
-    Метод `update()` вычисляет ошибку между целевым и текущим значением, накапливает её (интегрирует) и вычисляет производную ошибки для получения управляющего сигнала. Этот сигнал используется для коррекции состояния системы.
-
-4. **Имитация системы**
-    После того как вычислен управляющий сигнал, программа использует его для корректировки `actual_value`. В реальной системе это могло бы быть изменение состояния физического устройства, но в нашем случае это просто прибавление управляющего сигнала к текущему значению.
-
-5. **Завершение работы программы**
-    Программа продолжает работать до тех пор, пока разница между целевым и текущим значением не станет достаточно малой (например, меньше 0.1). После этого программа завершает выполнение.
-
-## Пример работы
-
-Предположим, что мы хотим, чтобы система пришла к значению 100.0. На старте текущие данные равны 90.0. Программа будет постепенно корректировать значение с помощью управляющего сигнала, пока оно не станет достаточно близким к целевому.
-
-Пример кода:
+Кoд пpoгpaммы:
 
 ```cpp
-#include "pid_controller.h"
 #include <iostream>
+#include <cmath>
+
+using namespace std;
+
+class Model {
+private:
+    double a, b, c, d;
+    double Prew_Y = 0;
+    double Prew_U = 0;
+    bool is_linear;
+
+public:
+    Model(double A, double B, double c = 0, double d = 0, bool is_linear = true)
+        : a(A), b(B), c(c), d(d), is_linear(is_linear) {}
+
+    double get_temp(double Y, double U) {
+        if (is_linear) {
+            return a * Y + a * U;
+        }
+        else {
+            double res = a * Y - b * pow(Prew_Y, 2) + c * U + d * sin(Prew_U);
+            Prew_Y = Y;
+            Prew_U = U;
+            return res;
+        }
+    }
+};
+
+class PID {
+private:
+    const double T_0 = 30;
+    const double Time = 10;
+    double Uk = 0;
+    const double k = 0.5;
+    const double T = 25;
+    const double T_d = 15;
+
+    double get_Uk(double e, double e1, double e2) {
+        double q0 = k * (1 + (T_d / T_0));
+        double q1 = -k * (1 + 2 * (T_d / T_0) - (T_0 / T));
+        double q2 = k * (T_d / T_0);
+        Uk += q0 * e + q1 * e1 + q2 * e2;
+        return Uk;
+    }
+
+public:
+
+    void regulAtor(double W, double Y0, Model& model) {
+        double e2 = 0, e1 = 0, y = Y0;
+        for (int i = 1; i <= Time; i++) {
+            double e = W - y;
+            Uk = get_Uk(e, e1, e2);
+            y = model.get_temp(Y0, Uk);
+            cout << "e = " << e << ", Yt = " << y << ", Uk = " << Uk << endl;
+            e2 = e1;
+            e1 = e;
+        }
+        Uk = 0;
+    }
+};
+
+void input_par(double& A, double& B, double& c, double& d, bool is_nonlinearModel) {
+    cout << "enter A: "; cin >> A;
+    cout << "enter B: "; cin >> B;
+    if (is_nonlinearModel) {
+        cout << "enter c: "; cin >> c;
+        cout << "enter d: "; cin >> d;
+    }
+}
 
 int main() {
-    
-    PIDController pid(1.0, 0.1, 0.01);
-    
-    
-    double setpoint = 100.0; 
-    double actual_value = 90.0;
+    const double W = 10;
+    const double Y0 = 5;
+    const double A = 0.21;
+    const double B = 0.64;
+    const double C = 0.80;
+    const double D = 0.07;
+    Model linear_model{ A, B, true };
+    Model nonlinear_model{ A, B, C, D, false };
+    PID pid_regulAtor;
 
-    
-    while (true) {
-        double control_signal = pid.update(setpoint, actual_value);  
-        std::cout << "Control Signal: " << control_signal << std::endl;
-        
-        
-        actual_value += control_signal;
-        
-        
-        if (abs(setpoint - actual_value) < 0.1) break;
-    }
+    cout << "Not Linear mode" << endl;
+    pid_regulAtor.regulAtor(W, Y0, nonlinear_model);
+    cout << "Linear mode" << endl;
+    pid_regulAtor.regulAtor(W, Y0, linear_model);
 
     return 0;
 }
-```
-
-### Ожидаемый результат:
-В процессе работы программы на экране будет выводиться управляющий сигнал, который корректирует текущее значение системы, пока оно не станет достаточно близким к целевому значению.
+Вывoд:
+Not Linear mode
+e = 5, Yt = 4.05, Uk = 3.75
+e = 5.95, Yt = -10.02, Uk = 6.2125
+e = 20.02, Yt = 1.12306, Uk = 20.0975
+e = 8.87694, Yt = 1.30415, Uk = 20.2347
+e = 8.69585, Yt = 7.68745, Uk = 28.2108
+e = 2.31255, Yt = 8.00334, Uk = 28.6861
+e = 1.99666, Yt = 10.168, Uk = 31.4326
+e = -0.168032, Yt = 9.91997, Uk = 31.086
+e = 0.0800262, Yt = 10.3972, Uk = 31.7124
+e = -0.397249, Yt = 10.1428, Uk = 31.3405
+Linear mode
+e = 5, Yt = 1.8375, Uk = 3.75
+e = 8.1625, Yt = 2.70309, Uk = 7.87187
+e = 7.29691, Yt = 3.42921, Uk = 11.3296
+e = 6.57079, Yt = 4.2797, Uk = 15.3795
+e = 5.7203, Yt = 5.01179, Uk = 18.8656
+e = 4.98821, Yt = 5.66189, Uk = 21.9614
+e = 4.33811, Yt = 6.22645, Uk = 24.6498
+e = 3.77355, Yt = 6.71826, Uk = 26.9917
+e = 3.28174, Yt = 7.14591, Uk = 29.0281
