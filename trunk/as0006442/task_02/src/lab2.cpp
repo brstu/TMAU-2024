@@ -2,15 +2,38 @@
 #include <cmath>
 #include <locale>
 
+/**
+ * \mainpage
+ * \brief Lab work 2. PID controller modeling.
+ * \author Chugarin Daniil Alexandrovich, AS-61.
+ */
 
+/**
+ * \class PIDModelBase
+ * \brief Abstract base class for PID models.
+ *
+ * This class describes the interface for different PID controller models.
+ * It defines a pure virtual method `calculate_model` which must be implemented in derived classes.
+ */
 class PIDModelBase {
 public:
     virtual ~PIDModelBase() = default;
 
+    /**
+     * \brief Pure virtual method to calculate the PID model.
+     * \param current_value The current value of the parameter to be adjusted.
+     * \param input_flow The incoming energy or other control parameter.
+     * \return The calculated new value.
+     */
     virtual double calculate_model(double current_value, double input_flow) = 0;
 };
 
-
+/**
+ * \class NonlinearPIDModel
+ * \brief Class to implement the nonlinear PID model.
+ *
+ * This class implements a nonlinear PID controller model, using methods to account for past values.
+ */
 class NonlinearPIDModel : public PIDModelBase {
 private:
     double a, b, c, d;
@@ -22,7 +45,12 @@ public:
     NonlinearPIDModel(double a, double b, double c, double d) :
         a(a), b(b), c(c), d(d) { }
 
-    
+    /**
+     * \brief Calculates the PID model using the nonlinear formula.
+     * \param current_value Current parameter value.
+     * \param input_flow Incoming energy flow.
+     * \return The calculated value using the nonlinear model.
+     */
     double calculate_model(double current_value, double input_flow) override {
         new_value = a * current_value - b * std::pow(prev_temperature_value, 2) +
                     c * input_flow + d * std::sin(prev_input_heat);
@@ -32,7 +60,12 @@ public:
     }
 };
 
-
+/**
+ * \class LinearPIDModel
+ * \brief Class to implement the linear PID model.
+ *
+ * This class implements a linear PID controller model.
+ */
 class LinearPIDModel : public PIDModelBase {
 private:
     double a, b;
@@ -42,14 +75,24 @@ public:
     LinearPIDModel(double a, double b) :
         a(a), b(b) { }
 
-    
+    /**
+     * \brief Calculates the PID model using the linear formula.
+     * \param current_value Current parameter value.
+     * \param input_flow Incoming energy flow.
+     * \return The calculated value using the linear model.
+     */
     double calculate_model(double current_value, double input_flow) override {
         new_value = a * current_value + b * input_flow;
         return new_value;
     }
 };
 
-
+/**
+ * \class Controller
+ * \brief Class for simulating the PID controller.
+ *
+ * This class implements the PID controller operation and outputs results to the console.
+ */
 class Controller {
 private:
     double integration_constant, quantization_step, differentiation_constant, transfer_coefficient;
