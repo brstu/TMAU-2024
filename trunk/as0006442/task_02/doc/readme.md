@@ -44,8 +44,8 @@ private:
     bool is_linear;
 
 public:
-    Model(double A, double B, double c = 0, double d = 0, bool is_linear = true)
-        : a(A), b(B), c(c), d(d), is_linear(is_linear) {}
+    Model(double a, double B, double c = 0, double d = 0, bool is_linear = true)
+        : a(a), b(B), c(c), d(d), is_linear(is_linear) {}
 
     double get_temp(double Y, double U) {
         if (is_linear) {
@@ -79,7 +79,7 @@ private:
 
 public:
 
-    void regulAtor(double W, double Y0, Model& model) {
+    void regulator(double W, double Y0, Model& model) {
         double e2 = 0, e1 = 0, y = Y0;
         for (int i = 1; i <= Time; i++) {
             double e = W - y;
@@ -93,8 +93,8 @@ public:
     }
 };
 
-void input_par(double& A, double& B, double& c, double& d, bool is_nonlinearModel) {
-    cout << "enter A: "; cin >> A;
+void input_par(double& a, double& B, double& c, double& d, bool is_nonlinearModel) {
+    cout << "enter a: "; cin >> a;
     cout << "enter B: "; cin >> B;
     if (is_nonlinearModel) {
         cout << "enter c: "; cin >> c;
@@ -105,18 +105,18 @@ void input_par(double& A, double& B, double& c, double& d, bool is_nonlinearMode
 int main() {
     const double W = 10;
     const double Y0 = 5;
-    const double A = 0.21;
+    const double a = 0.21;
     const double B = 0.64;
     const double C = 0.80;
     const double D = 0.07;
-    Model linear_model{ A, B, true };
-    Model nonlinear_model{ A, B, C, D, false };
-    PID pid_regulAtor;
+    Model linear_model{ a, B, true };
+    Model nonlinear_model{ a, B, C, D, false };
+    PID pid_regulator;
 
     cout << "Not Linear mode" << endl;
-    pid_regulAtor.regulAtor(W, Y0, nonlinear_model);
+    pid_regulator.regulator(W, Y0, nonlinear_model);
     cout << "Linear mode" << endl;
-    pid_regulAtor.regulAtor(W, Y0, linear_model);
+    pid_regulator.regulator(W, Y0, linear_model);
 
     return 0;
 }
