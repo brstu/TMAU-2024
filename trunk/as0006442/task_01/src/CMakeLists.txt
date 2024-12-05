@@ -3,7 +3,7 @@ cmake_policy(SET CMP0002 NEW)
 project(TMAU)
 
 set(SOURCES
-    src/main.cpp
+    main.cpp
 )
 
 add_executable(TMAU ${SOURCES})
