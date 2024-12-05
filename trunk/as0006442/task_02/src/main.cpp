@@ -59,22 +59,23 @@ public:
     }
 };
 
-void inputParser(double& A, double& B, double& c, double& d, bool isNonlinearModel) {
+void inputParser(double& A, double& B, double& C, double& D, bool isNonlinearModel) {
     cout << "Enter A: "; cin >> A;
     cout << "Enter B: "; cin >> B;
     if (isNonlinearModel) {
-        cout << "Enter c: "; cin >> c;
-        cout << "Enter d: "; cin >> d;
+        cout << "Enter C: "; cin >> C;
+        cout << "Enter D: "; cin >> D;
     }
 }
 
 int main() {
     const double W = 10;
     const double Y0 = 5;
-    const double A = 0.21;
-    const double B = 0.64;
-    const double C = 0.80;
-    const double D = 0.07;
+    double A, B, C, D;
+    bool isNonlinearModel = false;
+
+    inputParser(A, B, C, D, isNonlinearModel);
+    
     Model linearModel{ A, B, true };
     Model nonlinearModel{ A, B, C, D, false };
     PID pidRegulator;
