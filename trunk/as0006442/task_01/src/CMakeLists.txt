@@ -1,5 +1,9 @@
-cmake_minimum_required(VERSION 3.0.0)
+cmake_minimum_required(VERSION 3.10)
 
 project(TMAU)
 
-add_executable(TMAU task_01/src/main.cpp)
+set(SOURCES
+    src/main.cpp
+)
+
+add_executable(TMAU ${SOURCES})
