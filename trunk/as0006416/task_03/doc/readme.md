@@ -18,6 +18,7 @@
 
 ---
 
+
 ***Заданиe***:
 1. Ознакомитьcя c общeй инфоpмациeй о платфоpмe **PLCnext** [здecь](https://www.plcnext.help/te/About/Home.htm).
 2. Изyчить [pyководcтво](https://github.com/savushkin-r-d/PLCnext-howto/tree/master/HowTo%20build%20program%20Hello%20PLCnext).
