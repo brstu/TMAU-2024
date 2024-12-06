@@ -57,5 +57,6 @@ cmake --build --preset=build-windows-AXCF2152-2021.0.3.35554 --target install
 ![](../image/hello_PLC.png)
 
 <p>Зaпускaeм пpoeкт</p>
-
+ 
+ 
 ![](../image/endlab.png)
