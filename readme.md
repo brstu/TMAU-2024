@@ -54,12 +54,12 @@
 |2|Брызгалов Юрий Николаевич|||||||||||
 |3|Будник Анна Андреевна|[as0006433](./trunk/as0006433/)|:white_check_mark:|:white_check_mark:|:white_check_mark:|:white_check_mark:|:white_check_mark:|||||
 |4|Булавский Андрей Сергеевич|[as0006404](./trunk/as0006404/)|:white_check_mark:|:white_check_mark:|:white_check_mark:|:white_check_mark:||||||
-|5|Бурак Илья Эдуардович|[as0006405](./trunk/as0006405/)|:white_check_mark:|:white_check_mark:|:white_check_mark:|||||||
+|5|Бурак Илья Эдуардович|[as0006405](./trunk/as0006405/)|:white_check_mark:|:white_check_mark:|:white_check_mark:|:white_check_mark:|:white_check_mark:|||||
 |6|Горкавчук Никита Михайлович|[as64220038](./trunk/as64220038/)|:white_check_mark:|:white_check_mark:|:white_check_mark:|:white_check_mark:|:white_check_mark:|||||
 |7|Евкович Андрей Викторович|[as0006407](./trunk/as0006407/)|:white_check_mark:|:white_check_mark:|:white_check_mark:|:white_check_mark:|:white_check_mark:|:white_check_mark:||||
 |8|Ежгунович Глеб Михайлович|||||||||||
 |9|Иванюк Иван Александрович|[as0006409](./trunk/as0006409/)|:white_check_mark:|:white_check_mark:|:white_check_mark:|:white_check_mark:|||||||
-|10|Игнаткевич Кирилл Сергеевич|[as0006442](./trunk/as0006442)|:white_check_mark:|:white_check_mark:||||||||
+|10|Игнаткевич Кирилл Сергеевич|[as0006442](./trunk/as0006442)|:white_check_mark:|:white_check_mark:|:white_check_mark:|||||||
 |11|Кашпир Дмитрий Русланович|[as0006443](./trunk/as0006443/)|:white_check_mark:|:white_check_mark:|:white_check_mark:|:white_check_mark:|:white_check_mark:|||||
 |12|Котковец Кирилл Викторович|[as0006444](./trunk/as0006444/)|:white_check_mark:|:white_check_mark:||||||||
 |13|Кужир Владислав Витальевич|[as0006313](./trunk/as0006413/)|:white_check_mark:|:white_check_mark:|:white_check_mark:|:white_check_mark:|:white_check_mark:|||||
