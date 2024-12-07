@@ -1,30 +1,5 @@
 #include <iostream>
 #include <cmath>
-using namespace std;
-
-// Линейная модель
-void linearModel(double coeffA, double coeffB, double heatInput, double currentTemp, int cycles) {
-    cout << "\tЛинейная модель" << endl;
-    for (int i = 1; i <= cycles; i++) {
-        double nextTemp = coeffA * currentTemp + coeffB * heatInput; // Вычисление следующей температуры
-        cout << "y" << i << " = " << nextTemp << endl; // Используем следующую температуру
-        currentTemp = nextTemp; // Обновление текущей температуры для следующей итерации
-    }
-}
-
-// Нелинейная модель
-void nonlinearModel(double coeffA, double coeffB, double coeffC, double coeffD, double heatInput, double currentTemp, int cycles) {
-    double prevHeat = 0;
-    double prevTemp = 0;
-
-    cout << "\tНелинейная модель" << endl;
-    for (int i = 1; i <= cycles; i++) {
-        double nextTemp = coeffA * currentTemp - coeffB * pow(prevTemp, 2) + coeffC * heatInput + coeffD * sin(prevHeat);
-        cout << "y" << i << " = " << nextTemp << endl;
-        prevHeat = heatInput;
-        prevTemp = currentTemp;
-        currentTemp = nextTemp; // Обновление текущей температуры для следующей итерации
-=======
 #include <array>
 using namespace std;
 
@@ -170,4 +145,42 @@ void inputModelParameters(double& coefficientA, double& coefficientB, double& co
         cin >> coefficientC; // Input coefficient C for non-linear model
         cout << "Enter coefficient D: ";
         cin >> coefficientD; // Input coefficient D for non-linear model
+    }
+}
 
+int main() {
+    system("chcp 1251"); // Set code page to CP1251
+    system("cls"); // Clear console screen
+
+    struct ModelSettings {
+        double coefficientA; // Coefficient A for the model
+        double coefficientB; // Coefficient B for the model
+        double coefficientC; // Coefficient C for the model
+        double coefficientD; // Coefficient D for the model
+    };
+
+    array<const char*, 2> modelTitles = { "Linear Model", "Non-Linear Model" }; // Array of model names
+    array<ModelSettings, 2> modelConfigurations; // Array to store model parameters
+    for (int i = 0; i < 2; i++) {
+        cout << "_____________________________________" << modelTitles[i] << ". Enter parameters___________________________________________________" << endl;
+        inputModelParameters(modelConfigurations[i].coefficientA, modelConfigurations[i].coefficientB, 
+                             modelConfigurations[i].coefficientC, modelConfigurations[i].coefficientD, i);
+    }
+
+    // Create models with input parameters
+    LinearModel linearModel(modelConfigurations[0].coefficientA, modelConfigurations[0].coefficientB);
+    NonLinearModel nonlinearModel(modelConfigurations[1].coefficientA, modelConfigurations[1].coefficientB, 
+                                   modelConfigurations[1].coefficientC, modelConfigurations[1].coefficientD);
+
+    PIDController pidController; // Create PID controller instance
+
+    const double targetTemperature = 12; // Desired target temperature
+    const double initialTemperature = 5; // Initial temperature for simulation
+
+    cout << "\t______________________________Linear Model__________________________________" << endl;
+    pidController.regulateTemperature(targetTemperature, initialTemperature, linearModel); // Regulate linear model
+    cout << endl;
+
+    cout << "\t______________________________Non-Linear Model______________________________" << endl;
+    pidController.regulateTemperature(targetTemperature, initialTemperature, nonlinearModel); // Regulate non-linear model
+}
