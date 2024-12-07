@@ -1,5 +1,6 @@
 cmake_minimum_required(VERSION 3.27)
 
-project(lab2Savko)
+project(lab1Savko)
 
-add_executable(lab2Savko main.cpp)
+add_executable(lab1Savko main.cpp)
+
