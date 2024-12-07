@@ -1,4 +1,7 @@
-cmake_minimum_required(VERSION 3.5.0)
+cmake_minimum_required(VERSION 3.10)
+
+cmake_policy(SET CMP0002 NEW)
+
 project(main VERSION 0.1.0 LANGUAGES C CXX)
 
 add_executable(main main.cpp)
