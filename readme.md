@@ -65,7 +65,7 @@
 |13|Кужир Владислав Витальевич|[as0006313](./trunk/as0006413/)|:white_check_mark:|:white_check_mark:|:white_check_mark:|:white_check_mark:|:white_check_mark:|||||
 |14|Немирович Дмитрий Александрович|[as0006414](./trunk/as0006414/)|:white_check_mark:|:white_check_mark:|:white_check_mark:|||||||
 |15|Попов Алексей Сергеевич|[as0006415](./trunk/as0006415/)|:white_check_mark:|:white_check_mark:|:white_check_mark:|:white_check_mark:|:white_check_mark:|||||
-|16|Рабченя Максим Юрьевич|[as0006416](./trunk/as0006416/)|:white_check_mark:|:white_check_mark:|:white_check_mark:|||||||
+|16|Рабченя Максим Юрьевич|[as0006416](./trunk/as0006416/)|:white_check_mark:|:white_check_mark:|:white_check_mark:|:white_check_mark:||||||
 |17|Ровнейко Захар Сергеевич|[as0006417](./trunk/as0006417/)|:white_check_mark:|:white_check_mark:|:white_check_mark:|||||||
 |18|Смердина Анастасия Валентиновна|[as0006424](./trunk/as0006424/)|:white_check_mark:|:white_check_mark:|:white_check_mark:|:white_check_mark:|:white_check_mark:|||+ балл||
 |19|Хомич Виталий Геннадьевич|[as0006454](./trunk/as0006454/)|:white_check_mark:|:white_check_mark:|:white_check_mark:|:white_check_mark:|:white_check_mark:|:white_check_mark:||||
