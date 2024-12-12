@@ -108,7 +108,11 @@ Input choice: 1
 Enter the algorithm of the system functioning
 Input w(t): h
 
+<<<<<<< HEAD
                 ***Input valu1e is not correct***
+=======
+                ***Input value is not correct***
+>>>>>>> ImRaDeR1/task_02
 
 Input w(t): 5
 Enter the step
