@@ -20,7 +20,7 @@
 
 ## Task:
 
-In C++, implement a program that simulates the PID controller discussed above. Use the mathematical model obtained in the previous work as the control object. To use OOP, the program must have at least 3 classes (+inheritance).
+In C++, implement a program that simulates the PID controll1er discussed above. Use the mathematical model obtained in the previous work as the control object. To use OOP, the program must have at least 3 classes (+inheritance).
 
  Add information about the developed program (class diagram, etc.) to the report using Doxygen (in .md format).
 
