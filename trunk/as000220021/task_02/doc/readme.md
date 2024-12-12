@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <p align="center">Brest 2024</p>
 <p align="center">Министерство образования Республики Беларусь</p>
 <p align="center">Учреждения образования</p>
@@ -16,17 +17,44 @@
 <p align="right">Ситковец Я. С.</p>
 <br><br><br><br><br>
 <p align="center">Брест 2024</p>
+=======
+<p align="center">Ministry of Education of the Republic of Belarus</p>
+<p align="center">Educational Institution</p>
+<p align="center">“Brest State Technical University”</p>
+<p align="center">Department of Information and Intelligent Technologies</p>
+<br><br><br><br><br><br><br>
+<p align="center">Laboratory work №2</p>
+<p align="center">On the discipline “Theory and methods of automatic control”</p>
+<p align="center">Topic: “PID controllers”</p>
+<br><br><br><br><br>
+<p align="right">Performed by:</p>
+<p align="right">Student of the 3rd course</p>
+<p align="right">Group AS-63</p>
+<p align="right">Loginov G. O.</p>
+<p align="right">Supervised by:</p>
+<p align="right">Sitkovets J. S.</p>
+<br><br><br><br><br>
+<p align="center">Brest 2024</p>
+
+>>>>>>> ImRaDeR1/lab2
 ---
 
 ## Task:
 
+<<<<<<< HEAD
 В C++ реализуйте программу, которая имитирует PID-контроллер, обсуждаемый выше. Используйте математическую модель, полученную в предыдущей работе, в качестве управляющего объекта. Для использования ООП программа должна содержать как минимум 3 класса (+наследование).
 
 Добавьте информацию о разработанной программе (классовую диаграмму и т.д.) в отчет, используя Doxygen (в формате .md).
+=======
+In C++, implement a program that simulates the PID controller discussed above. Use the mathematical model obtained in the previous work as the control object. To use OOP, the program must have at least 3 classes (+inheritance).
+
+ Add information about the developed program (class diagram, etc.) to the report using Doxygen (in .md format).
+>>>>>>> ImRaDeR1/lab2
 
 ## Example of program output:
 
 ``` bash
+<<<<<<< HEAD
 Выбор ввода (0 - выход, 1 - начать)
 Выбор ввода: 1    
 Введите алгоритм функционирования системы
@@ -51,6 +79,32 @@
                               Линейная модель
 
 ВРЕМЯ (T0)      ОТКЛОНЕНИЕ (e)       ВЫХОДНАЯ ПЕРЕМЕННАЯ (Yt)       УПРАВЛЯЮЩЕЕ ВЛИЯНИЕ (Uk)
+=======
+        Input choice (0 - exit, 1 - start)
+Input choice: 1    
+Enter the algorithm of the system functioning
+Input w(t): 3
+Enter the step
+Input T0: 20
+        Fill in the data for the Linear model
+Input A: 0.2
+Input B: 0.4
+Input current_temperature: 0.1
+Input warm: 0.9
+        Fill in the data for the Nonlinear model
+Input A: 0.45
+Input B: 0.998
+Input C: 0.876
+Input D: 1.2
+Input current_temperature: 1.1
+Input warm: 0.8
+
+                                RESULTS
+
+                              Linear model
+
+TIME (T0)      DEVIATION (e)       OUTPUT VARIABLE (Yt)       CONTROLLING INFLUENCE (Uk)
+>>>>>>> ImRaDeR1/lab2
 =====================================================================================
 1              2.62                0.38                       91.7
 2              2.564               0.436                      5264.24
@@ -72,11 +126,20 @@
 18             2.55                0.45                       86900.5
 19             2.55                0.45                       92000.5
 20             2.55                0.45                       97100.5
+<<<<<<< HEAD
                                 РЕЗУЛЬТАТЫ
 
                               Нелинейная модель
 
 ВРЕМЯ (T0)      ОТКЛОНЕНИЕ (e)       ВЫХОДНАЯ ПЕРЕМЕННАЯ (Yt)       УПРАВЛЯЮЩЕЕ ВЛИЯНИЕ (Uk)
+=======
+
+                                RESULTS
+
+                              Nonlinear model
+
+TIME (T0)      DEVIATION (e)       OUTPUT VARIABLE (Yt)       CONTROLLING INFLUENCE (Uk)
+>>>>>>> ImRaDeR1/lab2
 =====================================================================================
 1              0.943373            2.05663                    33.018
 2              1.72047             1.27953                    1923.38
@@ -102,6 +165,7 @@
 
 ### Input error handling has also been added:
 ``` bash
+<<<<<<< HEAD
 Выбор ввода (0 - выход, 1 - начать)
 Выбор ввода: 1  
 Введите алгоритм функционирования системы
@@ -114,6 +178,20 @@
 Введите T0: g
 
                 ***Введенное значение некорректно***
+=======
+        Input choice (0 - exit, 1 - start)
+Input choice: 1  
+Enter the algorithm of the system functioning
+Input w(t): h
+
+                ***Input value is not correct***
+
+Input w(t): 5
+Enter the step
+Input T0: g
+
+                ***Input value is not correct***
+>>>>>>> ImRaDeR1/lab2
 ```
 
 ## Graphs
@@ -131,6 +209,7 @@ The resulting file is [doxygen.md](doxygen.md)
 
 ## The source code
 
+<<<<<<< HEAD
 #### The source code is located in the [src folder](/trunk/as000220021/task_02/src).
 
 - [CMakeLists.txt](/trunk/as000220021/task_01/src/CMakeLists.txt) - this is a file that contains CMake commands to control the project build process.
@@ -139,3 +218,13 @@ The resulting file is [doxygen.md](doxygen.md)
 - [main.cpp](/trunk/as000220021/task_01/src/main.cpp) - source file, contains the main function that controls the program execution.
 - [PID.h](/trunk/as000220021/task_01/src/PID.h) - header file, contains the declaration of the `PID` class, which is used to control the system by the PID algorithm.
 - [PID.cpp](/trunk/as000220021/task_01/src/PID.cpp) - source file, contains the definition of the `PID` class, which is used to control the system by the PID algorithm.
+=======
+#### The source code is located in the [src folder](/trunk/as0006315/task_02/src).
+
+- [CMakeLists.txt](/trunk/as0006315/task_01/src/CMakeLists.txt) - this is a file that contains CMake commands to control the project build process.
+- [models.h](/trunk/as0006315/task_01/src/models.h) - header file, contains functions declarations for linear and nonlinear models simulation.
+- [models.cpp](/trunk/as0006315/task_01/src/models.cpp) - source file, contains functions definitions for linear and nonlinear models simulation.
+- [main.cpp](/trunk/as0006315/task_01/src/main.cpp) - source file, contains the main function that controls the program execution.
+- [PID.h](/trunk/as0006315/task_01/src/PID.h) - header file, contains the declaration of the `PID` class, which is used to control the system by the PID algorithm.
+- [PID.cpp](/trunk/as0006315/task_01/src/PID.cpp) - source file, contains the definition of the `PID` class, which is used to control the system by the PID algorithm.
+>>>>>>> ImRaDeR1/lab2
