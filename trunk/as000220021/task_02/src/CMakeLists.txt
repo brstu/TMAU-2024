@@ -1,4 +1,4 @@
-cmake_minimum_required(VERSION 3.99)
+cmake_minimum_required(VERSION 3.27)
 
 project(Task_02)
 
