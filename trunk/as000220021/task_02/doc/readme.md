@@ -108,7 +108,7 @@ Input choice: 1
 Enter the algorithm of the system functioning
 Input w(t): h
 
-                ***Input value is not correct***
+                ***Input valu1e is not correct***
 
 Input w(t): 5
 Enter the step
