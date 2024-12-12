@@ -1,0 +1,3 @@
+D:/gitHub/TMAU-2024/trunk/as000220021/task_02/src/CMakeFiles/Task02_18.dir
+D:/gitHub/TMAU-2024/trunk/as000220021/task_02/src/CMakeFiles/ALL_BUILD.dir
+D:/gitHub/TMAU-2024/trunk/as000220021/task_02/src/CMakeFiles/ZERO_CHECK.dir
