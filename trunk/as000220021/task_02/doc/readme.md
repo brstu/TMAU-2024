@@ -1,56 +1,56 @@
-<p align="center">Ministry of Education of the Republic of Belarus</p>
-<p align="center">Educational Institution</p>
-<p align="center">“Brest State Technical University”</p>
-<p align="center">Department of Information and Intelligent Technologies</p>
-<br><br><br><br><br><br><br>
-<p align="center">Laboratory work №2</p>
-<p align="center">On the discipline “Theory and methods of automatic control”</p>
-<p align="center">Topic: “PID controllers”</p>
-<br><br><br><br><br>
-<p align="right">Performed by:</p>
-<p align="right">Student of the 3rd course</p>
-<p align="right">Group AS-63</p>
-<p align="right">Loginov G. O.</p>
-<p align="right">Supervised by:</p>
-<p align="right">Sitkovets J. S.</p>
-<br><br><br><br><br>
 <p align="center">Brest 2024</p>
-
+<p align="center">Министерство образования Республики Беларусь</p>
+<p align="center">Учреждения образования</p>
+<p align="center">“Брестский государственный технический университет”</p>
+<p align="center">Кафедра информационных и интеллектуальных технологий</p>
+<br><br><br><br><br><br><br>
+<p align="center">Лабораторная работа №2</p>
+<p align="center">По дисциплине “Теория и методы автоматического управления”</p>
+<p align="center">Тема: “PID controllers”</p>
+<br><br><br><br><br>
+<p align="right">Выполнил:</p>
+<p align="right">Студент 3 курса:</p>
+<p align="right">Группы АС-63</p>
+<p align="right">Поплавский В.В.</p>
+<p align="right">Проверила:</p>
+<p align="right">Ситковец Я. С.</p>
+<br><br><br><br><br>
+<p align="center">Брест 2024</p>
 ---
 
 ## Task:
 
-In C++, implement a program that simulates the PID controll1er discussed above. Use the mathematical model obtained in the previous work as the control object. To use OOP, the program must have at least 3 classes (+inheritance).
+В C++ реализуйте программу, которая имитирует PID-контроллер, обсуждаемый выше. Используйте математическую модель, полученную в предыдущей работе, в качестве управляющего объекта. Для использования ООП программа должна содержать как минимум 3 класса (+наследование).
 
- Add information about the developed program (class diagram, etc.) to the report using Doxygen (in .md format).
+Добавьте информацию о разработанной программе (классовую диаграмму и т.д.) в отчет, используя Doxygen (в формате .md).
 
 ## Example of program output:
 
 ``` bash
-        Input choice (0 - exit, 1 - start)
-Input choice: 1    
-Enter the algorithm of the system functioning
-Input w(t): 3
-Enter the step
-Input T0: 20
-        Fill in the data for the Linear model
-Input A: 0.2
-Input B: 0.4
-Input current_temperature: 0.1
-Input warm: 0.9
-        Fill in the data for the Nonlinear model
-Input A: 0.45
-Input B: 0.998
-Input C: 0.876
-Input D: 1.2
-Input current_temperature: 1.1
-Input warm: 0.8
+Выбор ввода (0 - выход, 1 - начать)
+Выбор ввода: 1    
+Введите алгоритм функционирования системы
+Введите w(t): 3
+Введите шаг
+Введите T0: 20
+        Заполните данные для линейной модели
+Введите A: 0.2
+Введите B: 0.4
+Введите текущая_температура: 0.1
+Введите тепло: 0.9
+        Заполните данные для нелинейной модели
+Введите A: 0.45
+Введите B: 0.998
+Введите C: 0.876
+Введите D: 1.2
+Введите текущая_температура: 1.1
+Введите тепло: 0.8
 
-                                RESULTS
+                                РЕЗУЛЬТАТЫ
 
-                              Linear model
+                              Линейная модель
 
-TIME (T0)      DEVIATION (e)       OUTPUT VARIABLE (Yt)       CONTROLLING INFLUENCE (Uk)
+ВРЕМЯ (T0)      ОТКЛОНЕНИЕ (e)       ВЫХОДНАЯ ПЕРЕМЕННАЯ (Yt)       УПРАВЛЯЮЩЕЕ ВЛИЯНИЕ (Uk)
 =====================================================================================
 1              2.62                0.38                       91.7
 2              2.564               0.436                      5264.24
@@ -72,12 +72,11 @@ TIME (T0)      DEVIATION (e)       OUTPUT VARIABLE (Yt)       CONTROLLING INFLUE
 18             2.55                0.45                       86900.5
 19             2.55                0.45                       92000.5
 20             2.55                0.45                       97100.5
+                                РЕЗУЛЬТАТЫ
 
-                                RESULTS
+                              Нелинейная модель
 
-                              Nonlinear model
-
-TIME (T0)      DEVIATION (e)       OUTPUT VARIABLE (Yt)       CONTROLLING INFLUENCE (Uk)
+ВРЕМЯ (T0)      ОТКЛОНЕНИЕ (e)       ВЫХОДНАЯ ПЕРЕМЕННАЯ (Yt)       УПРАВЛЯЮЩЕЕ ВЛИЯНИЕ (Uk)
 =====================================================================================
 1              0.943373            2.05663                    33.018
 2              1.72047             1.27953                    1923.38
@@ -103,22 +102,18 @@ TIME (T0)      DEVIATION (e)       OUTPUT VARIABLE (Yt)       CONTROLLING INFLUE
 
 ### Input error handling has also been added:
 ``` bash
-        Input choice (0 - exit, 1 - start)
-Input choice: 1  
-Enter the algorithm of the system functioning
-Input w(t): h
+Выбор ввода (0 - выход, 1 - начать)
+Выбор ввода: 1  
+Введите алгоритм функционирования системы
+Введите w(t): h
 
-<<<<<<< HEAD
-                ***Input valu1e is not correct***
-=======
-                ***Input value is not correct***
->>>>>>> ImRaDeR1/task_02
+                ***Введенное значение некорректно***
 
-Input w(t): 5
-Enter the step
-Input T0: g
+Введите w(t): 5
+Введите шаг
+Введите T0: g
 
-                ***Input value is not correct***
+                ***Введенное значение некорректно***
 ```
 
 ## Graphs
@@ -136,11 +131,11 @@ The resulting file is [doxygen.md](doxygen.md)
 
 ## The source code
 
-#### The source code is located in the [src folder](/trunk/as0006315/task_02/src).
+#### The source code is located in the [src folder](/trunk/as000220021/task_02/src).
 
-- [CMakeLists.txt](/trunk/as0006315/task_01/src/CMakeLists.txt) - this is a file that contains CMake commands to control the project build process.
-- [models.h](/trunk/as0006315/task_01/src/models.h) - header file, contains functions declarations for linear and nonlinear models simulation.
-- [models.cpp](/trunk/as0006315/task_01/src/models.cpp) - source file, contains functions definitions for linear and nonlinear models simulation.
-- [main.cpp](/trunk/as0006315/task_01/src/main.cpp) - source file, contains the main function that controls the program execution.
-- [PID.h](/trunk/as0006315/task_01/src/PID.h) - header file, contains the declaration of the `PID` class, which is used to control the system by the PID algorithm.
-- [PID.cpp](/trunk/as0006315/task_01/src/PID.cpp) - source file, contains the definition of the `PID` class, which is used to control the system by the PID algorithm.
+- [CMakeLists.txt](/trunk/as000220021/task_01/src/CMakeLists.txt) - this is a file that contains CMake commands to control the project build process.
+- [models.h](/trunk/as000220021/task_01/src/models.h) - header file, contains functions declarations for linear and nonlinear models simulation.
+- [models.cpp](/trunk/as000220021/task_01/src/models.cpp) - source file, contains functions definitions for linear and nonlinear models simulation.
+- [main.cpp](/trunk/as000220021/task_01/src/main.cpp) - source file, contains the main function that controls the program execution.
+- [PID.h](/trunk/as000220021/task_01/src/PID.h) - header file, contains the declaration of the `PID` class, which is used to control the system by the PID algorithm.
+- [PID.cpp](/trunk/as000220021/task_01/src/PID.cpp) - source file, contains the definition of the `PID` class, which is used to control the system by the PID algorithm.

@@ -14,7 +14,6 @@
 <p align="right">Supervised by:</p>
 <p align="right">Sitkovets J. S.</p>
 <br><br><br><br><br>
-<p align="center">Brest 2024</p>
 
 ---
 
