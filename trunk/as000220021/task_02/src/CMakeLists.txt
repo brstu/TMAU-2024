@@ -1,4 +1,4 @@
-cmake_minimum_required(VERSION 3.10)
+cmake_minimum_required(VERSION 3.99)
 project(task_02)
 
 # Добавляем исходные файлы
