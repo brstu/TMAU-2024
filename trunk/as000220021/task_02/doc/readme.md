@@ -13,7 +13,7 @@
 <p align="right">Группы АС-63</p>
 <p align="right">Поплавский В.В.</p>
 <p align="right">Проверила:</p>
-<p align="right">Ситковец Я. С.</p>
+<p align="right">Ситковец Я. С. </p>
 <br><br><br><br><br>
 <p align="center">Брест 2024</p>
 ---
