@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 <p align="center">Brest 2024</p>
+=======
+<p align="center">Брест 2024</p>
+>>>>>>> origin/lab2
 <p align="center">Министерство образования Республики Беларусь</p>
 <p align="center">Учреждения образования</p>
 <p align="center">“Брестский государственный технический университет”</p>
@@ -13,9 +17,16 @@
 <p align="right">Группы АС-63</p>
 <p align="right">Поплавский В.В.</p>
 <p align="right">Проверила:</p>
+<<<<<<< HEAD
 <p align="right">Ситковец Я. С. </p>
 <br><br><br><br><br>
 <p align="center">Брест 2024</p>
+=======
+<p align="right">Ситковец Я. С.</p>
+<br><br><br><br><br>
+<p align="center">Брест 2024</p>
+
+>>>>>>> origin/lab2
 ---
 
 ## Task:
@@ -23,7 +34,10 @@
 В C++ реализуйте программу, которая имитирует PID-контроллер, обсуждаемый выше. Используйте математическую модель, полученную в предыдущей работе, в качестве управляющего объекта. Для использования ООП программа должна содержать как минимум 3 класса (+наследование).
 
 Добавьте информацию о разработанной программе (классовую диаграмму и т.д.) в отчет, используя Doxygen (в формате .md).
+<<<<<<< HEAD
 
+=======
+>>>>>>> origin/lab2
 ## Example of program output:
 
 ``` bash
@@ -77,6 +91,10 @@
                               Нелинейная модель
 
 ВРЕМЯ (T0)      ОТКЛОНЕНИЕ (e)       ВЫХОДНАЯ ПЕРЕМЕННАЯ (Yt)       УПРАВЛЯЮЩЕЕ ВЛИЯНИЕ (Uk)
+<<<<<<< HEAD
+=======
+
+>>>>>>> origin/lab2
 =====================================================================================
 1              0.943373            2.05663                    33.018
 2              1.72047             1.27953                    1923.38
@@ -114,7 +132,11 @@
 Введите T0: g
 
                 ***Введенное значение некорректно***
+<<<<<<< HEAD
 ```
+=======
+=======
+>>>>>>> origin/lab2
 
 ## Graphs
 
@@ -124,6 +146,7 @@
 ### A graph for a nonlinear model
 ![](../images/Nonlinear_model.png)
 
+<<<<<<< HEAD
 ## Documents
 Information about the developed program, created using [Doxygen](https://doxygen.nl/) to generate XML and [Moxygen](https://github.com/sourcey/moxygen) to turn XML into Markdown.
 
@@ -139,3 +162,5 @@ The resulting file is [doxygen.md](doxygen.md)
 - [main.cpp](/trunk/as000220021/task_01/src/main.cpp) - source file, contains the main function that controls the program execution.
 - [PID.h](/trunk/as000220021/task_01/src/PID.h) - header file, contains the declaration of the `PID` class, which is used to control the system by the PID algorithm.
 - [PID.cpp](/trunk/as000220021/task_01/src/PID.cpp) - source file, contains the definition of the `PID` class, which is used to control the system by the PID algorithm.
+=======
+>>>>>>> origin/lab2
