@@ -1,0 +1,71 @@
+_____________________________________Linear Model. Enter parameters___________________________________________________
+Enter coefficient A: 1
+Enter coefficient B: 21
+_____________________________________Non-Linear Model. Enter parameters___________________________________________________
+Enter coefficient A: 3
+Enter coefficient B: 1
+Enter coefficient C: 2
+Enter coefficient D: 1
+        ______________________________Linear Model__________________________________
+Error = 7       Current Temperature = 43.22     Control Signal = 1.82
+Error = -31.22  Current Temperature = -127.241  Control Signal = -6.2972
+Error = 139.241 Current Temperature = 633.016   Control Signal = 29.9055
+Error = -621.016        Current Temperature = -2757.73  Control Signal = -131.559
+Error = 2769.73 Current Temperature = 12365     Control Signal = 588.571
+Error = -12353  Current Temperature = -55082.4  Control Signal = -2623.21
+Error = 55094.4 Current Temperature = 245733    Control Signal = 11701.3
+Error = -245721 Current Temperature = -1.0959e+06       Control Signal = -52186.1
+Error = 1.09592e+06     Current Temperature = 4.88779e+06       Control Signal = 232752
+Error = -4.88778e+06    Current Temperature = -2.17995e+07      Control Signal = -1.03807e+06
+Error = 2.17995e+07     Current Temperature = 9.72258e+07       Control Signal = 4.6298e+06
+Error = -9.72258e+07    Current Temperature = -4.33627e+08      Control Signal = -2.06489e+07
+Error = 4.33627e+08     Current Temperature = 1.93398e+09       Control Signal = 9.20941e+07
+Error = -1.93398e+09    Current Temperature = -8.62554e+09      Control Signal = -4.1074e+08
+Error = 8.62554e+09     Current Temperature = 3.84699e+10       Control Signal = 1.8319e+09
+Error = -3.84699e+10    Current Temperature = -1.71576e+11      Control Signal = -8.17027e+09
+Error = 1.71576e+11     Current Temperature = 7.65228e+11       Control Signal = 3.64394e+10
+Error = -7.65228e+11    Current Temperature = -3.41292e+12      Control Signal = -1.6252e+11
+Error = 3.41292e+12     Current Temperature = 1.52216e+13       Control Signal = 7.24838e+11
+Error = -1.52216e+13    Current Temperature = -6.78883e+13      Control Signal = -3.23278e+12
+Error = 6.78883e+13     Current Temperature = 3.02782e+14       Control Signal = 1.44182e+13
+Error = -3.02782e+14    Current Temperature = -1.35041e+15      Control Signal = -6.43051e+13
+Error = 1.35041e+15     Current Temperature = 6.02282e+15       Control Signal = 2.86801e+14
+Error = -6.02282e+15    Current Temperature = -2.68618e+16      Control Signal = -1.27913e+15
+Error = 2.68618e+16     Current Temperature = 1.19804e+17       Control Signal = 5.70493e+15
+Error = -1.19804e+17    Current Temperature = -5.34324e+17      Control Signal = -2.5444e+16
+Error = 5.34324e+17     Current Temperature = 2.38308e+18       Control Signal = 1.1348e+17
+Error = -2.38308e+18    Current Temperature = -1.06286e+19      Control Signal = -5.06122e+17
+Error = 1.06286e+19     Current Temperature = 4.74033e+19       Control Signal = 2.2573e+18
+Error = -4.74033e+19    Current Temperature = -2.11419e+20      Control Signal = -1.00676e+19
+
+        ______________________________Non-Linear Model______________________________
+Error = 7       Current Temperature = 18.64     Control Signal = 1.82
+Error = -6.64   Current Temperature = 41.1563   Control Signal = 0.0936
+Error = -29.1563        Current Temperature = 25.1194   Control Signal = -7.48704
+Error = -13.1194        Current Temperature = 17.2704   Control Signal = -10.8981
+Error = -5.27041        Current Temperature = 16.4585   Control Signal = -12.2684
+Error = -4.45848        Current Temperature = 13.4384   Control Signal = -13.4276
+Error = -1.43841        Current Temperature = 11.6382   Control Signal = -13.8016
+Error = 0.361794        Current Temperature = 11.6408   Control Signal = -13.7075
+Error = 0.359239        Current Temperature = 11.8627   Control Signal = -13.6141
+Error = 0.137328        Current Temperature = 11.9769   Control Signal = -13.5784
+Error = 0.0231038       Current Temperature = 12.0073   Control Signal = -13.5724
+Error = -0.00729441     Current Temperature = 12.0067   Control Signal = -13.5743
+Error = -0.00670113     Current Temperature = 12.0022   Control Signal = -13.576
+Error = -0.00220299     Current Temperature = 12.0001   Control Signal = -13.5766
+Error = -0.000128999    Current Temperature = 11.9998   Control Signal = -13.5766
+Error = 0.000242742     Current Temperature = 11.9999   Control Signal = -13.5766
+Error = 0.000134347     Current Temperature = 12        Control Signal = -13.5765
+Error = 3.09322e-05     Current Temperature = 12        Control Signal = -13.5765
+Error = -3.72491e-06    Current Temperature = 12        Control Signal = -13.5765
+Error = -6.06423e-06    Current Temperature = 12        Control Signal = -13.5765
+Error = -2.39587e-06    Current Temperature = 12        Control Signal = -13.5765
+Error = -3.11657e-07    Current Temperature = 12        Control Signal = -13.5765
+Error = 1.81626e-07     Current Temperature = 12        Control Signal = -13.5765
+Error = 1.30266e-07     Current Temperature = 12        Control Signal = -13.5765
+Error = 3.74185e-08     Current Temperature = 12        Control Signal = -13.5765
+Error = -4.79599e-11    Current Temperature = 12        Control Signal = -13.5765
+Error = -5.196e-09      Current Temperature = 12        Control Signal = -13.5765
+Error = -2.48745e-09    Current Temperature = 12        Control Signal = -13.5765
+Error = -4.75648e-10    Current Temperature = 12        Control Signal = -13.5765
+Error = 1.15572e-10     Current Temperature = 12        Control Signal = -13.5765
