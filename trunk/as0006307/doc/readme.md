@@ -22,17 +22,17 @@
 
 1. Ознакомиться с общей информацией о платформе **PLCnext** [здесь](https://www.plcnext.help/te/About/Home.htm).
 2. Изучить [руководство](https://github.com/savushkin-r-d/PLCnext-howto/tree/master/HowTo%20build%20program%20Hello%20PLCnext).
-3. Используя **Visual Code** создать тестовый проект *"Hello PLCnext from AS0xxyy!"*, собрать его и продемонстрировать работоспособность на тестовом контроллере.
+3. Используя Visual Code создать тестовый проект *"Hello PLCnext from AS0xxyy!"*, собрать его и продемонстрировать работоспособность на тестовом контроллере.
 4. Написать отчет по выполненной работе в .md формате (readme.md) и с помощью pull request разместить его в следующем каталоге: trunk\as000xxyy\task03\doc.
 
 
-<p> <strong>Цель:</strong> разработать тестовый проект "Привет, PLCnext от AS0xxyy!", собрать его и продемонстрировать функциональность на тестовом контроллере.</p>
+<p> <strong>Цель:</strong> Разработать тестовый проект "Привет, PLCnext от AS0xxyy!", собрать его и продемонстрировать функциональность на тестовом контроллере.</p>
 
 <p> <strong>Решение:</strong> </p>
 
 <p>В соответствии с заданием, первым шагом будет клонирование репозитория.</p>
 
-<p>Для компиляции файла <em>hello_PLCnext</em> используем следующие команды:</p>
+<p>Для компиляции файла <em>hello_PLCnext</em> используем:</p>
 
 
 cmake --preset=build-windows-AXCF2152-2021.0.3.35554 .
@@ -43,27 +43,27 @@ cmake --build --preset=build-windows-AXCF2152-2021.0.3.35554 --target install
 
 <p>Подключаем контроллер и настраиваем сетевые параметры для взаимодействия с ним.</p>
 
-![](images/connect.png) 
+![](images/conect.png) 
 
 <p>Важно проверить, что соединение с контроллером установлено корректно.
 
-![](images/network_configuration.png) 
+![](images/network_conf.png) 
 
 <p>Запускаем программу <em>PuTTY Configuration</em> и подключаемся к контроллеру.</p>
 
-![](images/PuTTY_connect.png)
+![](images/PuTTY_conect.png)
 
 <p>Вводим логин и пароль для доступа к контроллеру.</p>
 
-![](images/PuTTY_login_password.png)
+![](images/PuTTY_log_pass.png)
 
 <p>Запускаем <em>WinCP</em> для подключения к контроллеру.</p>
 
-![](images/WinCP_connect.png) 
+![](images/WinCP_conect.png) 
 
 <p>Копируем собранный проект в корневую папку контроллера и изменяем разрешения для возможности его запуска.</p>
 
-![](images/hello_PLCnext_settings.png)
+![](images/hi_PLCnext_settings.png)
 
 <p>Запускаем проект и получаем результат.</p>
 
