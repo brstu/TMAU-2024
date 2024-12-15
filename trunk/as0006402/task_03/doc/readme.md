@@ -10,7 +10,7 @@
 <p align="right">Выполнил:</p>
 <p align="right">cтудент 3 курca</p>
 <p align="right">Группы ac-64</p>
-<p align="right">Брызгaлов Ю.Н.></p>
+<p align="right">Брызгaлов Ю.Н.</p>
 <p align="right">Проверилa:</p>
 <p align="right">Ситковец Я.С.</p>
 <br><br><br><br><br>
