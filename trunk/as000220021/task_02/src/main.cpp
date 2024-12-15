@@ -3,57 +3,58 @@
 #include <array>
 using namespace std;
 
-// Абстрактный класс модели для наследнования другими моделями
+// Abstract class model intended for inheritance by other models
+
 class Model {
 public:
     /*
-    Виртуальная функция для симулирования температуры с входными вариантами:
-        curr_temp - текущая температура модели
-        control_var - температура на входе
-        return - температура на выходе
-    */
+Virtual function for simulating temperature with input parameters:
+curr_temp - current temperature of the model
+control_var - input temperature
+return - output temperature
+*/
     virtual double temperature_sim(double curr_temp, double control_var) = 0;
 
     virtual ~Model() = default;
 };
 
-// Линейная модель контроля температуры
+// Linear temperature control model
 class Linear_Model : public Model {
 private:
-    double alpha; // Параметр модели alpha
-    double beta; // Параметр модели beta
+    double alpha; // Model parameter alpha
+    double beta; // Model parameter beta
 
 public:
-    // Конструктор нового объекта с константными параметрами alpha и beta
+    // Constructor for an object with fixed parameters alpha and beta
     Linear_Model(double alpha, double beta) : alpha(alpha), beta(beta) {};
 
-    // Метод расчёта выходной температуры линеной модели
+    //  Method for calculating the output temperature of the linear model
     double temperature_sim(double curr_temp, double control_var) final {
         return alpha * curr_temp + beta * control_var;
     }
 
-    // Деструктор объекта Linear_Model
+    // Destructor of the Linear_Model object
     ~Linear_Model() override = default;
 };
 
 class NonLinear_Model : public Model {
 private:
-    double alpha; // Параметр модели alpha
-    double beta; // Параметр модели beta
-    double charlie; // Параметр модели charlie
-    double delta; // Параметр модели alpha
+    double alpha; // Model parameter alpha
+    double beta; // Model parameter beta
+    double charlie; // Model parameter charlie
+    double delta; /// Model parameter alpha
     double prev_temp = 0;
     double prev_control_var = 0;
     
 public:
-    // Конструктор нового объекта с константными параметрами alpha, beta, charlie, delta
-    NonLinear_Model(double alpha, double beta, double charlie, double delta) :
+    //  Constructor for a new object with constant parameters alpha, beta, charlie, delta
+     NonLinear_Model(double alpha, double beta, double charlie, double delta) :
         alpha(alpha),
         beta(beta),
         charlie(charlie),
         delta(delta) {};
 
-    // Метод расчёта выходной температуры нелиненой модели
+    // Method for calculating the output temperature of the nonlinear model
     double temperature_sim(double curr_temp, double control_var) {
         double temp = alpha * curr_temp + beta * pow(prev_temp, 2) + charlie * control_var + delta * sin(prev_control_var);
         prev_temp = curr_temp;
@@ -61,41 +62,41 @@ public:
         return temp;
     }
 
-    // Деструктор объекта NonLinear_Model
+    // Destructor of the NonLinear_Model object
     ~NonLinear_Model() override = default;
 };
 
 class PID_regulator {
 private:
-    // Постоянный коэффициент передачи регулятора
+    // Constant transfer coefficient of the regulator
     const double K = 0.1;
-    // Постоянная интегрирования
+    // Constant for integration
     const double T = 10;
-    // Постоянная дифференцирования
+    // Constant for differentiation
     const double TD = 80;
-    // Постоянная шага квантования
+    // Quantization step constant
     const double T0 = 50;
-    // Время моделирования
+    // Simulation time
     const double model_lifetime = 30;
-    // Значение управляющей переменной
+    // Value of the control variable
     double Uk = 0;
 
     /*
-    Метод для расчёта контрольных значений
-        err - массив ошибок
-        return - значение переменной управления
+    Method for calculating control values
+        err - array of errors
+        return - value of the control variable
     */
     double calculate_Uk(double err) {
-        // используем массив для хранения ошибок и цикл для вычисления Uk
-        array <double, 3> errors = { 0, 0, 0 }; /// хранение последних трех ошибок
-        errors[2] = errors[1]; /// сдвиг ошибок влево
+        // Use an array to store errors and a loop to compute Uk
+        array <double, 3> errors = { 0, 0, 0 }; /// Store the last three errors 
+        errors[2] = errors[1]; /// Shift errors to the left
         errors[1] = errors[0];
-        errors[0] = err; /// хранение текущей ошибки
+        errors[0] = err; /// Store the current error
 
-        // коэффициенты для формулы PID
+        // Coefficients for the PID formula
         array<double, 3> q = { K * (1 + TD / T0), -K * (1 + 2 * TD / T0 - T0 / T), K * TD / T0 };
 
-        // цикл по ошибкам и добавление их произведений с коэффициентами к Uk
+        // Loop through errors and add their products with coefficients to Uk
         for (int i = 0; i < 3; i++) {
             Uk += q[i] * errors[i];
         }
@@ -104,10 +105,10 @@ private:
     }
 public:
     /*
-    Регулятор моделирования
-        goal_temp - требуемое значение температуры
-        start_temp - начальная температура
-        model - линейная или нелинейная модель
+    Simulation regulator
+        goal_temp - desired temperature value
+        start_temp - initial temperature
+        model - linear or nonlinear model
     */
     void regulate(double goal_temp, double start_temp, Model& model) {
         double now_temp = start_temp;
@@ -124,12 +125,12 @@ public:
 };
 
 /*
-Функция для ввода параметров модели
-    alpha - константа
-    beta - константа
-    charlie - константа
-    delta - константа
-    is_linear - тип модели
+Function for inputting model parameters
+    alpha - constant
+    beta - constant
+    charlie - constant
+    delta - constant
+    is_linear - model type
 */
 void input_consts(double& alpha, double& beta, double& charlie, double& delta, bool is_NonLinear) { 
     cout << "Введите параметр alpha: ";
@@ -156,14 +157,14 @@ int main() {
         double delta;
     };
     
-    array<const char*, 2> model_names = { "Линейная модель", "Нелинейная модель" }; /// названия моделей
-    array<ModelParams, 2> model_params;/// цикл по моделям и ввод их параметров
+    array<const char*, 2> model_names = { "Линейная модель", "Нелинейная модель" }; /// Model names
+    array<ModelParams, 2> model_params;/// Loop through models and input their parameters
     for (int i = 0; i < 2; i++) {
         cout << "----------" << model_names[i] << ". Введите параметры----------" << endl;
         input_consts(model_params[i].alpha, model_params[i].beta, model_params[i].charlie, model_params[i].delta, i);
     }
 
-    // Создание самих моделей с введёнными параметрами
+    // Creation of the models themselves with the entered parameters
     Linear_Model linear_model(model_params[0].alpha, model_params[0].beta);
     NonLinear_Model nonlinear_model(model_params[1].alpha, model_params[1].beta, model_params[1].charlie, model_params[1].delta);
 
