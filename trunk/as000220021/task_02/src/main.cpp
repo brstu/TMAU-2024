@@ -1,270 +1,181 @@
 #include <iostream>
-#include <vector>
-#include "models.h"
-#include "PID.h"
-
+#include <cmath>
+#include <array>
 using namespace std;
 
-/**
- * @file main.cpp
- *
- * @brief Программа реализует контроллер для системы с двумя моделями:
- * линейной и нелинейной.
- *
- * @author Поплавский Владислав
- *
- * @version 1.0.0
- *
- * @date 21-09-2024
- */
+// РђР±СЃС‚СЂР°РєС‚РЅС‹Р№ РєР»Р°СЃСЃ РјРѕРґРµР»Рё РґР»СЏ РЅР°СЃР»РµРґРЅРѕРІР°РЅРёСЏ РґСЂСѓРіРёРјРё РјРѕРґРµР»СЏРјРё
+class Model {
+public:
+    /*
+    Р’РёСЂС‚СѓР°Р»СЊРЅР°СЏ С„СѓРЅРєС†РёСЏ РґР»СЏ СЃРёРјСѓР»РёСЂРѕРІР°РЅРёСЏ С‚РµРјРїРµСЂР°С‚СѓСЂС‹ СЃ РІС…РѕРґРЅС‹РјРё РІР°СЂРёР°РЅС‚Р°РјРё:
+        curr_temp - С‚РµРєСѓС‰Р°СЏ С‚РµРјРїРµСЂР°С‚СѓСЂР° РјРѕРґРµР»Рё
+        control_var - С‚РµРјРїРµСЂР°С‚СѓСЂР° РЅР° РІС…РѕРґРµ
+        return - С‚РµРјРїРµСЂР°С‚СѓСЂР° РЅР° РІС‹С…РѕРґРµ
+    */
+    virtual double temperature_sim(double curr_temp, double control_var) = 0;
 
-void start();
-bool choice_input(int& choice);
-LinearModel get_liner_model(const int& T0);
-NonLinearModel get_nonlinear_model(const int& T0);
-template<typename T> bool input_value(T& value, const string& name);
-void output(const vector <vector<double>>& control_signals, const string& name);
+    virtual ~Model() = default;
+};
 
-/**
- * @brief Главная функция.
- *
- * Главная функция запускает программу, является точкой входа.
- *
- * @return 0, если все в порядке.
- */
+// Р›РёРЅРµР№РЅР°СЏ РјРѕРґРµР»СЊ РєРѕРЅС‚СЂРѕР»СЏ С‚РµРјРїРµСЂР°С‚СѓСЂС‹
+class Linear_Model : public Model {
+private:
+    double alpha; // РџР°СЂР°РјРµС‚СЂ РјРѕРґРµР»Рё alpha
+    double beta; // РџР°СЂР°РјРµС‚СЂ РјРѕРґРµР»Рё beta
+
+public:
+    // РљРѕРЅСЃС‚СЂСѓРєС‚РѕСЂ РЅРѕРІРѕРіРѕ РѕР±СЉРµРєС‚Р° СЃ РєРѕРЅСЃС‚Р°РЅС‚РЅС‹РјРё РїР°СЂР°РјРµС‚СЂР°РјРё alpha Рё beta
+    Linear_Model(double alpha, double beta) : alpha(alpha), beta(beta) {};
+
+    // РњРµС‚РѕРґ СЂР°СЃС‡С‘С‚Р° РІС‹С…РѕРґРЅРѕР№ С‚РµРјРїРµСЂР°С‚СѓСЂС‹ Р»РёРЅРµРЅРѕР№ РјРѕРґРµР»Рё
+    double temperature_sim(double curr_temp, double control_var) final {
+        return alpha * curr_temp + beta * control_var;
+    }
+
+    // Р”РµСЃС‚СЂСѓРєС‚РѕСЂ РѕР±СЉРµРєС‚Р° Linear_Model
+    ~Linear_Model() override = default;
+};
+
+class NonLinear_Model : public Model {
+private:
+    double alpha; // РџР°СЂР°РјРµС‚СЂ РјРѕРґРµР»Рё alpha
+    double beta; // РџР°СЂР°РјРµС‚СЂ РјРѕРґРµР»Рё beta
+    double charlie; // РџР°СЂР°РјРµС‚СЂ РјРѕРґРµР»Рё charlie
+    double delta; // РџР°СЂР°РјРµС‚СЂ РјРѕРґРµР»Рё alpha
+    double prev_temp = 0;
+    double prev_control_var = 0;
+    
+public:
+    // РљРѕРЅСЃС‚СЂСѓРєС‚РѕСЂ РЅРѕРІРѕРіРѕ РѕР±СЉРµРєС‚Р° СЃ РєРѕРЅСЃС‚Р°РЅС‚РЅС‹РјРё РїР°СЂР°РјРµС‚СЂР°РјРё alpha, beta, charlie, delta
+    NonLinear_Model(double alpha, double beta, double charlie, double delta) :
+        alpha(alpha),
+        beta(beta),
+        charlie(charlie),
+        delta(delta) {};
+
+    // РњРµС‚РѕРґ СЂР°СЃС‡С‘С‚Р° РІС‹С…РѕРґРЅРѕР№ С‚РµРјРїРµСЂР°С‚СѓСЂС‹ РЅРµР»РёРЅРµРЅРѕР№ РјРѕРґРµР»Рё
+    double temperature_sim(double curr_temp, double control_var) {
+        double temp = alpha * curr_temp + beta * pow(prev_temp, 2) + charlie * control_var + delta * sin(prev_control_var);
+        prev_temp = curr_temp;
+        prev_control_var = control_var;
+        return temp;
+    }
+
+    // Р”РµСЃС‚СЂСѓРєС‚РѕСЂ РѕР±СЉРµРєС‚Р° NonLinear_Model
+    ~NonLinear_Model() override = default;
+};
+
+class PID_regulator {
+private:
+    // РџРѕСЃС‚РѕСЏРЅРЅС‹Р№ РєРѕСЌС„С„РёС†РёРµРЅС‚ РїРµСЂРµРґР°С‡Рё СЂРµРіСѓР»СЏС‚РѕСЂР°
+    const double K = 0.1;
+    // РџРѕСЃС‚РѕСЏРЅРЅР°СЏ РёРЅС‚РµРіСЂРёСЂРѕРІР°РЅРёСЏ
+    const double T = 10;
+    // РџРѕСЃС‚РѕСЏРЅРЅР°СЏ РґРёС„С„РµСЂРµРЅС†РёСЂРѕРІР°РЅРёСЏ
+    const double TD = 80;
+    // РџРѕСЃС‚РѕСЏРЅРЅР°СЏ С€Р°РіР° РєРІР°РЅС‚РѕРІР°РЅРёСЏ
+    const double T0 = 50;
+    // Р’СЂРµРјСЏ РјРѕРґРµР»РёСЂРѕРІР°РЅРёСЏ
+    const double model_lifetime = 30;
+    // Р—РЅР°С‡РµРЅРёРµ СѓРїСЂР°РІР»СЏСЋС‰РµР№ РїРµСЂРµРјРµРЅРЅРѕР№
+    double Uk = 0;
+
+    /*
+    РњРµС‚РѕРґ РґР»СЏ СЂР°СЃС‡С‘С‚Р° РєРѕРЅС‚СЂРѕР»СЊРЅС‹С… Р·РЅР°С‡РµРЅРёР№
+        err - РјР°СЃСЃРёРІ РѕС€РёР±РѕРє
+        return - Р·РЅР°С‡РµРЅРёРµ РїРµСЂРµРјРµРЅРЅРѕР№ СѓРїСЂР°РІР»РµРЅРёСЏ
+    */
+    double calculate_Uk(double err) {
+        // РёСЃРїРѕР»СЊР·СѓРµРј РјР°СЃСЃРёРІ РґР»СЏ С…СЂР°РЅРµРЅРёСЏ РѕС€РёР±РѕРє Рё С†РёРєР» РґР»СЏ РІС‹С‡РёСЃР»РµРЅРёСЏ Uk
+        array <double, 3> errors = { 0, 0, 0 }; /// С…СЂР°РЅРµРЅРёРµ РїРѕСЃР»РµРґРЅРёС… С‚СЂРµС… РѕС€РёР±РѕРє
+        errors[2] = errors[1]; /// СЃРґРІРёРі РѕС€РёР±РѕРє РІР»РµРІРѕ
+        errors[1] = errors[0];
+        errors[0] = err; /// С…СЂР°РЅРµРЅРёРµ С‚РµРєСѓС‰РµР№ РѕС€РёР±РєРё
+
+        // РєРѕСЌС„С„РёС†РёРµРЅС‚С‹ РґР»СЏ С„РѕСЂРјСѓР»С‹ PID
+        array<double, 3> q = { K * (1 + TD / T0), -K * (1 + 2 * TD / T0 - T0 / T), K * TD / T0 };
+
+        // С†РёРєР» РїРѕ РѕС€РёР±РєР°Рј Рё РґРѕР±Р°РІР»РµРЅРёРµ РёС… РїСЂРѕРёР·РІРµРґРµРЅРёР№ СЃ РєРѕСЌС„С„РёС†РёРµРЅС‚Р°РјРё Рє Uk
+        for (int i = 0; i < 3; i++) {
+            Uk += q[i] * errors[i];
+        }
+
+        return Uk;
+    }
+public:
+    /*
+    Р РµРіСѓР»СЏС‚РѕСЂ РјРѕРґРµР»РёСЂРѕРІР°РЅРёСЏ
+        goal_temp - С‚СЂРµР±СѓРµРјРѕРµ Р·РЅР°С‡РµРЅРёРµ С‚РµРјРїРµСЂР°С‚СѓСЂС‹
+        start_temp - РЅР°С‡Р°Р»СЊРЅР°СЏ С‚РµРјРїРµСЂР°С‚СѓСЂР°
+        model - Р»РёРЅРµР№РЅР°СЏ РёР»Рё РЅРµР»РёРЅРµР№РЅР°СЏ РјРѕРґРµР»СЊ
+    */
+    void regulate(double goal_temp, double start_temp, Model& model) {
+        double now_temp = start_temp;
+        for (int i = 1; i <= model_lifetime; i++) {
+            double err = goal_temp - now_temp;
+            Uk = calculate_Uk(err);
+            now_temp = model.temperature_sim(start_temp, Uk);
+            cout << "Err = " << err << "\t"
+                << "Yt = " << now_temp << "\t"
+                << "Uk = " << Uk << endl;
+        }
+        Uk = 0;
+    }
+};
+
+/*
+Р¤СѓРЅРєС†РёСЏ РґР»СЏ РІРІРѕРґР° РїР°СЂР°РјРµС‚СЂРѕРІ РјРѕРґРµР»Рё
+    alpha - РєРѕРЅСЃС‚Р°РЅС‚Р°
+    beta - РєРѕРЅСЃС‚Р°РЅС‚Р°
+    charlie - РєРѕРЅСЃС‚Р°РЅС‚Р°
+    delta - РєРѕРЅСЃС‚Р°РЅС‚Р°
+    is_linear - С‚РёРї РјРѕРґРµР»Рё
+*/
+void input_consts(double& alpha, double& beta, double& charlie, double& delta, bool is_NonLinear) { 
+    cout << "Р’РІРµРґРёС‚Рµ РїР°СЂР°РјРµС‚СЂ alpha: ";
+    cin >> alpha;
+    cout << "Р’РІРµРґРёС‚Рµ РїР°СЂР°РјРµС‚СЂ beta: ";
+    cin >> beta;
+    if (is_NonLinear) {
+        cout << "Р’РІРµРґРёС‚Рµ РїР°СЂР°РјРµС‚СЂ charlie: ";
+        cin >> charlie;
+        cout << "Р’РІРµРґРёС‚Рµ РїР°СЂР°РјРµС‚СЂ delta: ";
+        cin >> delta;
+    }
+}
 
 int main() {
-    /**
-     * @brief Массив функций для переключения между ними.
-     */
-    void (*point[])() = { []() { exit(0); }, start };
-    int choice;
-    while (true) {
-        /**
-         * @brief Вывод выбора для пользователя.
-         */
-        cout << "\n\tВведите выбор (0 - выход, 1 - начать)\n";
-        /**
-         * @brief Ввод выбора от пользователя.
-         */
-        if (!choice_input(choice)) {
-            /**
-             * @brief Если ввод некорректен, выводим сообщение об ошибке.
-             */
-            cerr << "\n\a\t\t***Некорректное значение ввода***\n\n";
-            continue;
-        }
-        /**
-         * @brief Вызываем функцию из массива в зависимости от выбора.
-         */
-        point[choice]();
+
+    system("chcp 1251");
+    system("cls");
+
+    struct ModelParams {
+        double alpha;
+        double beta;
+        double charlie;
+        double delta;
+    };
+    
+    array<const char*, 2> model_names = { "Р›РёРЅРµР№РЅР°СЏ РјРѕРґРµР»СЊ", "РќРµР»РёРЅРµР№РЅР°СЏ РјРѕРґРµР»СЊ" }; /// РЅР°Р·РІР°РЅРёСЏ РјРѕРґРµР»РµР№
+    array<ModelParams, 2> model_params;/// С†РёРєР» РїРѕ РјРѕРґРµР»СЏРј Рё РІРІРѕРґ РёС… РїР°СЂР°РјРµС‚СЂРѕРІ
+    for (int i = 0; i < 2; i++) {
+        cout << "----------" << model_names[i] << ". Р’РІРµРґРёС‚Рµ РїР°СЂР°РјРµС‚СЂС‹----------" << endl;
+        input_consts(model_params[i].alpha, model_params[i].beta, model_params[i].charlie, model_params[i].delta, i);
     }
-    return 0;
-}
 
-/**
- * @brief Функция для начала программы.
- *
- * Функция запускает программу, вводит данные для линейной и нелинейной моделей,
- * вычисляет ошибку, рассчитывает управляющий сигнал с помощью PID и выводит результаты.
- */
-void start() {
-    double w;
-    int T0;
+    // РЎРѕР·РґР°РЅРёРµ СЃР°РјРёС… РјРѕРґРµР»РµР№ СЃ РІРІРµРґС‘РЅРЅС‹РјРё РїР°СЂР°РјРµС‚СЂР°РјРё
+    Linear_Model linear_model(model_params[0].alpha, model_params[0].beta);
+    NonLinear_Model nonlinear_model(model_params[1].alpha, model_params[1].beta, model_params[1].charlie, model_params[1].delta);
 
-    do {
-        /**
-         * @brief Запрос ввода алгоритма функционирования системы.
-         */
-        cout << "Введите алгоритм функционирования системы\n";
-    } while (!input_value(w, "w(t)"));
+    PID_regulator pid_regulator;
 
-    /**
-     * @brief Запрос ввода шага.
-     */
-    cout << "Введите шаг\n";
-    input_value(T0, "T0");
+    const double goal_temp = 12;
+    const double start_temp = 5;
 
-    /**
-     * @brief Запрос ввода данных для линейной модели.
-     */
-    cout << "\tЗаполните данные для линейной модели\n";
-    LinearModel liner_model = get_liner_model(T0);
+    cout << "\t----------Р›РёРЅРµР№РЅР°СЏ РјРѕРґРµР»СЊ----------" << endl;
+    pid_regulator.regulate(goal_temp, start_temp, linear_model);
+    cout << endl;
 
-    /**
-     * @brief Получаем температуры из линейной модели.
-     */
-    vector <double> temps_linear = liner_model.getTemp();
-
-    /**
-     * @brief Создаем объекты PID-регулятора.
-     */
-    PID pid_liner, pid_nonlinear;
-
-    /**
-     * @brief Рассчитываем управляющий сигнал с помощью PID для линейной модели.
-     */
-    pid_liner.calculate(w, T0, temps_linear);
-
-    /**
-     * @brief Получаем управляющие сигналы от PID-регулятора для линейной модели.
-     */
-    vector <vector<double>> control_signals_liner = pid_liner.getControlSignals();
-
-    /**
-     * @brief Запрос ввода данных для нелинейной модели.
-     */
-    cout << "\tЗаполните данные для нелинейной модели\n";
-    NonLinearModel non_liner_model = get_nonlinear_model(T0);
-
-    /**
-     * @brief Получаем температуры из нелинейной модели.
-     */
-    vector <double> temps_nonlinear = non_liner_model.getTemp();
-
-    /**
-     * @brief Рассчитываем управляющий сигнал с помощью PID для нелинейной модели.
-     */
-    pid_nonlinear.calculate(w, T0, temps_nonlinear);
-
-    /**
-     * @brief Получаем управляющие сигналы от PID-регулятора для нелинейной модели.
-     */
-    vector <vector<double>> control_signals_nonlinear = pid_nonlinear.getControlSignals();
-
-    /**
-     * @brief Выводим результаты для линейной модели.
-     */
-    output(control_signals_liner, "Линейная модель");
-    /**
-     * @brief Выводим результаты для нелинейной модели.
-     */
-    output(control_signals_nonlinear, "Нелинейная модель");
-}
-
-/**
- * @brief Функция для вывода результатов.
- *
- * @param control_signals Управляющие сигналы для вывода.
- * @param name Имя модели.
- */
-void output(const vector <vector<double>>& control_signals, const string& name) {
-    /**
-     * @brief Вывод заголовка таблицы.
-     */
-    cout << "\n\t\t\t\t\t\t\t\tРЕЗУЛЬТАТЫ\n\n";
-    cout << "\t\t\t\t\t\t\t\t" << name << "\n\n";
-    cout.setf(ios::left);
-    cout << setw(15) << "ВРЕМЯ (T0)";
-    cout << setw(20) << "ОТКЛОНЕНИЕ (e)";
-    cout << setw(27) << "ВЫХОДНАЯ ПЕРЕМЕННАЯ (Yt)";
-    cout << setw(35) << "УПРАВЛЯЮЩЕЕ ВЛИЯНИЕ (Uk)" << endl;
-    cout << setfill('=') << setw(85) << "" << setfill(' ') << endl;
-    int i = 1;
-    for (const auto& signal : control_signals) {
-        /**
-         * @brief Вывод строки таблицы.
-         */
-        cout << setw(15) << i++;
-        cout << setw(20) << signal[0];
-        cout << setw(27) << signal[1];
-        cout << setw(35) << signal[2] << endl;
-    }
-}
-
-/**
- * @brief Шаблонная функция для ввода значения.
- *
- * @param value Значение для ввода.
- * @param name Имя значения.
- *
- * @return true, если все в порядке.
- */
-template<typename T> bool input_value(T& value, const string& name) {
-    while (true) {
-        /**
-         * @brief Запрос ввода значения.
-         */
-        cout << "Введите " << name << ": ";
-        if (cin >> value) {
-            /**
-             * @brief Если ввод корректен, возвращаем true.
-             */
-            return true;
-        }
-        else {
-            /**
-             * @brief Если ввод некорректен, выводим сообщение об ошибке.
-             */
-            cin.clear();
-            cin.ignore(numeric_limits<streamsize>::max(), '\n');
-            cerr << "\n\a\t\t***Некорректное значение ввода***\n\n";
-        }
-    }
-}
-
-/**
- * @brief Функция для ввода данных для линейной модели.
- *
- * @return Линейная модель.
- */
-LinearModel get_liner_model(const int& T0) {
-    double A, B, current_temperature, warm;
-    /**
-     * @brief Ввод данных для линейной модели.
-     */
-    input_value(A, "A");
-    input_value(B, "B");
-    input_value(current_temperature, "current_temperature");
-    input_value(warm, "warm");
-    LinearModel model(A, B, current_temperature, warm);
-    model.calculate(T0);
-    return model;
-}
-
-/**
- * @brief Функция для ввода данных для нелинейной модели.
- *
- * @return Нелинейная модель.
- */
-NonLinearModel get_nonlinear_model(const int& T0) {
-    double A, B, C, D, current_temperature, warm;
-    /**
-     * @brief Ввод данных для нелинейной модели.
-     */
-    input_value(A, "A");
-    input_value(B, "B");
-    input_value(C, "C");
-    input_value(D, "D");
-    input_value(current_temperature, "current_temperature");
-    input_value(warm, "warm");
-    NonLinearModel model(A, B, C, D, current_temperature, warm);
-    model.calculate(T0);
-    return model;
-}
-
-/**
- * @brief Функция для ввода выбора.
- *
- * @param choice Выбор.
- *
- * @return true, если все в порядке.
- */
-bool choice_input(int& choice) {
-    while (true) {
-        if (input_value(choice, "выбор")) {
-            if (choice >= 0 && choice <= 1) {
-                /**
-                 * @brief Если ввод корректен, возвращаем true.
-                 */
-                return true;
-            }
-            else {
-                /**
-                 * @brief Если ввод некорректен, выводим сообщение об ошибке.
-                 */
-                cerr << "\n\a\t\t***Некорректное значение ввода***\n\n";
-            }
-        }
-    }
+    cout << "\t----------РќРµР»РёРЅРµР№РЅР°СЏ РјРѕРґРµР»СЊ----------" << endl;
+    pid_regulator.regulate(goal_temp, start_temp, nonlinear_model);
 }
