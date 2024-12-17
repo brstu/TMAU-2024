@@ -27,7 +27,7 @@
 |5|Грицук Павел|[as0006304](./trunk/as0006304/)|:white_check_mark:|:white_check_mark:|:white_check_mark:|:white_check_mark:|:white_check_mark:|||||
 |6|Казаренко Павел|[as0006305](./trunk/as0006305/)|:white_check_mark:|:white_check_mark:|:white_check_mark:|||||||
 |7|Карпеш Никита|[as0006309](./trunk/as0006309/)|:white_check_mark:|:white_check_mark:|:white_check_mark:|:white_check_mark:|:white_check_mark:|:white_check_mark:|:white_check_mark:|||
-|8|Козлович Антон|[as0006308](./trunk/as0006308/)|:white_check_mark:|:white_check_mark:|:white_check_mark:|||||||
+|8|Козлович Антон|[as0006308](./trunk/as0006308/)|:white_check_mark:|:white_check_mark:|:white_check_mark:|:white_check_mark:||||||
 |9|Козловская Анна|[as0006310](./trunk/as0006310/)|:white_check_mark:|:white_check_mark:|:white_check_mark:|:white_check_mark:|:white_check_mark:|:white_check_mark:||||
 |10|Колодич Максим|[as0006307](./trunk/as0006307/)|:white_check_mark:|:white_check_mark:|:white_check_mark:|||||||
 |11|Крагель Алина|[as0006311](./trunk/as0006311/)|:white_check_mark:|:white_check_mark:|:white_check_mark:|:white_check_mark:|:white_check_mark:|:white_check_mark:|:white_check_mark:|||
