@@ -1,10 +1,15 @@
 #include <iostream>
 #include <string>
 #include <cmath>
+#include <cstdlib>
+#include <ctime>
 
 using namespace std;
 
-const double aN = 2.34 ; const double bN = 5.13 ; const double cN = 4.17 ; const  double dN = 3.05;
+const double aN = 2.34;
+const double bN = 5.13;
+const double cN = 4.17;
+const double dN = 3.05;
 
 double LineModel(double Yt, double a, double b, double Ut) {
     return a * Yt + b * Ut;
@@ -16,60 +21,43 @@ double NLineModel(double Yt, double PreviousYt, double Ut, double PreviousUt) {
 
 int main() {
     setlocale(LC_ALL, "Russian");
-    double y0; double u0; double aL; double bL; double Yt; double PreviousYt; double Ut; double PreviousUt;
-    int LinIter; int NLinIter;
 
-    cout << "Введите значение  y: ";
-    cin >> y0;
-    cout << "Введите значение u: ";
-    cin >> u0;
+    srand(static_cast<unsigned>(time(0)));
 
-    cout << endl << "Параметры линейной" << endl;
-    cout << "Введите значение a: ";
-    cin >> aL;
-    cout << "Введите значение b: ";
-    cin >> bL;
+    double y0 = 1.0;
+    double u0 = 0.5;
+    double aL = 1.2;
+    double bL = 0.8;
+    int LinIter = 5;
+    int NLinIter = 5;
 
-    cout << endl << "Количество итераций" << endl;
-    cout << "Линейной модели: ";
-    cin >> LinIter;
-    cout << "Нелинейной модели: ";
-    cin >> NLinIter;
-
-    cout << endl << endl << "Линейная модель";
-    Yt = y0; Ut = u0;
-    cout << "\t\t\tИтерация" << "\t\t\t" << "Yt";
+    cout << endl << "Линейная модель";
+    double Yt = y0;
+    double Ut = u0;
+    cout << "\nИтерация\t\tYt";
 
     for (int iterator = 0; iterator < LinIter; iterator++) {
-        cout << endl << "Введите Ut: ";
-        cin >> Ut;
-
+        Ut = static_cast<double>(rand()) / RAND_MAX;
         Yt = LineModel(Yt, aL, bL, Ut);
-        cout << "\t\t\t" << iterator + 1 << "\t\t\t" << Yt;
+        cout << "\n" << iterator + 1 << "\t\t\t" << Yt;
     }
-    cout << "" << endl << endl << "Нелинейная модель";
-    Yt = y0; Ut = u0;
-    cout << "\t\tИтерация" << "\t\t\t" << "Yt";
 
-    for (int iterator = 0; iterator < LinIter; iterator++) {
+    cout << endl << endl << "Нелинейная модель";
+    Yt = y0;
+    Ut = u0;
+    double PreviousYt = 0.0;
+    double PreviousUt = 0.0;
+    cout << "\nИтерация\t\tYt";
+
+    for (int iterator = 0; iterator < NLinIter; iterator++) {
         if (iterator > 0) {
-
-            PreviousUt = Ut; PreviousYt = Yt;
-            cout << endl << "Введите Ut: ";
-            cin >> Ut;
-
-            Yt = NLineModel(Yt, PreviousYt, Ut, PreviousUt);
-            cout << "\t\t\t" << iterator + 1 << "\t\t\t" << Yt;
+            PreviousUt = Ut;
+            PreviousYt = Yt;
         }
-        else {
-
-            PreviousUt = 0; PreviousYt = 0;
-            cout << endl << "Введите Ut: ";
-            cin >> Ut;
-
-            Yt = NLineModel(Yt, PreviousYt, Ut, PreviousUt);
-            cout << "\t\t\t" << iterator + 1 << "\t\t\t" << Yt;
-        }
+        Ut = static_cast<double>(rand()) / RAND_MAX;
+        Yt = NLineModel(Yt, PreviousYt, Ut, PreviousUt);
+        cout << "\n" << iterator + 1 << "\t\t\t" << Yt;
     }
-}
 
+    return 0;
+}
