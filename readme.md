@@ -50,7 +50,7 @@
 
 | №  | ФИО                            | Directory name               | #0 | #1  | #2 | #3  | #4 | #5 | #6 | Рейтинг | Доклад |
 |----|--------------------------------|----------------------------- |----|-----|----|-----|----|----|----|---------|--------|
-|1|Белаш Александр Олегович|||||||||||
+|1|Белаш Александр Олегович|[as0006401](./trunk/as0006401/)|:white_check_mark:|:white_check_mark:||||||||
 |2|Брызгалов Юрий Николаевич|[as0006402](./trunk/as0006402/)|:white_check_mark:|:white_check_mark:|:white_check_mark:|:white_check_mark:|:white_check_mark:|||||
 |3|Будник Анна Андреевна|[as0006433](./trunk/as0006433/)|:white_check_mark:|:white_check_mark:|:white_check_mark:|:white_check_mark:|:white_check_mark:|||||
 |4|Булавский Андрей Сергеевич|[as0006404](./trunk/as0006404/)|:white_check_mark:|:white_check_mark:|:white_check_mark:|:white_check_mark:||||||
