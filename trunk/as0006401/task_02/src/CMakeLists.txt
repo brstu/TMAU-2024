@@ -1,4 +1,4 @@
-cmake_minimum_required (VERSION 2.4.0)
-project (novaualaba2)
+cmake_minimum_required(VERSION 3.27)
+project (tmauuuuuuuuu02)
 
-add_executable(novaualaba2 novaualaba2.cpp)
+add_executable(tmauuuuuuuuu02 tmauLab02.cpp)
