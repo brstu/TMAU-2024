@@ -19,11 +19,11 @@
 ---
 
 # Задание:
-1. Ознакомьтесь с общей информацией о платформе **PLCnext** [здесь](https://www.plcnext.help/te/About/Home.htm).
-2. Изучите проект [T1-PLCnext-Demo](https://github.com/savushkin-r-d/T1-PLCnext-Demo).
-3. Внесите изменения в описание  управляющей программы([main.plua](https://github.com/savushkin-r-d/T1-PLCnext-Demo/blob/master/main.plua)) .
-4. Разверните проект локально и на тестовом контроллере, а затем продемонстрируйте его работу.
-5. Напишите отчет о выполненной работе в формате .md (readme.md) и разместите его в каталоге: trunk\as000xxyy\task_05\doc.
+1. Review the general information about the **PLCnext** platform [here](https://www.plcnext.help/te/About/Home.htm).
+2. Study the [T1-PLCnext-Demo](https://github.com/savushkin-r-d/T1-PLCnext-Demo) project.
+3. Make changes to the description of the control program ([main.plua](https://github.com/savushkin-r-d/T1-PLCnext-Demo/blob/master/main.plua)) .
+4. Deploy the project locally and on the test controller, and then demonstrate its operation.
+5. Write a report on the completed work in .md format (readme.md) and place it in the directory: trunk\as000xxyy\task_05\doc.
 
 # Ход работы
 
@@ -41,9 +41,9 @@ git clone --recurse-submodules https://github.com/savushkin-r-d/T1-PLCnext-Demo
 ```sh
 git clone --recurse-submodules https://github.com/savushkin-r-d/SCADA-ptusa-bin
 ```
- 4. Следующий шаг — настройка **DbEditorXML**. Запустите DbEditorXML.exe. Добавьте драйвер T1_PLCNext_Demo.cdbx и убедитесь, что IP-адрес установлен на 127.0.0.1. Затем запустите приложение Bugger.exe для проверки корректной загрузки сервера.
- 5. После этого настройте EasyServer. Запустите этот компонент из клонированного репозитория и следуйте инструкции для настройки файла. Когда настройка завершена, запустите проект в EasyServer, который находится по адресу (например):: `"C:\Users\user\Documents\GitHub\SCADA-ptusa-bin\projects\T1_PLCNext_Demo.mpr"`.
- 6. Теперь перейдите к установке и настройке Monitor. Запустите файл Monitor.exe, в меню проектов добавьте файл T1_PLCNext_Demo.mpr. Откройте проект, используя следующие данные: Имя пользователя: user; Сервер: localhost.
+4. The next step is to configure **DbEditorXML**. Run DbEditorXML.exe. Add the T1_PLCNext_Demo.cdbx driver and make sure the IP address is set to 127.0.0.1. Then run the Bugger.exe application to check if the server boots correctly.
+5. After that, configure EasyServer. Run this component from the cloned repository and follow the instructions to configure the file. Once the configuration is complete, run the project in EasyServer, which is located at (for example): `"C:\Users\user\Documents\GitHub\SCADA-ptusa-bin\projects\T1_PLCNext_Demo.mpr"`.
+6. Now proceed to installing and configuring Monitor. Run the Monitor.exe file, in the projects menu add the T1_PLCNext_Demo.mpr file. Open the project using the following details: Username: user; Server: localhost.
 
 
 ### Сборка и запуск
@@ -65,9 +65,9 @@ In the monitor, all devices are tested on the T1_PLCNext_Demo stand from the con
 
 ## Запуск на контроллере
 
-Для запуска на контроллере необходим файл ptusa_main, который является результатом Лабораторной работы №4.(../../task_04/doc/readme.md)В этом документе также указана инструкция по сборке и подключению.
+To run on the controller, you need the ptusa_main file, which is the result of Laboratory Work No. 4.(../../task_04/doc/readme.md) This document also contains assembly and connection instructions.
 
-В соответствии с условиями задания необходимо было изменить файл main.plua. Были внесены следующие изменения:
+In accordance with the conditions of the task, it was necessary to change the main.plua file. The following changes have been made:
 ```plau
 function user_init()
     local DELTA = 200
