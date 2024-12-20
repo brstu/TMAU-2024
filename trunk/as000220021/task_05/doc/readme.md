@@ -48,16 +48,16 @@ git clone --recurse-submodules https://github.com/savushkin-r-d/SCADA-ptusa-bin
 
 ### Сборка и запуск
 
-Для тестирования проекта выполните следующие шаги:
+To test the project, follow these steps:
 
-В верхнем меню выберите:
-Файл -> Открыть рабочую область из файла
-Затем выберите файл рабочей области:
+In the top menu, select:
+File -> Open Workspace from File
+Then select the workspace file:
 D:\PTUSA-projects\T1_PLCNext_Demo\project.code-workspace
 
-Запустите EasyServer и Monitor. После этого можно запустить проект в Visual Studio Code.
+Start EasyServer and Monitor. After that, you can run the project in Visual Studio Code.
 
-В Monitor будут отображаться все устройства тестового стенда T1_PLCNext_Demo с возможностью управления.
+In the monitor, all devices are tested on the T1_PLCNext_Demo stand from the control point of view.
 
 ![](../img/monitor_done.png)
 <br>
