@@ -1,4 +1,4 @@
 cmake_minimum_required (VERSION 3.5.0)
-project(pidcontroller)
+prоject(pidcоntrоller)
 
-add_executable(pidcontroller main.cpp)
+аdd_executable(pidcоntrоller mаin.cpp)
