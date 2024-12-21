@@ -129,13 +129,4 @@ Information about the developed program, created using [Doxygen](https://doxygen
 
 The resulting file is [doxygen.md](doxygen.md)
 
-## The source code
 
-#### The source code is located in the [src folder](/trunk/as000220021/task_02/src).
-
-- [CMakeLists.txt](/trunk/as000220021/task_01/src/CMakeLists.txt) - this is a file that contains CMake commands to control the project build process.
-- [models.h](/trunk/as000220021/task_01/src/models.h) - header file, contains functions declarations for linear and nonlinear models simulation.
-- [models.cpp](/trunk/as000220021/task_01/src/models.cpp) - source file, contains functions definitions for linear and nonlinear models simulation.
-- [main.cpp](/trunk/as000220021/task_01/src/main.cpp) - source file, contains the main function that controls the program execution.
-- [PID.h](/trunk/as000220021/task_01/src/PID.h) - header file, contains the declaration of the `PID` class, which is used to control the system by the PID algorithm.
-- [PID.cpp](/trunk/as000220021/task_01/src/PID.cpp) - source file, contains the definition of the `PID` class, which is used to control the system by the PID algorithm.
