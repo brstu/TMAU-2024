@@ -62,7 +62,7 @@
 |10|Игнаткевич Кирилл Сергеевич|[as0006442](./trunk/as0006442)|:white_check_mark:|:white_check_mark:|:white_check_mark:|:white_check_mark:|:white_check_mark:|:white_check_mark:||||
 |11|Кашпир Дмитрий Русланович|[as0006443](./trunk/as0006443/)|:white_check_mark:|:white_check_mark:|:white_check_mark:|:white_check_mark:|:white_check_mark:|||||
 |12|Котковец Кирилл Викторович|[as0006444](./trunk/as0006444/)|:white_check_mark:|:white_check_mark:|:white_check_mark:|:white_check_mark:|:white_check_mark:|||||
-|13|Кужир Владислав Витальевич|[as0006313](./trunk/as0006413/)|:white_check_mark:|:white_check_mark:|:white_check_mark:|:white_check_mark:|:white_check_mark:|||||
+|13|Кужир Владислав Витальевич|[as0006313](./trunk/as0006413/)|:white_check_mark:|:white_check_mark:|:white_check_mark:|:white_check_mark:|:white_check_mark:|:white_check_mark:||||
 |14|Немирович Дмитрий Александрович|[as0006414](./trunk/as0006414/)|:white_check_mark:|:white_check_mark:|:white_check_mark:|:white_check_mark:|:white_check_mark:|||||
 |15|Попов Алексей Сергеевич|[as0006415](./trunk/as0006415/)|:white_check_mark:|:white_check_mark:|:white_check_mark:|:white_check_mark:|:white_check_mark:|||||
 |16|Рабченя Максим Юрьевич|[as0006416](./trunk/as0006416/)|:white_check_mark:|:white_check_mark:|:white_check_mark:|:white_check_mark:|:white_check_mark:|||||
