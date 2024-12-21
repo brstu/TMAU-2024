@@ -50,7 +50,7 @@
 
 | №  | ФИО                            | Directory name               | #0 | #1  | #2 | #3  | #4 | #5 | #6 | Рейтинг | Доклад |
 |----|--------------------------------|----------------------------- |----|-----|----|-----|----|----|----|---------|--------|
-|1|Белаш Александр Олегович|[as0006401](./trunk/as0006401/)|:white_check_mark:|:white_check_mark:||||||||
+|1|Белаш Александр Олегович|[as0006401](./trunk/as0006401/)|:white_check_mark:|:white_check_mark:|:white_check_mark:|:white_check_mark:|:white_check_mark:|||||
 |2|Брызгалов Юрий Николаевич|[as0006402](./trunk/as0006402/)|:white_check_mark:|:white_check_mark:|:white_check_mark:|:white_check_mark:|:white_check_mark:|||||
 |3|Будник Анна Андреевна|[as0006433](./trunk/as0006433/)|:white_check_mark:|:white_check_mark:|:white_check_mark:|:white_check_mark:|:white_check_mark:|||||
 |4|Булавский Андрей Сергеевич|[as0006404](./trunk/as0006404/)|:white_check_mark:|:white_check_mark:|:white_check_mark:|:white_check_mark:||||||
@@ -63,10 +63,10 @@
 |11|Кашпир Дмитрий Русланович|[as0006443](./trunk/as0006443/)|:white_check_mark:|:white_check_mark:|:white_check_mark:|:white_check_mark:|:white_check_mark:|||||
 |12|Котковец Кирилл Викторович|[as0006444](./trunk/as0006444/)|:white_check_mark:|:white_check_mark:|:white_check_mark:|:white_check_mark:|:white_check_mark:|||||
 |13|Кужир Владислав Витальевич|[as0006313](./trunk/as0006413/)|:white_check_mark:|:white_check_mark:|:white_check_mark:|:white_check_mark:|:white_check_mark:|:white_check_mark:||||
-|14|Немирович Дмитрий Александрович|[as0006414](./trunk/as0006414/)|:white_check_mark:|:white_check_mark:|:white_check_mark:|||||||
+|14|Немирович Дмитрий Александрович|[as0006414](./trunk/as0006414/)|:white_check_mark:|:white_check_mark:|:white_check_mark:|:white_check_mark:|:white_check_mark:|||||
 |15|Попов Алексей Сергеевич|[as0006415](./trunk/as0006415/)|:white_check_mark:|:white_check_mark:|:white_check_mark:|:white_check_mark:|:white_check_mark:|||||
 |16|Рабченя Максим Юрьевич|[as0006416](./trunk/as0006416/)|:white_check_mark:|:white_check_mark:|:white_check_mark:|:white_check_mark:|:white_check_mark:|||||
-|17|Ровнейко Захар Сергеевич|[as0006417](./trunk/as0006417/)|:white_check_mark:|:white_check_mark:|:white_check_mark:|||||||
+|17|Ровнейко Захар Сергеевич|[as0006417](./trunk/as0006417/)|:white_check_mark:|:white_check_mark:|:white_check_mark:|:white_check_mark:|:white_check_mark:|||||
 |18|Смердина Анастасия Валентиновна|[as0006424](./trunk/as0006424/)|:white_check_mark:|:white_check_mark:|:white_check_mark:|:white_check_mark:|:white_check_mark:|||+ балл||
 |19|Хомич Виталий Геннадьевич|[as0006454](./trunk/as0006454/)|:white_check_mark:|:white_check_mark:|:white_check_mark:|:white_check_mark:|:white_check_mark:|:white_check_mark:||||
 |20|Ярмолюк Артём Сергеевич|[as0006426](./trunk/as0006426/)|:white_check_mark:|:white_check_mark:|:white_check_mark:|:white_check_mark:|:white_check_mark:|||||
