@@ -3,9 +3,9 @@
 <p align="center">“Брестский Государственный технический университет”</p>
 <p align="center">Кафедра ИИТ</p>
 <br><br><br><br><br><br>
-<p align="center"><strong>Лабораторная работа 3</strong></p>
+<p align="center"><strong>Лабораторная работа №3</strong></p>
 <p align="center"><strong>По дисциплине</strong> “Теория и методы автоматического управления”</p>
-<p align="center"><strong>Тема:</strong> “Работа с контроллером AXC F 2152”</p>
+<p align="center"><strong>Тема:</strong> “Работа с контроллером AXCF2152”</p>
 <br><br><br><br><br><br>
 <p align="right"><strong>Выполнил</strong>:</p>
 <p align="right">Студент 3 курса</p>
@@ -14,7 +14,7 @@
 <p align="right"><strong>Проверил:</strong></p>
 <p align="right">Ситковец Я.С.</p>
 <br><br><br><br><br>
-<p align="center"><strong>Брест-2024</strong></p>
+<p align="center"><strong>Брест - 2024</strong></p>
 
 ---
 
