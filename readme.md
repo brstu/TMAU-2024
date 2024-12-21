@@ -22,22 +22,22 @@
 |----|--------------------------------|------------------------------|----|-----|----|-----|----|----|----|---------|--------|
 |1| Абдулвали Сундус|||||||||||
 |2|Ващук Анатолий|[as0006302](./trunk/as0006302/)|:white_check_mark:|:white_check_mark:|:white_check_mark:|:white_check_mark:|:white_check_mark:|:white_check_mark:||||
-|3|Выржемковский Даниил|[as0006303](./trunk/as0006303/)|:white_check_mark:|:white_check_mark:|:white_check_mark:|||||||
-|4|Грицук Дмитрий|[as0006306](./trunk/as0006306/)|:white_check_mark:|:white_check_mark:|:white_check_mark:|:white_check_mark:||||||
+|3|Выржемковский Даниил|[as0006303](./trunk/as0006303/)|:white_check_mark:|:white_check_mark:|:white_check_mark:|:white_check_mark:|:white_check_mark:|||||
+|4|Грицук Дмитрий|[as0006306](./trunk/as0006306/)|:white_check_mark:|:white_check_mark:|:white_check_mark:|:white_check_mark:|:white_check_mark:|||||
 |5|Грицук Павел|[as0006304](./trunk/as0006304/)|:white_check_mark:|:white_check_mark:|:white_check_mark:|:white_check_mark:|:white_check_mark:|||||
 |6|Казаренко Павел|[as0006305](./trunk/as0006305/)|:white_check_mark:|:white_check_mark:|:white_check_mark:|:white_check_mark:|:white_check_mark:|||||
 |7|Карпеш Никита|[as0006309](./trunk/as0006309/)|:white_check_mark:|:white_check_mark:|:white_check_mark:|:white_check_mark:|:white_check_mark:|:white_check_mark:|:white_check_mark:|||
 |8|Козлович Антон|[as0006308](./trunk/as0006308/)|:white_check_mark:|:white_check_mark:|:white_check_mark:|:white_check_mark:|:white_check_mark:|||||
 |9|Козловская Анна|[as0006310](./trunk/as0006310/)|:white_check_mark:|:white_check_mark:|:white_check_mark:|:white_check_mark:|:white_check_mark:|:white_check_mark:||||
-|10|Колодич Максим|[as0006307](./trunk/as0006307/)|:white_check_mark:|:white_check_mark:|:white_check_mark:|||||||
+|10|Колодич Максим|[as0006307](./trunk/as0006307/)|:white_check_mark:|:white_check_mark:|:white_check_mark:|:white_check_mark:|:white_check_mark:|||||
 |11|Крагель Алина|[as0006311](./trunk/as0006311/)|:white_check_mark:|:white_check_mark:|:white_check_mark:|:white_check_mark:|:white_check_mark:|:white_check_mark:|:white_check_mark:|||
-|12|Куликович Иван|[as0006312](./trunk/as0006312/)|:white_check_mark:|:white_check_mark:|:white_check_mark:|||||||
+|12|Куликович Иван|[as0006312](./trunk/as0006312/)|:white_check_mark:|:white_check_mark:|:white_check_mark:|:white_check_mark:|:white_check_mark:|||||
 |13|Кульбеда Кирилл|[as0006313](trunk/as0006313)|:white_check_mark:|:white_check_mark:|:white_check_mark:|:white_check_mark:|:white_check_mark:|||||
 |14|Кухарчук Илья|[as0006314](trunk/as0006314)|:white_check_mark:|:white_check_mark:|:white_check_mark:|:white_check_mark:|:white_check_mark:|:white_check_mark:|:white_check_mark:|||
 |15|Логинов Глеб|[as0006315](./trunk/as0006315/)|:white_check_mark:|:white_check_mark:|:white_check_mark:|:white_check_mark:|:white_check_mark:|:white_check_mark:|:white_check_mark:|||
 |16|Мороз Евгений|[as0006316](./trunk/as0006316/)|:white_check_mark:|:white_check_mark:|:white_check_mark:|:white_check_mark:|:white_check_mark:|:white_check_mark:||||
 |17|Никифоров Александр||:white_check_mark:|:white_check_mark:|:white_check_mark:|:white_check_mark:|:white_check_mark:|||||
-|18|Поплавский Владислав|[as000220021](./trunk/as000220021/)|:white_check_mark:|:white_check_mark:||||||||
+|18|Поплавский Владислав|[as000220021](./trunk/as000220021/)|:white_check_mark:|:white_check_mark:|:white_check_mark:|:white_check_mark:|:white_check_mark:|:white_check_mark:||||
 |19|Савко Павел|[as0006319](./trunk/as0006319/)|:white_check_mark:|:white_check_mark:|:white_check_mark:|:white_check_mark:|:white_check_mark:|||||||
 |20|Соколова Маргарита|[as0006320](./trunk/as0006320/)|:white_check_mark:|:white_check_mark:|:white_check_mark:|:white_check_mark:|:white_check_mark:|||+ балл||
 |21|Стельмашук Иван|[as0006321](./trunk/as0006321/)|:white_check_mark:|:white_check_mark:|:white_check_mark:|:white_check_mark:|:white_check_mark:|:white_check_mark:||||||
