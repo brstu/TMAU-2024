@@ -25,9 +25,9 @@
 |3|Выржемковский Даниил|[as0006303](./trunk/as0006303/)|:white_check_mark:|:white_check_mark:||||||||
 |4|Грицук Дмитрий|[as0006306](./trunk/as0006306/)|:white_check_mark:|:white_check_mark:|:white_check_mark:|:white_check_mark:||||||
 |5|Грицук Павел|[as0006304](./trunk/as0006304/)|:white_check_mark:|:white_check_mark:|:white_check_mark:|:white_check_mark:|:white_check_mark:|||||
-|6|Казаренко Павел|[as0006305](./trunk/as0006305/)|:white_check_mark:|:white_check_mark:|:white_check_mark:|||||||
+|6|Казаренко Павел|[as0006305](./trunk/as0006305/)|:white_check_mark:|:white_check_mark:|:white_check_mark:|:white_check_mark:||||||
 |7|Карпеш Никита|[as0006309](./trunk/as0006309/)|:white_check_mark:|:white_check_mark:|:white_check_mark:|:white_check_mark:|:white_check_mark:|:white_check_mark:|:white_check_mark:|||
-|8|Козлович Антон|[as0006308](./trunk/as0006308/)|:white_check_mark:|:white_check_mark:|:white_check_mark:|||||||
+|8|Козлович Антон|[as0006308](./trunk/as0006308/)|:white_check_mark:|:white_check_mark:|:white_check_mark:|:white_check_mark:|:white_check_mark:|||||
 |9|Козловская Анна|[as0006310](./trunk/as0006310/)|:white_check_mark:|:white_check_mark:|:white_check_mark:|:white_check_mark:|:white_check_mark:|:white_check_mark:||||
 |10|Колодич Максим|[as0006307](./trunk/as0006307/)|:white_check_mark:|:white_check_mark:|:white_check_mark:|||||||
 |11|Крагель Алина|[as0006311](./trunk/as0006311/)|:white_check_mark:|:white_check_mark:|:white_check_mark:|:white_check_mark:|:white_check_mark:|:white_check_mark:|:white_check_mark:|||
@@ -53,7 +53,7 @@
 |1|Белаш Александр Олегович|[as0006401](./trunk/as0006401/)|:white_check_mark:|:white_check_mark:|:white_check_mark:|:white_check_mark:|:white_check_mark:|||||
 |2|Брызгалов Юрий Николаевич|[as0006402](./trunk/as0006402/)|:white_check_mark:|:white_check_mark:|:white_check_mark:|:white_check_mark:|:white_check_mark:|||||
 |3|Будник Анна Андреевна|[as0006433](./trunk/as0006433/)|:white_check_mark:|:white_check_mark:|:white_check_mark:|:white_check_mark:|:white_check_mark:|||||
-|4|Булавский Андрей Сергеевич|[as0006404](./trunk/as0006404/)|:white_check_mark:|:white_check_mark:|:white_check_mark:|:white_check_mark:|:white_check_mark:|||||
+|4|Булавский Андрей Сергеевич|[as0006404](./trunk/as0006404/)|:white_check_mark:|:white_check_mark:|:white_check_mark:|:white_check_mark:|:white_check_mark:|:white_check_mark:||||
 |5|Бурак Илья Эдуардович|[as0006405](./trunk/as0006405/)|:white_check_mark:|:white_check_mark:|:white_check_mark:|:white_check_mark:|:white_check_mark:|||||
 |6|Горкавчук Никита Михайлович|[as64220038](./trunk/as64220038/)|:white_check_mark:|:white_check_mark:|:white_check_mark:|:white_check_mark:|:white_check_mark:|:white_check_mark:||+ балл||
 |7|Евкович Андрей Викторович|[as0006407](./trunk/as0006407/)|:white_check_mark:|:white_check_mark:|:white_check_mark:|:white_check_mark:|:white_check_mark:|:white_check_mark:||||
